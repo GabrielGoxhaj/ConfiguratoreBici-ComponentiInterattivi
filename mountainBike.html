@@ -63,7 +63,7 @@
             const sella = scene.getMeshByName("sella");
 
             const matRuota = new BABYLON.StandardMaterial("matRuota", scene);
-            matRuota.diffuseColor = new BABYLON.Color3(0.2, 0.8, 1);
+            matRuota.diffuseColor = new BABYLON.Color3(1, 0, 0);
 
             // 1. Trova tutte le mesh delle ruote
             const ruote = bikeResult.meshes.filter(mesh => mesh.name.toLowerCase().includes("ruota"));
