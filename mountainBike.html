@@ -65,27 +65,39 @@
             const matRuota = new BABYLON.StandardMaterial("matRuota", scene);
             matRuota.diffuseColor = new BABYLON.Color3(1, 0, 0);
 
+            const matbody = new BABYLON.StandardMaterial("matbody", scene);
+            matbody.diffuseColor = new BABYLON.Color3(1, 0.3, 3);
+
+
+            const body = bikeResult.meshes.filter(mesh => mesh.name.toLowerCase().includes("body"));
+            body.forEach(mesh => {
+                mesh.material = matbody; // applica il materiale
+            });
+
             // 1. Trova tutte le mesh delle ruote
             const ruote = bikeResult.meshes.filter(mesh => mesh.name.toLowerCase().includes("ruota"));
 
-
             ruote.forEach(mesh => {
-                mesh.dispose(); // rimuove la ruota
-            });
-
-            // 3. Carica la nuova ruota
-            const nuovaRuota = await BABYLON.SceneLoader.ImportMeshAsync(
-                "",
-                "models/",
-                "bmxRuota.glb",
-                scene
-            );
-
-            // 4. Posiziona la nuova ruota dove stava quella vecchia
-            nuovaRuota.meshes.forEach(mesh => {
                 mesh.material = matRuota; // applica il materiale
-
             });
+
+            // ruote.forEach(mesh => {
+            //     mesh.dispose(); // rimuove la ruota
+            // });
+
+            // // 3. Carica la nuova ruota
+            // const nuovaRuota = await BABYLON.SceneLoader.ImportMeshAsync(
+            //     "",
+            //     "models/",
+            //     "bmxRuota.glb",
+            //     scene
+            // );
+
+            // // 4. Posiziona la nuova ruota dove stava quella vecchia
+            // nuovaRuota.meshes.forEach(mesh => {
+            //     mesh.material = matRuota; // applica il materiale
+
+            // });
 
             return scene;
         };
