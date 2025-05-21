@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>montainBike</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+
+    <canvas id="renderCanvas"></canvas>
+
+    <h3>ciao</h3>
+
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylon.glTF2FileLoader.js"></script>
+
+    <script>
+        const canvas = document.getElementById("renderCanvas");
+        const engine = new BABYLON.Engine(canvas, true);
+
+        const createScene = async () => {
+            const scene = new BABYLON.Scene(engine);
+
+            scene.clearColor = new BABYLON.Color4(1, 1, 1, 1);
+
+            // Camera
+            const camera = new BABYLON.ArcRotateCamera(
+                "Camera",
+                0,     // α: lato destro
+                Math.PI / 2.2,   // β: leggera vista dall’alto
+                20,               // distanza dalla bici
+                BABYLON.Vector3.Zero(),
+                scene
+            );
+            camera.attachControl(canvas, true);
+            camera.attachControl(canvas, true);
+
+            // Light
+            const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+            light.intensity = 1;
+
+            // Ground (optional)
+
+            // Load the model (your Blender-exported part)
+            const bikeResult = await BABYLON.SceneLoader.ImportMeshAsync(
+                "", // all meshes
+                "models/",
+                "mountainBike.glb",
+                scene
+            );
+
+            bikeResult.meshes.forEach(mesh => {
+                console.log("Mesh trovata:", mesh.name);
+            });
+
+            const ruotaPosteriore = scene.getMeshByName("ruotaPosteriore");
+            const ruotaAnteriore = scene.getMeshByName("ruota");
+            const telaio = scene.getMeshByName("bodyCentrale");
+            const sella = scene.getMeshByName("sella");
+
+            const matRuota = new BABYLON.StandardMaterial("matRuota", scene);
+            matRuota.diffuseColor = new BABYLON.Color3(0.2, 0.8, 1);
+
+            // 1. Trova tutte le mesh delle ruote
+            const ruote = bikeResult.meshes.filter(mesh => mesh.name.toLowerCase().includes("ruota"));
+
+
+            ruote.forEach(mesh => {
+                mesh.dispose(); // rimuove la ruota
+            });
+
+            // 3. Carica la nuova ruota
+            const nuovaRuota = await BABYLON.SceneLoader.ImportMeshAsync(
+                "",
+                "models/",
+                "bmxRuota.glb",
+                scene
+            );
+
+            // 4. Posiziona la nuova ruota dove stava quella vecchia
+            nuovaRuota.meshes.forEach(mesh => {
+                mesh.material = matRuota; // applica il materiale
+
+            });
+
+            return scene;
+        };
+
+        createScene().then(scene => {
+            engine.runRenderLoop(() => scene.render());
+        });
+
+        // Resize handling
+        window.addEventListener("resize", () => engine.resize());
+    </script>
+</body>
+
+</html>
