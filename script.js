@@ -12,8 +12,7 @@ document.getElementById("cambiaManubrio").addEventListener("click", function () 
 
 let currentWheelsPath = null; // Add this at the top with your globals
 
-async function changeWheels(pathNuovaRuota)
-{
+async function changeWheels(pathNuovaRuota) {
     if (!scene) return;
 
     // Only reload if the path is different
@@ -37,13 +36,44 @@ async function changeWheels(pathNuovaRuota)
 
     nuovaRuota.meshes.forEach(mesh => {
         mesh.material = matRuota;
-    }); 
+    });
 
     if (matRuota) {
         ruote.forEach(mesh => {
             mesh.material = matRuota;
         });
     }
+}
+
+window.aggiungiOggetto = async function (w) {
+    const result = await BABYLON.SceneLoader.ImportMeshAsync(
+        "", // all meshes
+        ".blend/accessori/",
+        "portaboraccia.glb",
+        scene
+    );
+
+    const mesh = result.meshes[0]; // la borraccia
+    const telaio = scene.getMeshByName("bodyCentrale");
+
+    if (telaio) {
+        // Attacca la borraccia al telaio (parenting)
+        mesh.parent = telaio;
+        // Posizione relativa rispetto al telaio (regola questi valori per il punto desiderato)
+        mesh.position = new BABYLON.Vector3(0.2, -0.1, 0.3); // esempio
+        mesh.rotation = new BABYLON.Vector3(0, 0, 0);
+        mesh.scaling = new BABYLON.Vector3(1, 1, 1);
+    }
+
+    // Rendi la borraccia draggabile
+    const dragBehavior = new BABYLON.PointerDragBehavior();
+    dragBehavior.useObjectOrientationForDragging = false;
+    mesh.addBehavior(dragBehavior);
+
+    // Quando inizia il drag, stacca la borraccia dal telaio
+    dragBehavior.onDragStartObservable.add(() => {
+        mesh.setParent(null);
+    });
 }
 
 function changeWheelsColor(colorWheelsName) {
@@ -116,7 +146,7 @@ const createScene = async () => {
 
     bikeResult.meshes.forEach(mesh => {
         console.log("Mesh trovata:", mesh.name);
-    }); 
+    });
 
     const ruotaPosteriore = scene.getMeshByName("ruotaPosteriore");
     const ruotaAnteriore = scene.getMeshByName("ruota");
