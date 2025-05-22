@@ -21,8 +21,6 @@ async function changeWheels(pathNuovaRuota) {
     }
     currentWheelsPath = pathNuovaRuota;
 
-    const positions = ruote.map(mesh => mesh.position.clone());
-
     ruote.forEach(mesh => mesh.dispose());
 
     const nuovaRuota = await BABYLON.SceneLoader.ImportMeshAsync(
@@ -45,7 +43,34 @@ async function changeWheels(pathNuovaRuota) {
     }
 }
 
+window.aggiungiPortaTelefono = async function () {
+    if (window.portaTelefonoMesh && window.portaTelefonoMesh.isDisposed() === false) {
+        portaTelefonoMesh.dispose()
+        return;
+    }
+
+    const result = await BABYLON.SceneLoader.ImportMeshAsync(
+        "", // all meshes
+        ".blend/accessori/",
+        "portaTelefono.glb",
+        scene
+    );
+
+    const mesh = result.meshes[0]; // la borraccia
+    window.portaTelefonoMesh = mesh; // salva il riferimento globale
+
+    // Rendi la borraccia draggabile
+    const dragBehavior = new BABYLON.PointerDragBehavior();
+    dragBehavior.useObjectOrientationForDragging = false;
+    mesh.addBehavior(dragBehavior);
+}
+
 window.aggiungiBorraccia = async function () {
+    if (window.borracciaMesh && window.borracciaMesh.isDisposed() === false) {
+        borracciaMesh.dispose()
+        return;
+    }
+
     const result = await BABYLON.SceneLoader.ImportMeshAsync(
         "", // all meshes
         ".blend/accessori/",
@@ -54,6 +79,7 @@ window.aggiungiBorraccia = async function () {
     );
 
     const mesh = result.meshes[0]; // la borraccia
+    window.borracciaMesh = mesh; // salva il riferimento globale
 
     // Rendi la borraccia draggabile
     const dragBehavior = new BABYLON.PointerDragBehavior();
