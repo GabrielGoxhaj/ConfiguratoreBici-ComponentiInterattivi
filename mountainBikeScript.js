@@ -22,9 +22,9 @@ document.getElementById("classicManubrio").addEventListener("click", function ()
 document.getElementById("corsaManubrio").addEventListener("click", function () {
     ChangeManubrio("corsa/corsaManubrioTest.glb",
         {
-            position: new BABYLON.Vector3(0, 9.2, -5.05),
+            position: new BABYLON.Vector3(0, 8.7, -4.4),
             rotation: new BABYLON.Vector3(0, 0, 0),
-            scaling: new BABYLON.Vector3(0.35, 0.35, 0.35)
+            scaling: new BABYLON.Vector3(0.3, 0.3, 0.3)
         }
     );
 })
