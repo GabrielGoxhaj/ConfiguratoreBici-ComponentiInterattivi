@@ -11,9 +11,18 @@ let matRuota;
 
 document.getElementById("bmxManubrio").addEventListener("click", function () {
     ChangeManubrio("bmx/bmxManubrio.glb");
+    const input = this.querySelector('input[type="radio"]');
+    if (input) input.checked = true;
 });
 document.getElementById("classicManubrio").addEventListener("click", function () {
     ChangeManubrio("classic/classicManubrio.glb");
+    const input = this.querySelector('input[type="radio"]');
+    if (input) input.checked = true;
+});
+document.getElementById("mountainBikeManubrio").addEventListener("click", function () {
+    ChangeManubrio("mountainBike/mountainManubrio.glb");
+    const input = this.querySelector('input[type="radio"]');
+    if (input) input.checked = true;
 });
 
 let currentWheelsPath = null; // Add this at the top with your globals
