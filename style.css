@@ -31,22 +31,18 @@ body {
 
 .red {
     background-color: red;
-    border: 1px solid black;
 }
 
 .green {
     background-color: green;
-    border: 1px solid black;
 }
 
 .white {
     background-color: white;
-    border: 1px solid black;
 }
 
 .black {
     background-color: black;
-    border: 1px solid black;
 }
 
 .mountainBike-wrapper {
@@ -55,9 +51,27 @@ body {
     flex-direction: row;
 }
 
-.tireColorSelector-wrapper, .telaioColorSelector-wrapper, .changeWheels-wrapper {
+.tireColorSelector-wrapper, .telaioColorSelector-wrapper{
     display: flex;
     flex-direction: row;
+}
+
+.tireColorSelector-wrapper > button, .telaioColorSelector-wrapper > button{
+    border: 2px solid transparent;
+}
+
+.changeWheels-wrapper > button {
+    width: 450px;
+    display: flex;
+}
+
+.changeWheels-wrapper > button > img {
+    margin-left: 0px;
+    border-right: 2px solid black;
+}
+
+.tireColorSelector-wrapper > button.selected, .telaioColorSelector-wrapper > button.selected {
+    border: 2px solid black;
 }
 
 .personalization-wrapper {
@@ -85,13 +99,13 @@ body {
 }
 
 button {
-    border: 1px solid black;
     border-radius: 2px;
     padding: 0px;
+    margin: 2px;
 }
 
 button:hover {
-    border: 1px solid saddlebrown;
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 2px;
     cursor: pointer;;
 }
@@ -108,4 +122,17 @@ button:hover {
 
 .accessori-wrapper {
     display: flex;
+}
+
+.cartRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input[type="radio"] {
+    width: 36px;
+    height: 36px;
+    accent-color: #000;
 }

@@ -11,19 +11,32 @@ let matRuota;
 
 document.getElementById("bmxManubrio").addEventListener("click", function () {
     ChangeManubrio("bmx/bmxManubrio.glb");
+    const input = this.querySelector('input[type="radio"]');
+    if (input) input.checked = true;
 });
 document.getElementById("classicManubrio").addEventListener("click", function () {
     ChangeManubrio("classic/classicManubrio.glb");
+    const input = this.querySelector('input[type="radio"]');
+    if (input) input.checked = true;
+});
+document.getElementById("mountainBikeManubrio").addEventListener("click", function () {
+    ChangeManubrio("mountainBike/mountainManubrio.glb");
+    const input = this.querySelector('input[type="radio"]');
+    if (input) input.checked = true;
 });
 
 let currentWheelsPath = null; // Add this at the top with your globals
 
-async function changeWheels(pathNuovaRuota) {
+async function changeWheels(pathNuovaRuota, btn) {
     if (!scene) return;
 
     // Only reload if the path is different
     if (currentWheelsPath === pathNuovaRuota) {
         return; // Already loaded, do nothing
+    }
+        if (btn) {
+        const input = btn.querySelector('input[type="radio"]');
+        if (input) input.checked = true;
     }
     currentWheelsPath = pathNuovaRuota;
 
@@ -93,20 +106,44 @@ window.aggiungiBorraccia = async function () {
     mesh.addBehavior(dragBehavior);
 }
 
+function selectWheelButton(colorClass) {
+    document.querySelectorAll('.tireColorSelector-wrapper button').forEach(btn => {
+        if (btn.classList.contains(colorClass)) {
+            btn.classList.add('selected');
+        } else {
+            btn.classList.remove('selected');
+        }
+    });
+}
+
+function selectTelaioButton(colorClass) {
+    document.querySelectorAll('.telaioColorSelector-wrapper button').forEach(btn => {
+        if (btn.classList.contains(colorClass)) {
+            btn.classList.add('selected');
+        } else {
+            btn.classList.remove('selected');
+        }
+    });
+}
+
 function changeWheelsColor(colorWheelsName) {
     let colorWheels;
     if (colorWheelsName === 'red') {
         console.log('red tires');
         colorWheels = new BABYLON.Color3(1, 0, 0);
+        selectWheelButton('red-wheels');
     } else if (colorWheelsName === 'green') {
         console.log('green tires');
         colorWheels = new BABYLON.Color3(0, 1, 0);
+        selectWheelButton('green-wheels');
     } else if (colorWheelsName === 'white') {
         console.log('white tires');
         colorWheels = new BABYLON.Color3(1, 1, 1);
+        selectWheelButton('white-wheels');
     } else if (colorWheelsName === 'black') {
         console.log('black tires');
         colorWheels = new BABYLON.Color3(0, 0, 0);
+        selectWheelButton('black-wheels');
     } else {
         colorWheels = new BABYLON.Color3(1, 1, 1); // default white
     }
@@ -122,15 +159,19 @@ function changeTelaioColor(colorTelaioName) {
     if (colorTelaioName === 'red') {
         console.log('red telaio');
         colorTelaio = new BABYLON.Color3(1, 0, 0);
+        selectTelaioButton('red-telaio');
     } else if (colorTelaioName === 'green') {
         console.log('green telaio');
         colorTelaio = new BABYLON.Color3(0, 1, 0);
+        selectTelaioButton('green-telaio');
     } else if (colorTelaioName === 'white') {
         console.log('white telaio');
         colorTelaio = new BABYLON.Color3(1, 1, 1);
+        selectTelaioButton('white-telaio');
     } else if (colorTelaioName === 'black') {
         console.log('black telaio');
         colorTelaio = new BABYLON.Color3(0, 0, 0);
+        selectTelaioButton('black-telaio');
     } else {
         colorTelaio = new BABYLON.Color3(1, 1, 1); // default white
     }
