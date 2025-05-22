@@ -3,7 +3,10 @@ const engine = new BABYLON.Engine(canvas, true);
 
 let scene;
 let ruote = [];
-let matbody
+let telaio = [];
+let manubrio = [];
+let matbody = [];
+let body = [];
 let matRuota;
 
 document.getElementById("bmxManubrio").addEventListener("click", function () {
@@ -93,16 +96,16 @@ window.aggiungiBorraccia = async function () {
 function changeWheelsColor(colorWheelsName) {
     let colorWheels;
     if (colorWheelsName === 'red') {
-        console.log('red');
+        console.log('red tires');
         colorWheels = new BABYLON.Color3(1, 0, 0);
     } else if (colorWheelsName === 'green') {
-        console.log('green');
+        console.log('green tires');
         colorWheels = new BABYLON.Color3(0, 1, 0);
     } else if (colorWheelsName === 'white') {
-        console.log('white');
+        console.log('white tires');
         colorWheels = new BABYLON.Color3(1, 1, 1);
     } else if (colorWheelsName === 'black') {
-        console.log('black');
+        console.log('black tires');
         colorWheels = new BABYLON.Color3(0, 0, 0);
     } else {
         colorWheels = new BABYLON.Color3(1, 1, 1); // default white
@@ -111,6 +114,35 @@ function changeWheelsColor(colorWheelsName) {
         matRuota = new BABYLON.StandardMaterial("matRuota", scene);
         matRuota.diffuseColor = colorWheels;
         mesh.material = matRuota; // applica il materiale
+    });
+}
+
+function changeTelaioColor(colorTelaioName) {
+    let colorTelaio;
+    if (colorTelaioName === 'red') {
+        console.log('red telaio');
+        colorTelaio = new BABYLON.Color3(1, 0, 0);
+    } else if (colorTelaioName === 'green') {
+        console.log('green telaio');
+        colorTelaio = new BABYLON.Color3(0, 1, 0);
+    } else if (colorTelaioName === 'white') {
+        console.log('white telaio');
+        colorTelaio = new BABYLON.Color3(1, 1, 1);
+    } else if (colorTelaioName === 'black') {
+        console.log('black telaio');
+        colorTelaio = new BABYLON.Color3(0, 0, 0);
+    } else {
+        colorTelaio = new BABYLON.Color3(1, 1, 1); // default white
+    }
+    const matTelaio = new BABYLON.StandardMaterial("matTelaio", scene);
+    matTelaio.diffuseColor = colorTelaio;
+
+    if (matbody) {
+        matbody.diffuseColor = colorTelaio;
+    }
+    // Change color of manubrio
+    manubrio.forEach(mesh => {
+        mesh.material = matTelaio;
     });
 }
 
@@ -168,8 +200,7 @@ const createScene = async () => {
     const sella = scene.getMeshByName("sella");
 
     matbody = new BABYLON.StandardMaterial("matbody", scene);
-    matbody.diffuseColor = new BABYLON.Color3(1, 0.3, 3);
-
+    matbody.diffuseColor = new BABYLON.Color3(1, 1, 3);
 
     const body = bikeResult.meshes.filter(mesh => mesh.name.toLowerCase().includes("body"));
     body.forEach(mesh => {

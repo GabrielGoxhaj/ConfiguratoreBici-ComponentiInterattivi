@@ -20,26 +20,31 @@ body {
     height: 100px;
 }
 
+.card-telaio {
+    width: 100px;
+    height: 100px;
+}
+
 .card-wheels > img {
     max-height: 100px;
 }
 
-.red-wheels {
+.red {
     background-color: red;
     border: 1px solid black;
 }
 
-.green-wheels {
+.green {
     background-color: green;
     border: 1px solid black;
 }
 
-.white-wheels {
+.white {
     background-color: white;
     border: 1px solid black;
 }
 
-.black-wheels {
+.black {
     background-color: black;
     border: 1px solid black;
 }
@@ -50,7 +55,7 @@ body {
     flex-direction: row;
 }
 
-.tireColorSelector-wrapper {
+.tireColorSelector-wrapper, .telaioColorSelector-wrapper {
     display: flex;
     flex-direction: row;
 }

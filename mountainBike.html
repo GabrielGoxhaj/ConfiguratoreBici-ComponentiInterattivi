@@ -14,19 +14,28 @@
         <canvas id="renderCanvas"></canvas>
         <!-- <h3>ciao</h3> -->
         <div class="personalization-wrapper">
+            <div class="telaio-wrapper">
+                <h2>Colore telaio</h2>
+                <div class="telaioColorSelector-wrapper">
+                    <button class="card-telaio red" onclick="changeTelaioColor('red')"></button>
+                    <button class="card-telaio green" onclick="changeTelaioColor('green')"></button>
+                    <button class="card-telaio white" onclick="changeTelaioColor('white')"></button>
+                    <button class="card-telaio black" onclick="changeTelaioColor('black')"></button>
+                </div>
+            </div>
             <div class="wheels-customization-wrapper">
                 <h2>Colore gomme</h2>
-                <div class="tireColorSelector-wrapper" style="display: flex;">
-                    <button class="card-wheels red-wheels" onclick="changeWheelsColor('red')">
+                <div class="tireColorSelector-wrapper">
+                    <button class="card-wheels red" onclick="changeWheelsColor('red')">
                         <!-- <img src="./img/red-tire.jpg"> -->
                     </button>
-                    <button class="card-wheels green-wheels" onclick="changeWheelsColor('green')">
+                    <button class="card-wheels green" onclick="changeWheelsColor('green')">
                         <!-- <img src="./img/green-tire.jpg"> -->
                     </button>
-                    <button class="card-wheels white-wheels" onclick="changeWheelsColor('white')">
+                    <button class="card-wheels white" onclick="changeWheelsColor('white')">
                         <!-- <img src="./img/white-tire.png"> -->
                     </button>
-                    <button class="card-wheels black-wheels" onclick="changeWheelsColor('black')">
+                    <button class="card-wheels black" onclick="changeWheelsColor('black')">
                         <!-- <img src="./img/black-tire.jpg"> -->
                     </button>
                 </div>
