@@ -100,6 +100,8 @@ window.aggiungiBorraccia = async function () {
     const mesh = result.meshes[0]; // la borraccia
     window.borracciaMesh = mesh; // salva il riferimento globale
 
+    result.position = new BABYLON.Vector3(1, 10, 3);
+
     // Rendi la borraccia draggabile
     const dragBehavior = new BABYLON.PointerDragBehavior();
     dragBehavior.useObjectOrientationForDragging = false;
