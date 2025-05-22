@@ -100,3 +100,7 @@ button:hover {
 .wheels-customization-wrapper > div {
     padding: 2px;
 }
+
+.accessori-wrapper {
+    display: flex;
+}
