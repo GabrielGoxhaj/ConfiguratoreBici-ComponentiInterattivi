@@ -22,9 +22,9 @@ document.getElementById("classicManubrio").addEventListener("click", function ()
 document.getElementById("corsaManubrio").addEventListener("click", function () {
     ChangeManubrio("corsa/corsaManubrioTest.glb",
         {
-            position: new BABYLON.Vector3(0, 0 , 0 ),
+            position: new BABYLON.Vector3(0, 9.2, -5.05),
             rotation: new BABYLON.Vector3(0, 0, 0),
-            scaling: new BABYLON.Vector3(0.25, 0.25, 0.25)
+            scaling: new BABYLON.Vector3(0.35, 0.35, 0.35)
         }
     );
 })
@@ -157,7 +157,7 @@ function changeTelaioColor(colorTelaioName) {
     });
 }
 
-async function ChangeManubrio(nuovomanubrio) {
+async function ChangeManubrio(nuovomanubrio, options = {}) {
     await manubrio.forEach(mesh => {
         mesh.dispose();
     });
