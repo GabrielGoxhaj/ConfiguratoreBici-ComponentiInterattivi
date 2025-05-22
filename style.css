@@ -109,3 +109,10 @@ button:hover {
 .accessori-wrapper {
     display: flex;
 }
+
+.cartRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
