@@ -10,25 +10,75 @@
 </head>
 
 <body>
+    <div class="mountainBike-wrapper">
+        <canvas id="renderCanvas"></canvas>
+        <!-- <h3>ciao</h3> -->
+        <div class="personalization-wrapper">
+            <div class="telaio-wrapper">
+                <h2>Colore telaio</h2>
+                <div class="telaioColorSelector-wrapper">
+                    <button class="card-telaio red" onclick="changeTelaioColor('red')"></button>
+                    <button class="card-telaio green" onclick="changeTelaioColor('green')"></button>
+                    <button class="card-telaio white" onclick="changeTelaioColor('white')"></button>
+                    <button class="card-telaio black" onclick="changeTelaioColor('black')"></button>
+                </div>
+            </div>
+            <div class="wheels-customization-wrapper">
+                <h2>Colore gomme</h2>
+                <div class="tireColorSelector-wrapper">
+                    <button class="card-wheels red" onclick="changeWheelsColor('red')">
+                        <!-- <img src="./img/red-tire.jpg"> -->
+                    </button>
+                    <button class="card-wheels green" onclick="changeWheelsColor('green')">
+                        <!-- <img src="./img/green-tire.jpg"> -->
+                    </button>
+                    <button class="card-wheels white" onclick="changeWheelsColor('white')">
+                        <!-- <img src="./img/white-tire.png"> -->
+                    </button>
+                    <button class="card-wheels black" onclick="changeWheelsColor('black')">
+                        <!-- <img src="./img/black-tire.jpg"> -->
+                    </button>
+                </div>
 
-    <canvas id="renderCanvas"></canvas>
+                <h2>Tipologia gomme</h2>
+                <div class="changeWheels-wrapper">
+                    <button onclick="changeWheels('bmx/bmxRuota.glb')">
+                        <p>BMX</p>
+                        <!-- BMX Wheels -->
+                        <img class="images" src="./img/tire-BMX.png" alt="bmx-tire">
+                    </button>
+                    <button onclick="changeWheels('mountainBike/mountainBikeRuota.glb')">
+                        <p>Mountain Bike</p>
+                        <!-- Mountain Bike Wheels -->
+                        <img class="images" src="./img/mountainbike-tire.png" alt="mountainBike-tire">
+                    </button>
+                </div>
+            </div>
 
-    <h3>ciao</h3>
-    <div class="" style="display: flex;">
-        <div class="card-wheels red-wheels" onclick="changeWheelsColor('red')"><img src="./img/red-tire.jpg"></div>
-        <div class="card-wheels green-wheels" onclick="changeWheelsColor('green')"><img src="./img/green-tire.jpg">
+            <h2>Tipologia manubrio</h2>
+            <div class="changeManubrio-wrapper">
+
+                <button id="bmxManubrio">
+                    <!-- <p>BMX</p> -->
+                    <img class="images" src="./img/manubrio-bmx.png" alt="bmxManubrio">
+                </button>
+                <button id="classicManubrio">
+                    <!-- <p>Classico</p> -->
+                    <img class="images" src="./img/manubrio-classico.png" alt="classicManubrio">
+                </button>
+            </div>
+            <h2>Accessori aggiuntivi</h2>
+            <div class="accessori-wrapper">
+                <button onclick="aggiungiBorraccia()">
+                    <img class="images" src="./img/borraccia.png" alt="borraccia">
+                </button>
+                <button onclick="aggiungiPortaTelefono()">
+                    <img class="images" src="./img/porta-telefono.png" alt="portaTelefono">
+                </button>
+            </div>
         </div>
-        <div class="card-wheels white-wheels" onclick="changeWheelsColor('white')"><img src="./img/white-tire.png">
-        </div>
-        <div class="card-wheels black-wheels" onclick="changeWheelsColor('black')"><img src="./img/black-tire.jpg">
-        </div>
-        <button onclick="aggiungiBorraccia()">Borraccia</button>
-        <button onclick="aggiungiPortaTelefono()">Porta Telefono</button>
+
     </div>
-
-
-    <button onclick="changeWheels('bmx/bmxRuota.glb')">BMX Wheels</button>
-    <button id="cambiaManubrio">Cambia Manubrio</button>
 
     <script src="https://cdn.babylonjs.com/babylon.js"> </script>
     <script src="https://cdn.babylonjs.com/loaders/babylon.glTF2FileLoader.js"> </script>
