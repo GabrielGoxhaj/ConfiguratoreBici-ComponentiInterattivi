@@ -14,6 +14,12 @@
     <canvas id="renderCanvas"></canvas>
 
     <h3>ciao</h3>
+        <div class="" style="display: flex;">
+        <div class="card-wheels red-wheels" onclick="changeWheelsColor('red')"><img src="./img/red-tire.jpg"></div>
+        <div class="card-wheels green-wheels" onclick="changeWheelsColor('green')"><img src="./img/green-tire.jpg"></div>
+        <div class="card-wheels white-wheels" onclick="changeWheelsColor('white')"><img src="./img/white-tire.png"></div>
+        <div class="card-wheels black-wheels" onclick="changeWheelsColor('black')"><img src="./img/black-tire.jpg"></div>
+    </div>
 
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="https://cdn.babylonjs.com/loaders/babylon.glTF2FileLoader.js"></script>
@@ -22,8 +28,35 @@
         const canvas = document.getElementById("renderCanvas");
         const engine = new BABYLON.Engine(canvas, true);
 
+        let scene;
+        let ruote = [];
+
+        function changeWheelsColor(colorWheelsName) {
+            let colorWheels;
+            if (colorWheelsName === 'red') {
+                console.log('red');
+                colorWheels = new BABYLON.Color3(1, 0, 0);
+            } else if (colorWheelsName === 'green') {
+                console.log('green');
+                colorWheels = new BABYLON.Color3(0, 1, 0);
+            } else if (colorWheelsName === 'white') {
+                console.log('white');
+                colorWheels = new BABYLON.Color3(1, 1, 1);
+            } else if (colorWheelsName === 'black') {
+                console.log('black');
+                colorWheels = new BABYLON.Color3(0, 0, 0);
+            } else {
+                colorWheels = new BABYLON.Color3(1, 1, 1); // default white
+            }
+            ruote.forEach(mesh => {
+                const matRuota = new BABYLON.StandardMaterial("matRuota", scene);
+                matRuota.diffuseColor = colorWheels;
+                mesh.material = matRuota; // applica il materiale
+            });
+        }
+        
         const createScene = async () => {
-            const scene = new BABYLON.Scene(engine);
+            scene = new BABYLON.Scene(engine);
 
             scene.clearColor = new BABYLON.Color4(1, 1, 1, 1);
 
@@ -65,27 +98,39 @@
             const matRuota = new BABYLON.StandardMaterial("matRuota", scene);
             matRuota.diffuseColor = new BABYLON.Color3(1, 0, 0);
 
-            // 1. Trova tutte le mesh delle ruote
-            const ruote = bikeResult.meshes.filter(mesh => mesh.name.toLowerCase().includes("ruota"));
+            const matbody = new BABYLON.StandardMaterial("matbody", scene);
+            matbody.diffuseColor = new BABYLON.Color3(1, 0.3, 3);
 
+
+            const body = bikeResult.meshes.filter(mesh => mesh.name.toLowerCase().includes("body"));
+            body.forEach(mesh => {
+                mesh.material = matbody; // applica il materiale
+            });
+
+            // 1. Trova tutte le mesh delle ruote
+            ruote = bikeResult.meshes.filter(mesh => mesh.name.toLowerCase().includes("ruota"));
 
             ruote.forEach(mesh => {
-                mesh.dispose(); // rimuove la ruota
-            });
-
-            // 3. Carica la nuova ruota
-            const nuovaRuota = await BABYLON.SceneLoader.ImportMeshAsync(
-                "",
-                "models/",
-                "bmxRuota.glb",
-                scene
-            );
-
-            // 4. Posiziona la nuova ruota dove stava quella vecchia
-            nuovaRuota.meshes.forEach(mesh => {
                 mesh.material = matRuota; // applica il materiale
-
             });
+
+            // ruote.forEach(mesh => {
+            //     mesh.dispose(); // rimuove la ruota
+            // });
+
+            // // 3. Carica la nuova ruota
+            // const nuovaRuota = await BABYLON.SceneLoader.ImportMeshAsync(
+            //     "",
+            //     "models/",
+            //     "bmxRuota.glb",
+            //     scene
+            // );
+
+            // // 4. Posiziona la nuova ruota dove stava quella vecchia
+            // nuovaRuota.meshes.forEach(mesh => {
+            //     mesh.material = matRuota; // applica il materiale
+
+            // });
 
             return scene;
         };
