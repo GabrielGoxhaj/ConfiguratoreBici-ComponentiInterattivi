@@ -35,6 +35,8 @@ document.getElementById("corsaManubrio").addEventListener("click", function () {
             scaling: new BABYLON.Vector3(0.3, 0.3, 0.3)
         }
     );
+    const input = this.querySelector('input[type="radio"]');
+    if (input) input.checked = true;
 })
 
 async function changeWheels(pathNuovaRuota, btn) {
