@@ -49,15 +49,25 @@
 
                 <h2>Tipologia gomme</h2>
                 <div class="changeWheels-wrapper">
-                    <button onclick="changeWheels('bmx/bmxRuota.glb')">
-                        <p>BMX</p>
-                        <!-- BMX Wheels -->
+                    <button onclick="changeWheels('bmx/bmxRuota.glb', this)">
                         <img class="images" src="./img/tire-BMX.png" alt="bmx-tire">
+                        <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                            <p><b>Ruote Odyssey BMX "Pursuit" - 24"</b></p>
+                            <p>Prezzo: 199.99€</p>
+                            <div>
+                                <input type="radio" name="ruote" id="bmxRuote" value="bmxRuote">
+                            </div>
+                        </div>
                     </button>
-                    <button onclick="changeWheels('mountainBike/mountainBikeRuota.glb')">
-                        <p>Mountain Bike</p>
-                        <!-- Mountain Bike Wheels -->
+                    <button onclick="changeWheels('mountainBike/mountainBikeRuota.glb', this)">
                         <img class="images" src="./img/mountainbike-tire.png" alt="mountainBike-tire">
+                            <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                            <p><b>Ruote Continental Cross King X King - 26"</b></p>
+                            <p>Prezzo: 149.99€</p>
+                            <div>
+                                <input type="radio" name="ruote" id="mountainRuote" value="mountainRuote" checked>
+                            </div>
+                        </div>
                     </button>
                 </div>
             </div>

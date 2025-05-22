@@ -18,12 +18,16 @@ document.getElementById("classicManubrio").addEventListener("click", function ()
 
 let currentWheelsPath = null; // Add this at the top with your globals
 
-async function changeWheels(pathNuovaRuota) {
+async function changeWheels(pathNuovaRuota, btn) {
     if (!scene) return;
 
     // Only reload if the path is different
     if (currentWheelsPath === pathNuovaRuota) {
         return; // Already loaded, do nothing
+    }
+        if (btn) {
+        const input = btn.querySelector('input[type="radio"]');
+        if (input) input.checked = true;
     }
     currentWheelsPath = pathNuovaRuota;
 
