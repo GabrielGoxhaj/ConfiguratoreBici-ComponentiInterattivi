@@ -8,6 +8,9 @@ let manubrio = [];
 let matbody = [];
 let body = [];
 let matRuota;
+let currentWheelsPath = null;
+
+
 
 document.getElementById("bmxManubrio").addEventListener("click", function () {
     ChangeManubrio("bmx/bmxManubrio.glb");
@@ -24,8 +27,15 @@ document.getElementById("mountainBikeManubrio").addEventListener("click", functi
     const input = this.querySelector('input[type="radio"]');
     if (input) input.checked = true;
 });
-
-let currentWheelsPath = null; // Add this at the top with your globals
+document.getElementById("corsaManubrio").addEventListener("click", function () {
+    ChangeManubrio("corsa/corsaManubrioTest.glb",
+        {
+            position: new BABYLON.Vector3(0, 8.7, -4.4),
+            rotation: new BABYLON.Vector3(0, 0, 0),
+            scaling: new BABYLON.Vector3(0.3, 0.3, 0.3)
+        }
+    );
+})
 
 async function changeWheels(pathNuovaRuota, btn) {
     if (!scene) return;
@@ -92,7 +102,7 @@ window.aggiungiBorraccia = async function () {
 
     const result = await BABYLON.SceneLoader.ImportMeshAsync(
         "", // all meshes
-        ".blend/accessori/",
+        "models/accessori/",
         "portaborraccia.glb",
         scene
     );
@@ -189,28 +199,41 @@ function changeTelaioColor(colorTelaioName) {
     });
 }
 
-async function ChangeManubrio(nuovomanubrio) {
+async function ChangeManubrio(nuovomanubrio, options = {}) {
     await manubrio.forEach(mesh => {
         mesh.dispose();
     });
 
-    BABYLON.SceneLoader.ImportMeshAsync(
+    const result = await BABYLON.SceneLoader.ImportMeshAsync(
         "",
         "models/",
         nuovomanubrio,
         scene
-    ).then(newManubrio => {
-        newManubrio.meshes.forEach(mesh => {
-            mesh.material = matbody;
-        });
+    );
 
-        // aggiorna il riferimento del manubrio
-        manubrio = newManubrio.meshes;
+    manubrio = result.meshes;
+
+    manubrio.forEach(mesh => {
+        mesh.material = matbody;
+
+        if (options.position) {
+            mesh.position = options.position.clone();
+        }
+        if (options.rotation) {
+            mesh.rotation = options.rotation.clone();
+        }
+        if (options.scaling) {
+            mesh.scaling = options.scaling.clone();
+        }
     });
 }
 
+
 const createScene = async () => {
     scene = new BABYLON.Scene(engine);
+
+    const sphere = BABYLON.MeshBuilder.CreateSphere("mysphere", {diameter: 1}, scene);
+    sphere.position = new BABYLON.Vector3(0, 0, 0);
 
     scene.clearColor = new BABYLON.Color4(1, 1, 1, 1);
     const camera = new BABYLON.ArcRotateCamera(
