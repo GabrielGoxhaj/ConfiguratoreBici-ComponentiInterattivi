@@ -9,24 +9,29 @@
 
 </head>
 
-    <body>
+<body>
 
-        <canvas id="renderCanvas"></canvas>
+    <canvas id="renderCanvas"></canvas>
 
-        <h3>ciao</h3>
-            <div class="" style="display: flex;">
-            <div class="card-wheels red-wheels" onclick="changeWheelsColor('red')"><img src="./img/red-tire.jpg"></div>
-            <div class="card-wheels green-wheels" onclick="changeWheelsColor('green')"><img src="./img/green-tire.jpg"></div>
-            <div class="card-wheels white-wheels" onclick="changeWheelsColor('white')"><img src="./img/white-tire.png"></div>
-            <div class="card-wheels black-wheels" onclick="changeWheelsColor('black')"><img src="./img/black-tire.jpg"></div>
+    <h3>ciao</h3>
+    <div class="" style="display: flex;">
+        <div class="card-wheels red-wheels" onclick="changeWheelsColor('red')"><img src="./img/red-tire.jpg"></div>
+        <div class="card-wheels green-wheels" onclick="changeWheelsColor('green')"><img src="./img/green-tire.jpg">
         </div>
+        <div class="card-wheels white-wheels" onclick="changeWheelsColor('white')"><img src="./img/white-tire.png">
+        </div>
+        <div class="card-wheels black-wheels" onclick="changeWheelsColor('black')"><img src="./img/black-tire.jpg">
+        </div>
+    </div>
+    <button onclick="aggiungiOggetto(3)">add</button>
 
-        <button onclick="changeWheels('bmx/bmxRuota.glb')">BMX Wheels</button>
-        <button id="cambiaManubrio">Cambia Manubrio</button>
 
-        <script src="https://cdn.babylonjs.com/babylon.js"> </script>   
-        <script src="https://cdn.babylonjs.com/loaders/babylon.glTF2FileLoader.js"> </script>
-        <script src = "script.js"></script>
-    </body>
+    <button onclick="changeWheels('bmx/bmxRuota.glb')">BMX Wheels</button>
+    <button id="cambiaManubrio">Cambia Manubrio</button>
+
+    <script src="https://cdn.babylonjs.com/babylon.js"> </script>
+    <script src="https://cdn.babylonjs.com/loaders/babylon.glTF2FileLoader.js"> </script>
+    <script src="script.js"></script>
+</body>
 
 </html>
