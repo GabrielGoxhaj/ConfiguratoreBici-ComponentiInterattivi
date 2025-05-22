@@ -10,9 +10,17 @@ document.getElementById("cambiaManubrio").addEventListener("click", function () 
     ChangeManubrio("bmx/bmxManubrio.glb");
 });
 
+let currentWheelsPath = null; // Add this at the top with your globals
+
 async function changeWheels(pathNuovaRuota)
 {
     if (!scene) return;
+
+    // Only reload if the path is different
+    if (currentWheelsPath === pathNuovaRuota) {
+        return; // Already loaded, do nothing
+    }
+    currentWheelsPath = pathNuovaRuota;
 
     const positions = ruote.map(mesh => mesh.position.clone());
 
@@ -33,7 +41,7 @@ async function changeWheels(pathNuovaRuota)
 
     if (matRuota) {
         ruote.forEach(mesh => {
-        mesh.material = matRuota;
+            mesh.material = matRuota;
         });
     }
 }
@@ -90,7 +98,7 @@ const createScene = async () => {
         "Camera",
         0,     // α: lato destro
         Math.PI / 2.2,   // β: leggera vista dall’alto
-        20,               // distanza dalla bici
+        25,               // distanza dalla bici
         BABYLON.Vector3.Zero(),
         scene
     );
