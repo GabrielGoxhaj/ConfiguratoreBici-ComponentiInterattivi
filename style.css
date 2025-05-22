@@ -55,7 +55,7 @@ body {
     flex-direction: row;
 }
 
-.tireColorSelector-wrapper, .telaioColorSelector-wrapper {
+.tireColorSelector-wrapper, .telaioColorSelector-wrapper, .changeWheels-wrapper {
     display: flex;
     flex-direction: row;
 }
