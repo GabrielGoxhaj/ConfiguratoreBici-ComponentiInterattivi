@@ -10,11 +10,19 @@
 </head>
 
 <body>
-    <div class="cartRow">
-        <div class="cart">
-            Carrello
+    <header>
+    <div class="header">
+        <div class="menu-principale-button" onclick="window.location.href='index.html'">
+            Menu principale
+        </div>
+        <div class="cart-wrapper">
+            <button class="cart-button" onclick="openCart()">
+                Carrello
+                <img class="cart-svg" src="./img/cart.svg" alt="carrello" style="filter: invert(1);">
+            </button>
         </div>
     </div>
+    </header>
 
     <div class="mountainBike-wrapper">
         <canvas id="renderCanvas"></canvas>
@@ -129,6 +137,12 @@
         </div>
 
     </div>
+
+    <footer>
+    <div class="footer">
+        <p>2025 - Kafe dhe Zigare SPA</p>
+    </div>
+    </footer>
 
     <script src="https://cdn.babylonjs.com/babylon.js"> </script>
     <script src="https://cdn.babylonjs.com/loaders/babylon.glTF2FileLoader.js"> </script>

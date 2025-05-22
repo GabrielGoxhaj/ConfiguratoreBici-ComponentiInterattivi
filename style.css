@@ -6,6 +6,7 @@
 
 body {
     overflow: hidden;
+    margin-top: 50px;
 }
 
 #renderCanvas {
@@ -104,10 +105,10 @@ button {
     margin: 2px;
 }
 
-button:hover {
+button:not(.cart-button):hover {
     border: 2px solid rgb(0, 0, 0);
     border-radius: 2px;
-    cursor: pointer;;
+    cursor: pointer;
 }
 
 .wheels-customization-wrapper {
@@ -135,4 +136,53 @@ input[type="radio"] {
     width: 36px;
     height: 36px;
     accent-color: #000;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #747474b0;
+    color: white;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-svg {
+    width: 30px;
+    height: 30px;
+    color: white;
+}
+
+.cart-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu-principale-button {
+    cursor: pointer;
 }
