@@ -12,9 +12,17 @@ document.getElementById("bmxManubrio").addEventListener("click", function () {
 document.getElementById("classicManubrio").addEventListener("click", function () {
     ChangeManubrio("classic/classicManubrio.glb");
 });
-async function changeWheels(pathNuovaRuota)
-{
+
+let currentWheelsPath = null; // Add this at the top with your globals
+
+async function changeWheels(pathNuovaRuota) {
     if (!scene) return;
+
+    // Only reload if the path is different
+    if (currentWheelsPath === pathNuovaRuota) {
+        return; // Already loaded, do nothing
+    }
+    currentWheelsPath = pathNuovaRuota;
 
     const positions = ruote.map(mesh => mesh.position.clone());
 
@@ -31,13 +39,44 @@ async function changeWheels(pathNuovaRuota)
 
     nuovaRuota.meshes.forEach(mesh => {
         mesh.material = matRuota;
-    }); 
+    });
 
     if (matRuota) {
         ruote.forEach(mesh => {
-        mesh.material = matRuota;
+            mesh.material = matRuota;
         });
     }
+}
+
+window.aggiungiOggetto = async function (w) {
+    const result = await BABYLON.SceneLoader.ImportMeshAsync(
+        "", // all meshes
+        ".blend/accessori/",
+        "portaboraccia.glb",
+        scene
+    );
+
+    const mesh = result.meshes[0]; // la borraccia
+    const telaio = scene.getMeshByName("bodyCentrale");
+
+    if (telaio) {
+        // Attacca la borraccia al telaio (parenting)
+        mesh.parent = telaio;
+        // Posizione relativa rispetto al telaio (regola questi valori per il punto desiderato)
+        mesh.position = new BABYLON.Vector3(0.2, -0.1, 0.3); // esempio
+        mesh.rotation = new BABYLON.Vector3(0, 0, 0);
+        mesh.scaling = new BABYLON.Vector3(1, 1, 1);
+    }
+
+    // Rendi la borraccia draggabile
+    const dragBehavior = new BABYLON.PointerDragBehavior();
+    dragBehavior.useObjectOrientationForDragging = false;
+    mesh.addBehavior(dragBehavior);
+
+    // Quando inizia il drag, stacca la borraccia dal telaio
+    dragBehavior.onDragStartObservable.add(() => {
+        mesh.setParent(null);
+    });
 }
 
 function changeWheelsColor(colorWheelsName) {
@@ -92,7 +131,7 @@ const createScene = async () => {
         "Camera",
         0,     // α: lato destro
         Math.PI / 2.2,   // β: leggera vista dall’alto
-        20,               // distanza dalla bici
+        25,               // distanza dalla bici
         BABYLON.Vector3.Zero(),
         scene
     );
@@ -110,7 +149,7 @@ const createScene = async () => {
 
     bikeResult.meshes.forEach(mesh => {
         console.log("Mesh trovata:", mesh.name);
-    }); 
+    });
 
     const ruotaPosteriore = scene.getMeshByName("ruotaPosteriore");
     const ruotaAnteriore = scene.getMeshByName("ruota");
