@@ -21,6 +21,8 @@
         <div class="card-wheels black-wheels" onclick="changeWheelsColor('black')"><img src="./img/black-tire.jpg"></div>
     </div>
 
+    <button onclick="changeWheels('bmxRuota.glb')">BMX Wheels</button>
+
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="https://cdn.babylonjs.com/loaders/babylon.glTF2FileLoader.js"></script>
 
@@ -30,6 +32,43 @@
 
         let scene;
         let ruote = [];
+        let matRuota;
+
+        async function changeWheels(pathNuovaRuota)
+        {
+             if (!scene) return;
+
+            // Salva posizioni vecchie
+            const positions = ruote.map(mesh => mesh.position.clone());
+
+            // Rimuovi ruote vecchie
+            ruote.forEach(mesh => mesh.dispose());
+
+            // Carica nuove ruote
+            const nuovaRuota = await BABYLON.SceneLoader.ImportMeshAsync(
+                "",
+                "models/",
+                pathNuovaRuota,
+                scene
+            );
+
+            // Filtra le nuove ruote
+            ruote = nuovaRuota.meshes;
+
+            // Posiziona nelle posizioni vecchie
+             // // 4. Posiziona la nuova ruota dove stava quella vecchia
+             nuovaRuota.meshes.forEach(mesh => {
+                 mesh.material = matRuota; // applica il materiale
+
+             }); 
+
+            // Applica il materiale se esiste
+            if (matRuota) {
+                ruote.forEach(mesh => {
+                mesh.material = matRuota;
+                });
+            }
+        }
 
         function changeWheelsColor(colorWheelsName) {
             let colorWheels;
@@ -49,7 +88,7 @@
                 colorWheels = new BABYLON.Color3(1, 1, 1); // default white
             }
             ruote.forEach(mesh => {
-                const matRuota = new BABYLON.StandardMaterial("matRuota", scene);
+                matRuota = new BABYLON.StandardMaterial("matRuota", scene);
                 matRuota.diffuseColor = colorWheels;
                 mesh.material = matRuota; // applica il materiale
             });
@@ -79,7 +118,7 @@
             // Ground (optional)
 
             // Load the model (your Blender-exported part)
-            const bikeResult = await BABYLON.SceneLoader.ImportMeshAsync(
+             const bikeResult = await BABYLON.SceneLoader.ImportMeshAsync(
                 "", // all meshes
                 "models/",
                 "mountainBike.glb",
@@ -88,15 +127,15 @@
 
             bikeResult.meshes.forEach(mesh => {
                 console.log("Mesh trovata:", mesh.name);
-            });
+            }); 
 
             const ruotaPosteriore = scene.getMeshByName("ruotaPosteriore");
             const ruotaAnteriore = scene.getMeshByName("ruota");
             const telaio = scene.getMeshByName("bodyCentrale");
             const sella = scene.getMeshByName("sella");
 
-            const matRuota = new BABYLON.StandardMaterial("matRuota", scene);
-            matRuota.diffuseColor = new BABYLON.Color3(1, 0, 0);
+          /*   const matRuota = new BABYLON.StandardMaterial("matRuota", scene);
+            matRuota.diffuseColor = new BABYLON.Color3(1, 0, 0); */
 
             const matbody = new BABYLON.StandardMaterial("matbody", scene);
             matbody.diffuseColor = new BABYLON.Color3(1, 0.3, 3);
@@ -107,30 +146,30 @@
                 mesh.material = matbody; // applica il materiale
             });
 
-            // 1. Trova tutte le mesh delle ruote
+             // 1. Trova tutte le mesh delle ruote
             ruote = bikeResult.meshes.filter(mesh => mesh.name.toLowerCase().includes("ruota"));
-
+            /*
             ruote.forEach(mesh => {
                 mesh.material = matRuota; // applica il materiale
             });
 
-            // ruote.forEach(mesh => {
-            //     mesh.dispose(); // rimuove la ruota
-            // });
+             ruote.forEach(mesh => {
+                mesh.dispose(); // rimuove la ruota
+             });
 
             // // 3. Carica la nuova ruota
-            // const nuovaRuota = await BABYLON.SceneLoader.ImportMeshAsync(
-            //     "",
-            //     "models/",
-            //     "bmxRuota.glb",
-            //     scene
-            // );
+             const nuovaRuota = await BABYLON.SceneLoader.ImportMeshAsync(
+                 "",
+                "models/",
+                "bmxRuota.glb",
+                 scene
+             );
 
             // // 4. Posiziona la nuova ruota dove stava quella vecchia
-            // nuovaRuota.meshes.forEach(mesh => {
-            //     mesh.material = matRuota; // applica il materiale
+             nuovaRuota.meshes.forEach(mesh => {
+                 mesh.material = matRuota; // applica il materiale
 
-            // });
+             }); */
 
             return scene;
         };
