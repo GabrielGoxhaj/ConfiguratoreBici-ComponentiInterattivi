@@ -6,10 +6,12 @@ let ruote = [];
 let matbody
 let matRuota;
 
-document.getElementById("cambiaManubrio").addEventListener("click", function () {
+document.getElementById("bmxManubrio").addEventListener("click", function () {
     ChangeManubrio("bmx/bmxManubrio.glb");
 });
-
+document.getElementById("classicManubrio").addEventListener("click", function () {
+    ChangeManubrio("classic/classicManubrio.glb");
+});
 async function changeWheels(pathNuovaRuota)
 {
     if (!scene) return;
@@ -62,8 +64,8 @@ function changeWheelsColor(colorWheelsName) {
     });
 }
 
-function ChangeManubrio(nuovomanubrio) {
-    manubrio.forEach(mesh => {
+async function ChangeManubrio(nuovomanubrio) {
+    await manubrio.forEach(mesh => {
         mesh.dispose();
     });
 
@@ -78,7 +80,7 @@ function ChangeManubrio(nuovomanubrio) {
         });
 
         // aggiorna il riferimento del manubrio
-        manubrio = newManubrio.meshes.filter(m => m.name.toLowerCase().includes("manubrio"));
+        manubrio = newManubrio.meshes;
     });
 }
 
