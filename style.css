@@ -6,6 +6,7 @@
 
 body {
     overflow: hidden;
+    margin-top: 50px;
 }
 
 #renderCanvas {
@@ -31,22 +32,18 @@ body {
 
 .red {
     background-color: red;
-    border: 1px solid black;
 }
 
 .green {
     background-color: green;
-    border: 1px solid black;
 }
 
 .white {
     background-color: white;
-    border: 1px solid black;
 }
 
 .black {
     background-color: black;
-    border: 1px solid black;
 }
 
 .mountainBike-wrapper {
@@ -55,9 +52,27 @@ body {
     flex-direction: row;
 }
 
-.tireColorSelector-wrapper, .telaioColorSelector-wrapper, .changeWheels-wrapper {
+.tireColorSelector-wrapper, .telaioColorSelector-wrapper{
     display: flex;
     flex-direction: row;
+}
+
+.tireColorSelector-wrapper > button, .telaioColorSelector-wrapper > button{
+    border: 2px solid transparent;
+}
+
+.changeWheels-wrapper > button {
+    width: 450px;
+    display: flex;
+}
+
+.changeWheels-wrapper > button > img {
+    margin-left: 0px;
+    border-right: 2px solid black;
+}
+
+.tireColorSelector-wrapper > button.selected, .telaioColorSelector-wrapper > button.selected {
+    border: 2px solid black;
 }
 
 .personalization-wrapper {
@@ -85,15 +100,15 @@ body {
 }
 
 button {
-    border: 1px solid black;
     border-radius: 2px;
     padding: 0px;
+    margin: 2px;
 }
 
-button:hover {
-    border: 1px solid saddlebrown;
+button:not(.cart-button):hover {
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 2px;
-    cursor: pointer;;
+    cursor: pointer;
 }
 
 .wheels-customization-wrapper {
@@ -108,4 +123,66 @@ button:hover {
 
 .accessori-wrapper {
     display: flex;
+}
+
+.cartRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input[type="radio"] {
+    width: 36px;
+    height: 36px;
+    accent-color: #000;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #747474b0;
+    color: white;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-svg {
+    width: 30px;
+    height: 30px;
+    color: white;
+}
+
+.cart-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu-principale-button {
+    cursor: pointer;
 }
