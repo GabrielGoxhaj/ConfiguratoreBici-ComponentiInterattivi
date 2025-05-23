@@ -304,8 +304,9 @@ const createScene = async () => {
             } else if (sella.dispose) {
                 sella.dispose();
             }
-            checkRadioSaddle(btn);
         }
+
+        checkRadioSaddle(btn);
 
         const nuovaSaddle = await BABYLON.SceneLoader.ImportMeshAsync(
             "",
@@ -334,21 +335,21 @@ const createScene = async () => {
         selleImportate.forEach(mesh => {
             // Gestione manuale per ogni modello di sella
             if (mesh.name.toLowerCase().includes("bmx")) {
-                mesh.position = new BABYLON.Vector3(0, 3.3, 0.5);
+                mesh.position = new BABYLON.Vector3(0, 3.4, 0.2);
                 mesh.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
                 mesh.rotation = new BABYLON.Vector3(0, Math.PI/2, 0);
             } else if (mesh.name.toLowerCase().includes("classic")) {
-                mesh.position = new BABYLON.Vector3(0, 3.5, 0.7);
+                mesh.position = new BABYLON.Vector3(0, 3.5, 0.3);
                 mesh.scaling = new BABYLON.Vector3(0.03, 0.03, 0.03);
                 mesh.rotation = new BABYLON.Vector3(1.7, 3.2, 0); // 180° asse X
             } else if (mesh.name.toLowerCase().includes("corsa")) {
-                mesh.position = new BABYLON.Vector3(0, 3.6, 0.8);
-                mesh.scaling = new BABYLON.Vector3(0.2, 0.2, 0.2);
+                mesh.position = new BABYLON.Vector3(0, 3.6, 0.3);
+                mesh.scaling = new BABYLON.Vector3(0.3, 0.2, 0.2);
             } else if (mesh.name.toLowerCase().includes("mountain")) {
-                mesh.position = new BABYLON.Vector3(0, 3.3, 0.8);
+                mesh.position = new BABYLON.Vector3(0, 3.3, 0.3);
                 mesh.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
             } else {
-                mesh.position = new BABYLON.Vector3(0, 5, -1.2);
+                mesh.position = new BABYLON.Vector3(0, 3.4, 0.2);
                 mesh.scaling = new BABYLON.Vector3(1.2, 1.2, 1.2);
             }
         });
