@@ -11,17 +11,17 @@
 
 <body>
     <header>
-    <div class="header">
-        <div class="menu-principale-button" onclick="window.location.href='index.html'">
-            Menu principale
+        <div class="header">
+            <div class="menu-principale-button" onclick="window.location.href='index.html'">
+                Menu principale
+            </div>
+            <div class="cart-wrapper">
+                <button class="cart-button" onclick="openCart()">
+                    Carrello
+                    <img class="cart-svg" src="./img/cart.svg" alt="carrello" style="filter: invert(1);">
+                </button>
+            </div>
         </div>
-        <div class="cart-wrapper">
-            <button class="cart-button" onclick="openCart()">
-                Carrello
-                <img class="cart-svg" src="./img/cart.svg" alt="carrello" style="filter: invert(1);">
-            </button>
-        </div>
-    </div>
     </header>
 
     <div class="mountainBike-wrapper">
@@ -99,7 +99,8 @@
                         <p><b>Manubrio FatBar Lite Carbon Renthal Mountain Bike</b></p>
                         <p>Prezzo: 129.99€</p>
                         <div>
-                            <input type="radio" name="manubrio" id="mountainBikeManubrio" value="mountainBikeManubrio" checked>
+                            <input type="radio" name="manubrio" id="mountainBikeManubrio" value="mountainBikeManubrio"
+                                checked>
                         </div>
                     </div>
                 </button>
@@ -113,7 +114,7 @@
                         </div>
                     </div>
                 </button>
-                
+
                 <button id="corsaManubrio">
                     <img class="images" src="./img/manubrio-corsa.png" alt="corsaManubrio">
                     <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
@@ -125,23 +126,30 @@
                     </div>
                 </button>
             </div>
-            <h2>Accessori aggiuntivi</h2>
-            <div class="accessori-wrapper">
-                <button onclick="aggiungiBorraccia()">
-                    <img class="images" src="./img/borraccia.png" alt="borraccia">
-                </button>
-                <button onclick="aggiungiPortaTelefono()">
-                    <img class="images" src="./img/porta-telefono.png" alt="portaTelefono">
-                </button>
-            </div>
+
+
+        </div>
+        <h2>Accessori aggiuntivi</h2>
+        <div class="accessori-wrapper">
+            <button onclick="aggiungiBorraccia()">
+                <img class="images" src="./img/borraccia.png" alt="borraccia">
+            </button>
+            <button onclick="aggiungiPortaTelefono()">
+                <img class="images" src="./img/porta-telefono.png" alt="portaTelefono">
+            </button>
         </div>
 
+        <button id="sella" onclick="changeSaddle('corsa/sellaCorsa.glb')">sella da corsa</button>
+        <button id="sella" onclick="changeSaddle('classic/classicSella.glb')">sella classic</button>
+        <button id="sella" onclick="changeSaddle('bmx/sellaBmx.glb')">sella bmx</button>
     </div>
 
+
+
     <footer>
-    <div class="footer">
-        <p>2025 - Kafe dhe Zigare SPA</p>
-    </div>
+        <div class="footer">
+            <p>2025 - Kafe dhe Zigare SPA</p>
+        </div>
     </footer>
 
     <script src="https://cdn.babylonjs.com/babylon.js"> </script>
