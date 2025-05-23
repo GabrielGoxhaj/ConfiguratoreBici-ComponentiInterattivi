@@ -14,26 +14,44 @@ let currentWheelsPath = null;
 
 
 document.getElementById("bmxManubrio").addEventListener("click", function () {
-    ChangeManubrio("bmx/bmxManubrio.glb");
+    ChangeManubrio("bmx/bmxManubrio.glb",
+        {
+            position: new BABYLON.Vector3(0, 4.65, -3),
+            rotation: new BABYLON.Vector3(0, Math.PI, 0),
+            scaling: new BABYLON.Vector3(1, 1, 1)
+        }
+    );
     const input = this.querySelector('input[type="radio"]');
     if (input) input.checked = true;
 });
 document.getElementById("classicManubrio").addEventListener("click", function () {
-    ChangeManubrio("classic/classicManubrio.glb");
+    ChangeManubrio("classic/classicManubrio.glb",
+        {
+            position: new BABYLON.Vector3(0, 3.8, -3.1),
+            rotation: new BABYLON.Vector3(0, 0, 0),
+            scaling: new BABYLON.Vector3(1,1,1)
+        }
+    );
     const input = this.querySelector('input[type="radio"]');
     if (input) input.checked = true;
 });
 document.getElementById("mountainBikeManubrio").addEventListener("click", function () {
-    ChangeManubrio("mountainBike/mountainManubrio.glb");
+    ChangeManubrio("mountainBike/mountainManubrio.glb",
+         {
+            position: new BABYLON.Vector3(0, 3.8, -3.13),
+            rotation: new BABYLON.Vector3(0, 0, 0),
+            scaling: new BABYLON.Vector3(1, 1, 1)
+        }
+    );
     const input = this.querySelector('input[type="radio"]');
     if (input) input.checked = true;
 });
 document.getElementById("corsaManubrio").addEventListener("click", function () {
     ChangeManubrio("corsa/corsaManubrioTest.glb",
         {
-            position: new BABYLON.Vector3(0, 8.7, -4.4),
+            position: new BABYLON.Vector3(0, 3.8, -3.65),
             rotation: new BABYLON.Vector3(0, 0, 0),
-            scaling: new BABYLON.Vector3(0.3, 0.3, 0.3)
+            scaling: new BABYLON.Vector3(0.07, 0.07, 0.07)
         }
     );
     const input = this.querySelector('input[type="radio"]');
@@ -231,6 +249,7 @@ function changeTelaioColor(colorTelaioName) {
 }
 
 async function ChangeManubrio(nuovomanubrio, options = {}) {
+    console.log(options);
     await manubrio.forEach(mesh => {
         mesh.dispose();
     });
@@ -243,9 +262,17 @@ async function ChangeManubrio(nuovomanubrio, options = {}) {
     );
 
     manubrio = result.meshes;
-
-    manubrio.forEach(mesh => {
+    
+    Array.from(manubrio).filter(m => {
+        return m.id.toLowerCase().indexOf('manubrio') >= 0
+    }).forEach(mesh => {
         mesh.material = matbody;
+    });
+
+    Array.from(manubrio).filter(m => {
+        return m.id.toLowerCase().indexOf('__root__') >= 0
+    }).forEach(mesh => {
+        console.log(mesh);
 
         if (options.position) {
             mesh.position = options.position.clone();
