@@ -59,7 +59,7 @@
                 <div class="changeWheels-wrapper">
                     <button onclick="changeWheels('bmx/bmxRuota.glb', this)">
                         <img class="images" src="./img/tire-BMX.png" alt="bmx-tire">
-                        <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                        <div class="button-container">
                             <p><b>Ruote Odyssey BMX "Pursuit" - 24"</b></p>
                             <p>Prezzo: 199.99€</p>
                             <div>
@@ -69,7 +69,7 @@
                     </button>
                     <button onclick="changeWheels('mountainBike/mountainBikeRuota.glb', this)">
                         <img class="images" src="./img/mountainbike-tire.png" alt="mountainBike-tire">
-                        <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                        <div class="button-container">
                             <p><b>Ruote Continental Cross King X King - 26"</b></p>
                             <p>Prezzo: 149.99€</p>
                             <div>
@@ -85,7 +85,7 @@
 
                 <button id="bmxManubrio">
                     <img class="images" src="./img/manubrio-bmx.png" alt="bmxManubrio">
-                    <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                    <div class="button-container">
                         <p><b>Manubrio BMX Eighties Starwood</b></p>
                         <p>Prezzo: 69.99€</p>
                         <div>
@@ -95,7 +95,7 @@
                 </button>
                 <button id="mountainBikeManubrio">
                     <img class="images" src="./img/manubrio-mountain.png" alt="mountainBikeManubrio">
-                    <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                    <div class="button-container">
                         <p><b>Manubrio FatBar Lite Carbon Renthal Mountain Bike</b></p>
                         <p>Prezzo: 129.99€</p>
                         <div>
@@ -106,7 +106,7 @@
                 </button>
                 <button id="classicManubrio">
                     <img class="images" src="./img/manubrio-classico.png" alt="classicManubrio">
-                    <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                    <div class="button-container">
                         <p><b>Manubrio Classico da Bici</b></p>
                         <p>Prezzo: 9.99€</p>
                         <div>
@@ -117,7 +117,7 @@
 
                 <button id="corsaManubrio">
                     <img class="images" src="./img/manubrio-corsa.png" alt="corsaManubrio">
-                    <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                    <div class="button-container">
                         <p><b>Manubrio da Corsa PRO Carbon Compact-2</b></p>
                         <p>Prezzo: 79.99€</p>
                         <div>
@@ -127,21 +127,51 @@
                 </button>
             </div>
 
+            <h2>Tipologia sella</h2>
+            <div class="changeSella-wrapper">
+                <button id="classicSella" onclick="changeSaddle('classic/classicSella.glb')">
+                    <img class="images" src="./img/sella-classica.png" alt="classicSella">
+                    <div class="button-container">
+                        <p><b>Sella Classica da bici</b></p>
+                        <p>Prezzo: 9.99€</p>
+                        <div>
+                            <input type="radio" name="sella" id="classicSella" value="classicSella">
+                        </div>
+                    </div>
+                </button>
+                <button id="corsaSella" onclick="changeSaddle('corsa/sellaCorsa.glb')">
+                    <img class="images" src="./img/sella-corsa.png" alt="sellaCorsa">
+                    <div class="button-container">
+                        <p><b>Sella da Corsa</b></p>
+                        <p>Prezzo: 29.99€</p>
+                        <div>
+                            <input type="radio" name="sella" id="corsaSella" value="corsaSella">
+                        </div>
+                    </div>
+                </button>
 
-        </div>
-        <h2>Accessori aggiuntivi</h2>
-        <div class="accessori-wrapper">
-            <button onclick="aggiungiBorraccia()">
-                <img class="images" src="./img/borraccia.png" alt="borraccia">
-            </button>
-            <button onclick="aggiungiPortaTelefono()">
-                <img class="images" src="./img/porta-telefono.png" alt="portaTelefono">
-            </button>
+                <button id="sellaBMX" onclick="changeSaddle('bmx/sellaBmx.glb')">
+                    <img class="images" src="./img/sella-BMX.png" alt="sellaBMX">
+                    <div class="button-container">
+                        <p><b>Sella da BMX</b></p>
+                        <p>Prezzo: 19.99€</p>
+                        <div>
+                            <input type="radio" name="sella" id="sellaBMX" value="sellaBMX">
+                        </div>
+                    </div>
+                </button>
+            </div>
+            <h2>Accessori aggiuntivi</h2>
+            <div class="accessori-wrapper">
+                <button onclick="aggiungiBorraccia()">
+                    <img class="images" src="./img/borraccia.png" alt="borraccia">
+                </button>
+                <button onclick="aggiungiPortaTelefono()">
+                    <img class="images" src="./img/porta-telefono.png" alt="portaTelefono">
+                </button>
+            </div>
         </div>
 
-        <button id="sella" onclick="changeSaddle('corsa/sellaCorsa.glb')">sella da corsa</button>
-        <button id="sella" onclick="changeSaddle('classic/classicSella.glb')">sella classic</button>
-        <button id="sella" onclick="changeSaddle('bmx/sellaBmx.glb')">sella bmx</button>
     </div>
 
 
