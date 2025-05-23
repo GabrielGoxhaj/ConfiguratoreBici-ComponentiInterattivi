@@ -77,10 +77,10 @@ async function changeWheels(pathNuovaRuota, btn) {
         scene
     );
     nuovaRuotaR.meshes.forEach( mesh => {
-        mesh.setAbsolutePosition(new BABYLON.Vector3(0 ,-0.1, -1.85));
+        mesh.setAbsolutePosition(new BABYLON.Vector3(0 ,-0.1, -2));
     });
     nuovaRuotaF.meshes.forEach(mesh => {
-        mesh.setAbsolutePosition(new BABYLON.Vector3(0, -0.1, 1.70));
+        mesh.setAbsolutePosition(new BABYLON.Vector3(0, 0, 1.5));
     });
 
     ruote = [...nuovaRuotaR.meshes, ...nuovaRuotaF.meshes];
@@ -117,7 +117,7 @@ window.aggiungiPortaTelefono = async function () {
     const mesh = result.meshes[0]; // la borraccia
     window.portaTelefonoMesh = mesh; // salva il riferimento globale
 
-    mesh.position = new BABYLON.Vector3(-0.8, 4.1, -2.5);
+    mesh.position = new BABYLON.Vector3(-0.8, 4.1, -3);
 
     // Rendi la borraccia draggabile
     const dragBehavior = new BABYLON.PointerDragBehavior();
@@ -141,7 +141,7 @@ window.aggiungiBorraccia = async function () {
     const mesh = result.meshes[0]; // la borraccia
     window.borracciaMesh = mesh; // salva il riferimento globale
 
-    mesh.position = new BABYLON.Vector3(0, 2, -1.2);
+    mesh.position = new BABYLON.Vector3(0, 2, -1.6);
 
     // Rendi la borraccia draggabile
     const dragBehavior = new BABYLON.PointerDragBehavior();
