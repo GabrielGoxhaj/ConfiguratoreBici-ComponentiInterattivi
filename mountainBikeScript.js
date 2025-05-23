@@ -304,6 +304,8 @@ const createScene = async () => {
     );
     camera.attachControl(canvas, true);
     camera.attachControl(canvas, true);
+    camera.lowerRadiusLimit = 10;
+    camera.upperRadiusLimit = 40;
 
     const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
     light.intensity = 1;
