@@ -51,9 +51,10 @@ async function changeWheels(pathNuovaRuota, btn) {
     if (!scene) return;
 
     // Only reload if the path is different
-    if (currentWheelsPath === pathNuovaRuota) {
+   /*  if (currentWheelsPath === pathNuovaRuota) {
         return; // Already loaded, do nothing
-    }
+    } */
+
     if (btn) {
         const input = btn.querySelector('input[type="radio"]');
         if (input) input.checked = true;
@@ -62,24 +63,40 @@ async function changeWheels(pathNuovaRuota, btn) {
 
     ruote.forEach(mesh => mesh.dispose());
 
-    const nuovaRuota = await BABYLON.SceneLoader.ImportMeshAsync(
+    const nuovaRuotaR = await BABYLON.SceneLoader.ImportMeshAsync(
         "",
         "models/",
         pathNuovaRuota,
         scene
     );
+    console.log("ruota:", nuovaRuotaR);
+    const nuovaRuotaF = await BABYLON.SceneLoader.ImportMeshAsync(
+        "",
+        "models/",
+        pathNuovaRuota,
+        scene
+    );
+    nuovaRuotaR.meshes.forEach( mesh => {
+        mesh.setAbsolutePosition(new BABYLON.Vector3(0 ,-0.1, -1.85));
+    });
+    nuovaRuotaF.meshes.forEach(mesh => {
+        mesh.setAbsolutePosition(new BABYLON.Vector3(0, -0.1, 1.70));
+    });
 
-    ruote = nuovaRuota.meshes;
+    ruote = [...nuovaRuotaR.meshes, ...nuovaRuotaF.meshes];
 
-    nuovaRuota.meshes.forEach(mesh => {
+    nuovaRuotaR.meshes.forEach(mesh => {
+        mesh.material = matRuota;
+    });
+    nuovaRuotaF.meshes.forEach(mesh => {
         mesh.material = matRuota;
     });
 
-    if (matRuota) {
+    /* if (matRuota) {
         ruote.forEach(mesh => {
             mesh.material = matRuota;
         });
-    }
+    } */
 }
 
 
