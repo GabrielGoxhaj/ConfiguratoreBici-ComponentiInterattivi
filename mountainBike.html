@@ -6,22 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>montainBike</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
-    <div class="header">
-        <div class="menu-principale-button" onclick="window.location.href='index.html'">
-            Menu principale
+        <div class="header">
+            <div class="menu-principale-button" onclick="window.location.href='index.html'">
+                Menu principale
+            </div>
+            <div class="cart-wrapper">
+                <button class="cart-button" onclick="openCart()">
+                    Carrello
+                    <img class="cart-svg" src="./img/cart.svg" alt="carrello" style="filter: invert(1);">
+                </button>
+            </div>
         </div>
-        <div class="cart-wrapper">
-            <button class="cart-button" onclick="openCart()">
-                Carrello
-                <img class="cart-svg" src="./img/cart.svg" alt="carrello" style="filter: invert(1);">
-            </button>
-        </div>
-    </div>
     </header>
 
     <div class="mountainBike-wrapper">
@@ -57,9 +57,9 @@
 
                 <h2>Tipologia gomme</h2>
                 <div class="changeWheels-wrapper">
-                    <button onclick="changeWheels('bmx/bmxRuota.glb', this)">
+                    <button onclick="changeWheels('bmx/bmxRuota2.glb', this)">
                         <img class="images" src="./img/tire-BMX.png" alt="bmx-tire">
-                        <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                        <div class="button-container">
                             <p><b>Ruote Odyssey BMX "Pursuit" - 24"</b></p>
                             <p>Prezzo: 199.99€</p>
                             <div>
@@ -69,7 +69,7 @@
                     </button>
                     <button onclick="changeWheels('mountainBike/mountainBikeRuota.glb', this)">
                         <img class="images" src="./img/mountainbike-tire.png" alt="mountainBike-tire">
-                        <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                        <div class="button-container">
                             <p><b>Ruote Continental Cross King X King - 26"</b></p>
                             <p>Prezzo: 149.99€</p>
                             <div>
@@ -85,7 +85,7 @@
 
                 <button id="bmxManubrio">
                     <img class="images" src="./img/manubrio-bmx.png" alt="bmxManubrio">
-                    <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                    <div class="button-container">
                         <p><b>Manubrio BMX Eighties Starwood</b></p>
                         <p>Prezzo: 69.99€</p>
                         <div>
@@ -95,17 +95,18 @@
                 </button>
                 <button id="mountainBikeManubrio">
                     <img class="images" src="./img/manubrio-mountain.png" alt="mountainBikeManubrio">
-                    <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                    <div class="button-container">
                         <p><b>Manubrio FatBar Lite Carbon Renthal Mountain Bike</b></p>
                         <p>Prezzo: 129.99€</p>
                         <div>
-                            <input type="radio" name="manubrio" id="mountainBikeManubrio" value="mountainBikeManubrio" checked>
+                            <input type="radio" name="manubrio" id="mountainBikeManubrio" value="mountainBikeManubrio"
+                                checked>
                         </div>
                     </div>
                 </button>
                 <button id="classicManubrio">
                     <img class="images" src="./img/manubrio-classico.png" alt="classicManubrio">
-                    <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                    <div class="button-container">
                         <p><b>Manubrio Classico da Bici</b></p>
                         <p>Prezzo: 9.99€</p>
                         <div>
@@ -113,14 +114,58 @@
                         </div>
                     </div>
                 </button>
-                
+
                 <button id="corsaManubrio">
                     <img class="images" src="./img/manubrio-corsa.png" alt="corsaManubrio">
-                    <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                    <div class="button-container">
                         <p><b>Manubrio da Corsa PRO Carbon Compact-2</b></p>
                         <p>Prezzo: 79.99€</p>
                         <div>
                             <input type="radio" name="manubrio" id="corsaManubrio" value="corsaManubrio">
+                        </div>
+                    </div>
+                </button>
+            </div>
+
+            <h2>Tipologia sella</h2>
+            <div class="changeSella-wrapper">
+                <button id="classicSella" onclick="changeSaddle('classic/classicSella.glb', this)">
+                    <img class="images" src="./img/sella-classica.png" alt="classicSella">
+                    <div class="button-container">
+                        <p><b>Sella Classica da bici</b></p>
+                        <p>Prezzo: 9.99€</p>
+                        <div>
+                            <input type="radio" name="sella" id="classicSella" value="classicSella">
+                        </div>
+                    </div>
+                </button>
+                <button id="corsaSella" onclick="changeSaddle('corsa/sellaCorsa.glb', this)">
+                    <img class="images" src="./img/sella-corsa.png" alt="sellaCorsa">
+                    <div class="button-container">
+                        <p><b>Sella da Corsa</b></p>
+                        <p>Prezzo: 29.99€</p>
+                        <div>
+                            <input type="radio" name="sella" id="corsaSella" value="corsaSella">
+                        </div>
+                    </div>
+                </button>
+                <button id="mountainSella" onclick="changeSaddle('mountainBike/sellaMountain.glb', this)">
+                    <img class="images" src="./img/sella-mountain.png" alt="mountainSella">
+                    <div class="button-container">
+                        <p><b>Sella da Mountain Bike</b></p>
+                        <p>Prezzo: 9.99€</p>
+                        <div>
+                            <input type="radio" name="sella" id="mountainSella" value="mountainSella" checked>
+                        </div>
+                    </div>
+                </button>
+                <button id="sellaBMX" onclick="changeSaddle('bmx/sellaBmx.glb', this)">
+                    <img class="images" src="./img/sella-BMX.png" alt="sellaBMX">
+                    <div class="button-container">
+                        <p><b>Sella da BMX</b></p>
+                        <p>Prezzo: 19.99€</p>
+                        <div>
+                            <input type="radio" name="sella" id="sellaBMX" value="sellaBMX">
                         </div>
                     </div>
                 </button>
@@ -138,10 +183,12 @@
 
     </div>
 
+
+
     <footer>
-    <div class="footer">
-        <p>2025 - Kafe dhe Zigare SPA</p>
-    </div>
+        <div class="footer">
+            <p>2025 - Kafe dhe Zigare SPA</p>
+        </div>
     </footer>
 
     <script src="https://cdn.babylonjs.com/babylon.js"> </script>
