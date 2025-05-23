@@ -129,7 +129,7 @@
 
             <h2>Tipologia sella</h2>
             <div class="changeSella-wrapper">
-                <button id="classicSella" onclick="changeSaddle('classic/classicSella.glb')">
+                <button id="classicSella" onclick="changeSaddle('classic/classicSella.glb', this)">
                     <img class="images" src="./img/sella-classica.png" alt="classicSella">
                     <div class="button-container">
                         <p><b>Sella Classica da bici</b></p>
@@ -139,7 +139,7 @@
                         </div>
                     </div>
                 </button>
-                <button id="corsaSella" onclick="changeSaddle('corsa/sellaCorsa.glb')">
+                <button id="corsaSella" onclick="changeSaddle('corsa/sellaCorsa.glb', this)">
                     <img class="images" src="./img/sella-corsa.png" alt="sellaCorsa">
                     <div class="button-container">
                         <p><b>Sella da Corsa</b></p>
@@ -149,8 +149,17 @@
                         </div>
                     </div>
                 </button>
-
-                <button id="sellaBMX" onclick="changeSaddle('bmx/sellaBmx.glb')">
+                <button id="mountainSella" onclick="changeSaddle('mountainBike/sellaMountain.glb', this)">
+                    <img class="images" src="./img/sella-mountain.png" alt="mountainSella">
+                    <div class="button-container">
+                        <p><b>Sella da Mountain Bike</b></p>
+                        <p>Prezzo: 9.99€</p>
+                        <div>
+                            <input type="radio" name="sella" id="mountainSella" value="mountainSella" checked>
+                        </div>
+                    </div>
+                </button>
+                <button id="sellaBMX" onclick="changeSaddle('bmx/sellaBmx.glb', this)">
                     <img class="images" src="./img/sella-BMX.png" alt="sellaBMX">
                     <div class="button-container">
                         <p><b>Sella da BMX</b></p>
