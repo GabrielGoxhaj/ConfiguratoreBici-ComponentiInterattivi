@@ -10,47 +10,72 @@
 </head>
 
 <body>
+    <header>
+        <div class="header">
+            <div class="menu-principale-button" onclick="window.location.href='index.html'">
+                Menu principale
+            </div>
+            <div class="cart-wrapper">
+                <button class="cart-button" onclick="openCart()">
+                    Carrello
+                    <img class="cart-svg" src="./img/cart.svg" alt="carrello" style="filter: invert(1);">
+                </button>
+            </div>
+        </div>
+    </header>
+
     <div class="mountainBike-wrapper">
         <canvas id="renderCanvas"></canvas>
         <!-- <h3>ciao</h3> -->
         <div class="personalization-wrapper">
+
+            <h2>Colore telaio</h2>
             <div class="telaio-wrapper">
-                <h2>Colore telaio</h2>
                 <div class="telaioColorSelector-wrapper">
-                    <button class="card-telaio red" onclick="changeTelaioColor('red')"></button>
-                    <button class="card-telaio green" onclick="changeTelaioColor('green')"></button>
-                    <button class="card-telaio white" onclick="changeTelaioColor('white')"></button>
-                    <button class="card-telaio black" onclick="changeTelaioColor('black')"></button>
+                    <button class="card-telaio red red-telaio" onclick="changeTelaioColor('red')"></button>
+                    <button class="card-telaio green green-telaio" onclick="changeTelaioColor('green')"></button>
+                    <button class="card-telaio white white-telaio" onclick="changeTelaioColor('white')"></button>
+                    <button class="card-telaio black black-telaio" onclick="changeTelaioColor('black')"></button>
                 </div>
             </div>
             <div class="wheels-customization-wrapper">
                 <h2>Colore gomme</h2>
                 <div class="tireColorSelector-wrapper">
-                    <button class="card-wheels red" onclick="changeWheelsColor('red')">
+                    <button class="card-wheels red red-wheels" onclick="changeWheelsColor('red')">
                         <!-- <img src="./img/red-tire.jpg"> -->
                     </button>
-                    <button class="card-wheels green" onclick="changeWheelsColor('green')">
+                    <button class="card-wheels green green-wheels" onclick="changeWheelsColor('green')">
                         <!-- <img src="./img/green-tire.jpg"> -->
                     </button>
-                    <button class="card-wheels white" onclick="changeWheelsColor('white')">
+                    <button class="card-wheels white white-wheels" onclick="changeWheelsColor('white')">
                         <!-- <img src="./img/white-tire.png"> -->
                     </button>
-                    <button class="card-wheels black" onclick="changeWheelsColor('black')">
+                    <button class="card-wheels black black-wheels" onclick="changeWheelsColor('black')">
                         <!-- <img src="./img/black-tire.jpg"> -->
                     </button>
                 </div>
 
                 <h2>Tipologia gomme</h2>
                 <div class="changeWheels-wrapper">
-                    <button onclick="changeWheels('bmx/bmxRuota.glb')">
-                        <p>BMX</p>
-                        <!-- BMX Wheels -->
+                    <button onclick="changeWheels('bmx/bmxRuota.glb', this)">
                         <img class="images" src="./img/tire-BMX.png" alt="bmx-tire">
+                        <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                            <p><b>Ruote Odyssey BMX "Pursuit" - 24"</b></p>
+                            <p>Prezzo: 199.99€</p>
+                            <div>
+                                <input type="radio" name="ruote" id="bmxRuote" value="bmxRuote">
+                            </div>
+                        </div>
                     </button>
-                    <button onclick="changeWheels('mountainBike/mountainBikeRuota.glb')">
-                        <p>Mountain Bike</p>
-                        <!-- Mountain Bike Wheels -->
+                    <button onclick="changeWheels('mountainBike/mountainBikeRuota.glb', this)">
                         <img class="images" src="./img/mountainbike-tire.png" alt="mountainBike-tire">
+                        <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                            <p><b>Ruote Continental Cross King X King - 26"</b></p>
+                            <p>Prezzo: 149.99€</p>
+                            <div>
+                                <input type="radio" name="ruote" id="mountainRuote" value="mountainRuote" checked>
+                            </div>
+                        </div>
                     </button>
                 </div>
             </div>
@@ -59,28 +84,73 @@
             <div class="changeManubrio-wrapper">
 
                 <button id="bmxManubrio">
-                    <!-- <p>BMX</p> -->
                     <img class="images" src="./img/manubrio-bmx.png" alt="bmxManubrio">
+                    <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                        <p><b>Manubrio BMX Eighties Starwood</b></p>
+                        <p>Prezzo: 69.99€</p>
+                        <div>
+                            <input type="radio" name="manubrio" id="BMXManubrio" value="BMXManubrio">
+                        </div>
+                    </div>
+                </button>
+                <button id="mountainBikeManubrio">
+                    <img class="images" src="./img/manubrio-mountain.png" alt="mountainBikeManubrio">
+                    <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                        <p><b>Manubrio FatBar Lite Carbon Renthal Mountain Bike</b></p>
+                        <p>Prezzo: 129.99€</p>
+                        <div>
+                            <input type="radio" name="manubrio" id="mountainBikeManubrio" value="mountainBikeManubrio"
+                                checked>
+                        </div>
+                    </div>
                 </button>
                 <button id="classicManubrio">
-                    <!-- <p>Classico</p> -->
                     <img class="images" src="./img/manubrio-classico.png" alt="classicManubrio">
+                    <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                        <p><b>Manubrio Classico da Bici</b></p>
+                        <p>Prezzo: 9.99€</p>
+                        <div>
+                            <input type="radio" name="manubrio" id="BMXManubrio" value="BMXManubrio">
+                        </div>
+                    </div>
                 </button>
-                
-                <button id="corsaManubrio">Manubrio da corsa</button>
+
+                <button id="corsaManubrio">
+                    <img class="images" src="./img/manubrio-corsa.png" alt="corsaManubrio">
+                    <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                        <p><b>Manubrio da Corsa PRO Carbon Compact-2</b></p>
+                        <p>Prezzo: 79.99€</p>
+                        <div>
+                            <input type="radio" name="manubrio" id="corsaManubrio" value="corsaManubrio">
+                        </div>
+                    </div>
+                </button>
             </div>
-            <h2>Accessori aggiuntivi</h2>
-            <div class="accessori-wrapper">
-                <button onclick="aggiungiBorraccia()">
-                    <img class="images" src="./img/borraccia.png" alt="borraccia">
-                </button>
-                <button onclick="aggiungiPortaTelefono()">
-                    <img class="images" src="./img/porta-telefono.png" alt="portaTelefono">
-                </button>
-            </div>
+
+
+        </div>
+        <h2>Accessori aggiuntivi</h2>
+        <div class="accessori-wrapper">
+            <button onclick="aggiungiBorraccia()">
+                <img class="images" src="./img/borraccia.png" alt="borraccia">
+            </button>
+            <button onclick="aggiungiPortaTelefono()">
+                <img class="images" src="./img/porta-telefono.png" alt="portaTelefono">
+            </button>
         </div>
 
+        <button id="sella" onclick="changeSaddle('corsa/sellaCorsa.glb')">sella da corsa</button>
+        <button id="sella" onclick="changeSaddle('classic/classicSella.glb')">sella classic</button>
+        <button id="sella" onclick="changeSaddle('bmx/sellaBmx.glb')">sella bmx</button>
     </div>
+
+
+
+    <footer>
+        <div class="footer">
+            <p>2025 - Kafe dhe Zigare SPA</p>
+        </div>
+    </footer>
 
     <script src="https://cdn.babylonjs.com/babylon.js"> </script>
     <script src="https://cdn.babylonjs.com/loaders/babylon.glTF2FileLoader.js"> </script>
