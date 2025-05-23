@@ -52,7 +52,7 @@ body {
     flex-direction: row;
 }
 
-.tireColorSelector-wrapper, .telaioColorSelector-wrapper{
+.tireColorSelector-wrapper, .telaioColorSelector-wrapper, .changeSella-wrapper{
     display: flex;
     flex-direction: row;
 }
@@ -185,4 +185,11 @@ input[type="radio"] {
 
 .menu-principale-button {
     cursor: pointer;
+}
+
+.button-container {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin: 0 auto;
 }
