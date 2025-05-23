@@ -4,9 +4,15 @@
     justify-content: space-around;
 }
 
+body {
+    overflow: hidden;
+    margin-top: 50px;
+}
+
 #renderCanvas {
-    width: 80%;
-    height: 80%;
+    width: 50%;
+    height: 50%;
+    border: 1px solid black;
     touch-action: none;
 }
 
@@ -15,23 +21,175 @@
     height: 100px;
 }
 
+.card-telaio {
+    width: 100px;
+    height: 100px;
+}
+
 .card-wheels > img {
     max-height: 100px;
 }
 
-.red-wheels {
+.red {
     background-color: red;
 }
 
-.green-wheels {
+.green {
     background-color: green;
 }
 
-.white-wheels {
+.white {
     background-color: white;
 }
 
-.black-wheels {
+.black {
     background-color: black;
+}
+
+.mountainBike-wrapper {
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.tireColorSelector-wrapper, .telaioColorSelector-wrapper, .changeSella-wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.tireColorSelector-wrapper > button, .telaioColorSelector-wrapper > button{
+    border: 2px solid transparent;
+}
+
+.changeWheels-wrapper > button {
+    width: 450px;
+    display: flex;
+}
+
+.changeWheels-wrapper > button > img {
+    margin-left: 0px;
+    border-right: 2px solid black;
+}
+
+.tireColorSelector-wrapper > button.selected, .telaioColorSelector-wrapper > button.selected {
+    border: 2px solid black;
+}
+
+.personalization-wrapper {
+    margin-left: 3%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 10%;
+    padding-top: 0;
+    align-items: center;
+    overflow-y: scroll;
+    max-height: 600px;
+    overflow-x: hidden;
+}
+
+.changeManubrio-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.images {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+button {
+    border-radius: 2px;
+    padding: 0px;
+    margin: 2px;
+}
+
+button:not(.cart-button):hover {
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.wheels-customization-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wheels-customization-wrapper > div {
+    padding: 2px;
+}
+
+.accessori-wrapper {
+    display: flex;
+}
+
+.cartRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input[type="radio"] {
+    width: 36px;
+    height: 36px;
+    accent-color: #000;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000000;
     color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #747474b0;
+    color: white;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-svg {
+    width: 30px;
+    height: 30px;
+    color: white;
+}
+
+.cart-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu-principale-button {
+    cursor: pointer;
+}
+
+.button-container {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin: 0 auto;
 }
