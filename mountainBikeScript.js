@@ -317,8 +317,9 @@ const createScene = async () => {
         selleImportate.forEach(mesh => {
             // Gestione manuale per ogni modello di sella
             if (mesh.name.toLowerCase().includes("bmx")) {
-                mesh.position = new BABYLON.Vector3(0, -3, -1.2);
-                mesh.scaling = new BABYLON.Vector3(2, 2, 2);
+                mesh.position = new BABYLON.Vector3(0, 3.3, 0.5);
+                mesh.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
+                mesh.rotation = new BABYLON.Vector3(0, Math.PI/2, 0);
             } else if (mesh.name.toLowerCase().includes("classic")) {
                 mesh.position = new BABYLON.Vector3(0, 3.5, 0.7);
                 mesh.scaling = new BABYLON.Vector3(0.03, 0.03, 0.03);
