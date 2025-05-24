@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bycicle config</title>
+    <title>Bicycle Configurator</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     </link>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -12,52 +12,100 @@
 
 <body>
     <header>
-    <div class="header">
-        <div class="menu-principale-button">
-            Menu principale
-        </div>
-        <div class="cart-wrapper">
-            <button class="cart-button" onclick="openCart()">
-                Carrello
-                <img class="cart-svg" src="./img/cart.svg" alt="carrello" style="filter: invert(1);">
+        <div class="header">
+            <button class="menu-principale-button">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path d="M4 6H20M4 12H20M4 18H20" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </g>
+                </svg>Menu
             </button>
+            <div class="cart-wrapper">
+                <button class="cart-button" onclick="openCart()">
+                    Carrello
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z"
+                                stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </button>
+            </div>
         </div>
-    </div>
     </header>
+    <main>
+        <div class="main-wrapper">
+            <section class="title-website">
+                <h1>GTB-Bycicle</h1>
+            </section>
 
-    <section>
-        <h1>GTB-Bycicle</h1>
-    </section>
-
-    <section>
-        <div class="cards">
-            <!-- prendi tailwind o bootstrap per estetica al click decidere se aprire subito il configuratore di bici-->
-            <a href="mountainBike.html">
-                <div class="card">
-                    <!-- img stock di bici reali-->
-                    <img src="" alt="">
-                    <h3>Mountain bike</h3>
-                    <h4>prezzo</h4>
+            <section>
+                <div class="cards">
+                    <!-- prendi tailwind o bootstrap per estetica al click decidere se aprire subito il configuratore di bici-->
+                    <a class="button-bicycle" href="mountainBike.html">
+                        <div class="bicycle-card">
+                            <h3>Mountain Bike</h3>
+                            <p>A partire da 459,00€ I.V.A Inclusa</p>
+                            <img class="mountain-img" src="./img/mountain.jpg" alt="Foto di una mountain bike">
+                        </div>
+                    </a>
+                    <a class="button-bicycle">
+                        <div class="bicycle-card">
+                            <h3>BMX Bike</h3>
+                            <p>A partire da 259,00€ I.V.A Inclusa</p>
+                            <img class="bmx-img" src="./img/bmx.jpg" alt="Foto di una BMX">
+                        </div>
+                    </a>
+                    <a class="button-bicycle">
+                        <div class="bicycle-card">
+                            <h3>Racing Bike</h3>
+                            <p>A partire da 899,00€ I.V.A Inclusa</p>
+                            <img class="racing-img" src="./img/racing_2.png" alt="Foto di una racing bike">
+                        </div>
+                    </a>
                 </div>
-            </a>
-            <div class="card">
-                <img src="" alt="">
-                <h3>MBX bike</h3>
-                <h4>prezzo</h4>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="language-selector" style="cursor: default;">
+                <h3>Regione / Lingua Attuale</h3>
+                <div class="flex-centered-row language-row-selector">
+                    <img class="language-icon" src="./img/italy-round.png" alt="Bandiera Italia" class="flag-icon"
+                        style="margin-right: 1vh;">
+                    <p>Italia / Italiano</p>
+                    <a style="cursor: pointer; margin-left: 1vh; text-decoration: underline;">Cambiare</a>
+                </div>
+                <div class="flex-column a-footer">
+                    <a>Contatti</a>
+                    <a onclick="alert('Seh, credici')">Lavora con Noi</a>
+                    <a>Privacy</a>
+                </div>
+                <hr>
             </div>
-            <div class="card">
-                <img src="" alt="">
-                <h3>Racing bike</h3>
-                <h4>prezzo</h4>
+            <div>
+                <p>2025 - Kafe dhe Zigare SPA</p>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque nostrum ipsa quo obcaecati
+                    consequatur provident quae minima sunt deleniti voluptas inventore quia ab tempore nobis numquam,
+                    rem neque ducimus enim!</div>
+                <div>Le caratteristiche e gli accessori della bici sono quelli che sono, i prezzi li facciamo noi come
+                    ci pare e piace</div>
+                <div>Se non ti piace dal punto di vista grafico il sito, vabbè, frega poco personalmente perchè tanto
+                    non siamo frontendisti</div>
+                <div>Se hai problemi non provare a contattarci perchè le bici comunque non te le manderemo mai</div>
+                <div>Non so più cosa scrivere se non Biego Detto, devo riempire il footer da rendere questo sito un minimo credibile...</div>
             </div>
         </div>
-    </section>
-
+    </footer>
 </body>
 
-<footer>
-    <div class="footer">
-        <p>2025 - Kafe dhe Zigare SPA</p>
-    </div>
-</footer>
+
+
 </html>

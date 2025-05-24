@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>montainBike</title>
+    <title>Bicycle Configurator - Mountain Bike</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
@@ -12,23 +12,21 @@
 <body>
     <header>
         <div class="header">
-            <div class="menu-principale-button" onclick="window.location.href='index.html'">
-                Menu principale
-            </div>
+            <button class="menu-principale-button" onclick="window.location.href='index.html'">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 6H20M4 12H20M4 18H20" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>Menu 
+            </button>
             <div class="cart-wrapper">
                 <button class="cart-button" onclick="openCart()">
                     Carrello
-                    <img class="cart-svg" src="./img/cart.svg" alt="carrello" style="filter: invert(1);">
+                    <img class="cart-svg" src="./img/cart.svg" alt="carrello">
                 </button>
             </div>
         </div>
     </header>
-
+    <main>
     <div class="mountainBike-wrapper">
         <canvas id="renderCanvas"></canvas>
-        <!-- <h3>ciao</h3> -->
         <div class="personalization-wrapper">
-
             <h2>Colore telaio</h2>
             <div class="telaio-wrapper">
                 <div class="telaioColorSelector-wrapper">
@@ -42,19 +40,14 @@
                 <h2>Colore gomme</h2>
                 <div class="tireColorSelector-wrapper">
                     <button class="card-wheels red red-wheels" onclick="changeWheelsColor('red')">
-                        <!-- <img src="./img/red-tire.jpg"> -->
                     </button>
                     <button class="card-wheels green green-wheels" onclick="changeWheelsColor('green')">
-                        <!-- <img src="./img/green-tire.jpg"> -->
                     </button>
                     <button class="card-wheels white white-wheels" onclick="changeWheelsColor('white')">
-                        <!-- <img src="./img/white-tire.png"> -->
                     </button>
                     <button class="card-wheels black black-wheels" onclick="changeWheelsColor('black')">
-                        <!-- <img src="./img/black-tire.jpg"> -->
                     </button>
                 </div>
-
                 <h2>Tipologia gomme</h2>
                 <div class="changeWheels-wrapper">
                     <button onclick="changeWheels('bmx/bmxRuota2.glb', this)">
@@ -79,10 +72,8 @@
                     </button>
                 </div>
             </div>
-
             <h2>Tipologia manubrio</h2>
             <div class="changeManubrio-wrapper">
-
                 <button id="bmxManubrio">
                     <img class="images" src="./img/manubrio-bmx.png" alt="bmxManubrio">
                     <div class="button-container">
@@ -114,7 +105,6 @@
                         </div>
                     </div>
                 </button>
-
                 <button id="corsaManubrio">
                     <img class="images" src="./img/manubrio-corsa.png" alt="corsaManubrio">
                     <div class="button-container">
@@ -126,7 +116,6 @@
                     </div>
                 </button>
             </div>
-
             <h2>Tipologia sella</h2>
             <div class="changeSella-wrapper">
                 <button id="classicSella" onclick="changeSaddle('classic/classicSella.glb', this)">
@@ -180,14 +169,37 @@
                 </button>
             </div>
         </div>
-
     </div>
-
-
-
+    </main>
     <footer>
         <div class="footer">
-            <p>2025 - Kafe dhe Zigare SPA</p>
+            <div class="language-selector" style="cursor: default;">
+                <h3>Regione / Lingua Attuale</h3>
+                <div class="flex-centered-row language-row-selector">
+                    <img class="language-icon" src="./img/italy-round.png" alt="Bandiera Italia" class="flag-icon"
+                        style="margin-right: 1vh;">
+                    <p>Italia / Italiano</p>
+                    <a style="cursor: pointer; margin-left: 1vh; text-decoration: underline;">Cambiare</a>
+                </div>
+                <div class="flex-column a-footer">
+                    <a>Contatti</a>
+                    <a onclick="alert('Seh, credici')">Lavora con Noi</a>
+                    <a>Privacy</a>
+                </div>
+                <hr>
+            </div>
+            <div>
+                <p>2025 - Kafe dhe Zigare SPA</p>
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque nostrum ipsa quo obcaecati
+                    consequatur provident quae minima sunt deleniti voluptas inventore quia ab tempore nobis numquam,
+                    rem neque ducimus enim!</div>
+                <div>Le caratteristiche e gli accessori della bici sono quelli che sono, i prezzi li facciamo noi come
+                    ci pare e piace</div>
+                <div>Se non ti piace dal punto di vista grafico il sito, vabbè, frega poco personalmente perchè tanto
+                    non siamo frontendisti</div>
+                <div>Se hai problemi non provare a contattarci perchè le bici comunque non te le manderemo mai</div>
+                <div>Non so più cosa scrivere se non Biego Detto, devo riempire il footer da rendere questo sito un minimo credibile...</div>
+            </div>
         </div>
     </footer>
 

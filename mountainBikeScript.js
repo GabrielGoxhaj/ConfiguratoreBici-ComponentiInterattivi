@@ -11,8 +11,6 @@ let sella = [];
 let matRuota;
 let currentWheelsPath = null;
 
-
-
 document.getElementById("bmxManubrio").addEventListener("click", function () {
     ChangeManubrio("bmx/bmxManubrio.glb",
         {
@@ -21,7 +19,7 @@ document.getElementById("bmxManubrio").addEventListener("click", function () {
             scaling: new BABYLON.Vector3(1, 1, 1)
         }
     );
-    const input = this.querySelector('input[type="radio"]');
+    const input = this.querySelector('input[type="radio"]'); // Seleziona l'input radio associato
     if (input) input.checked = true;
 });
 document.getElementById("classicManubrio").addEventListener("click", function () {
@@ -32,7 +30,7 @@ document.getElementById("classicManubrio").addEventListener("click", function ()
             scaling: new BABYLON.Vector3(1,1,1)
         }
     );
-    const input = this.querySelector('input[type="radio"]');
+    const input = this.querySelector('input[type="radio"]'); // Seleziona l'input radio associato
     if (input) input.checked = true;
 });
 document.getElementById("mountainBikeManubrio").addEventListener("click", function () {
@@ -43,7 +41,7 @@ document.getElementById("mountainBikeManubrio").addEventListener("click", functi
             scaling: new BABYLON.Vector3(1, 1, 1)
         }
     );
-    const input = this.querySelector('input[type="radio"]');
+    const input = this.querySelector('input[type="radio"]'); // Seleziona l'input radio associato
     if (input) input.checked = true;
 });
 document.getElementById("corsaManubrio").addEventListener("click", function () {
@@ -54,7 +52,7 @@ document.getElementById("corsaManubrio").addEventListener("click", function () {
             scaling: new BABYLON.Vector3(0.07, 0.07, 0.07)
         }
     );
-    const input = this.querySelector('input[type="radio"]');
+    const input = this.querySelector('input[type="radio"]'); // Seleziona l'input radio associato
     if (input) input.checked = true;
 })
 
@@ -395,6 +393,16 @@ const createScene = async () => {
     ruote = bikeResult.meshes.filter(mesh => mesh.name.toLowerCase().includes("ruota"));
 
     manubrio = bikeResult.meshes.filter(mesh => mesh.name.toLowerCase().includes("manubrio"));
+
+    // Imposta automaticamente onload gli elementi per la bici da mountain bike
+    await changeWheels("mountainBike/mountainBikeRuota.glb");
+    await changeSaddle("mountainBike/sellaMountain.glb");
+    await ChangeManubrio("mountainBike/mountainManubrio.glb", {
+        position: new BABYLON.Vector3(0, 3.8, -3.13),
+        rotation: new BABYLON.Vector3(0, 0, 0),
+        scaling: new BABYLON.Vector3(1, 1, 1)
+    });
+
     return scene;
 };
 
