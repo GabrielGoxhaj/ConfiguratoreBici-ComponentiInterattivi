@@ -5,14 +5,18 @@
 }
 
 body {
-    overflow: hidden;
     margin-top: 50px;
     font-family: 'Roboto', sans-serif;
+    background-color: rgb(238, 239, 242);
+}
+
+.main-wrapper {
+    height: 85vh;
 }
 
 #renderCanvas {
-    width: 75%;
-    height: 75%;
+    width: 110vh;
+    height: 60vh;
     border: 1px solid black;
     touch-action: none;
 }
@@ -46,6 +50,7 @@ body {
 
 .mountainBike-wrapper {
     max-width: 100%;
+    height: 85vh;
     display: flex;
     flex-direction: row;
 }
@@ -168,7 +173,6 @@ input[type="radio"] {
 }
 
 .footer {
-    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
@@ -183,8 +187,7 @@ input[type="radio"] {
     top: 0;
     left: 0;
     right: 0;
-    background-color: #747474b0;
-    color: white;
+    color: black;
     padding: 5px;
     display: flex;
     justify-content: space-between;
@@ -200,13 +203,13 @@ input[type="radio"] {
 .cart-svg {
     width: 30px;
     height: 30px;
-    color: white;
+    color: black;
 }
 
 .cart-button {
     background-color: transparent;
     border: none;
-    color: white;
+    color: black;
     display: flex;
     align-items: center;
     cursor: pointer;
