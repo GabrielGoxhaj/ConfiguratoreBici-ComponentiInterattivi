@@ -7,10 +7,11 @@
 body {
     font-family: 'Roboto', sans-serif;
     background-color: rgb(238, 239, 242);
+    margin: 0px;
 }
 
 .main-wrapper {
-    height: 85vh;
+    height: 80vh;
 }
 
 #renderCanvas {
@@ -168,14 +169,10 @@ input[type="radio"] {
 }
 
 .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
     background-color: #202020;
     color: white;
-    text-align: center;
-    padding: 5px;
+    padding: 35px;
+    padding-top: 10px;
 }
 
 .header {
@@ -275,4 +272,39 @@ input[type="radio"] {
     align-items: center;
     margin-top: 2px;
     margin-bottom: 2px;
+}
+
+.language-icon {
+    max-width: 3vh;
+    max-height: 3vh;
+}
+
+.flex-centered-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.a-footer a {
+    background-color: transparent;
+    align-items: center;
+    color: white;
+    width: 120px;
+    height: 30px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.a-footer a:hover {
+    transform: scale(1.01);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    background-color: #464646;
+    transition: all 0.2s ease-in-out;
+    border-radius: 2px;
+    color: white;
 }
