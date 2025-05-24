@@ -53,6 +53,7 @@ body {
     height: 85vh;
     display: flex;
     flex-direction: row;
+    margin-bottom: 6vh;
 }
 
 .tireColorSelector-wrapper, .telaioColorSelector-wrapper, .changeSella-wrapper{
