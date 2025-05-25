@@ -233,7 +233,7 @@ input[type="radio"] {
     flex-direction: column;
     justify-content: center;
     gap: 6px;
-    margin-left: auto;
+    margin: 0 auto;
 }
 
 .mountain-img, .bmx-img, .racing-img {
