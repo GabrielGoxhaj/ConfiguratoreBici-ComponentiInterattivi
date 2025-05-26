@@ -10,8 +10,10 @@ let body = [];
 let sella = [];
 let matRuota;
 let currentWheelsPath = null;
+let currentManubrioType = null; // Tiene traccia del tipo di manubrio scelto
 
 document.getElementById("bmxManubrio").addEventListener("click", function () {
+    currentManubrioType = "bmx";
     ChangeManubrio("bmx/bmxManubrio.glb",
         {
             position: new BABYLON.Vector3(0, 4.65, -3),
@@ -23,6 +25,7 @@ document.getElementById("bmxManubrio").addEventListener("click", function () {
     if (input) input.checked = true;
 });
 document.getElementById("classicManubrio").addEventListener("click", function () {
+    currentManubrioType = "classic";
     ChangeManubrio("classic/classicManubrio.glb",
         {
             position: new BABYLON.Vector3(0, 3.8, -3.1),
@@ -34,6 +37,7 @@ document.getElementById("classicManubrio").addEventListener("click", function ()
     if (input) input.checked = true;
 });
 document.getElementById("mountainBikeManubrio").addEventListener("click", function () {
+    currentManubrioType = "mountainBike";
     ChangeManubrio("mountainBike/mountainManubrio.glb",
         {
             position: new BABYLON.Vector3(0, 3.8, -3.13),
@@ -45,6 +49,7 @@ document.getElementById("mountainBikeManubrio").addEventListener("click", functi
     if (input) input.checked = true;
 });
 document.getElementById("corsaManubrio").addEventListener("click", function () {
+    currentManubrioType = "corsa";
     ChangeManubrio("corsa/corsaManubrioTest.glb",
         {
             position: new BABYLON.Vector3(0, 3.8, -3.65),
@@ -132,8 +137,15 @@ window.aggiungiPortaTelefono = async function () {
 
     const mesh = result.meshes[0]; // la borraccia
     window.portaTelefonoMesh = mesh; // salva il riferimento globale
-
-    mesh.position = new BABYLON.Vector3(-0.8, 4.1, -3);
+    if (currentManubrioType === "mountainBike" || currentManubrioType === null) {
+        mesh.position = new BABYLON.Vector3(-0.8, 4.1, -3.15);
+    } else if (currentManubrioType === "bmx") {
+        mesh.position = new BABYLON.Vector3(-0.5, 5.1, -3);
+    } else if (currentManubrioType === "corsa") {
+        mesh.position = new BABYLON.Vector3(-0.7, 4, -3.1);
+    } else if (currentManubrioType === "classic") {
+        mesh.position = new BABYLON.Vector3(-0.4, 4.0, -3.05);
+    }
 
     // Rendi la borraccia draggabile
     const dragBehavior = new BABYLON.PointerDragBehavior();

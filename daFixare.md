@@ -15,3 +15,7 @@ bisogna fixare telecamera ed aggiungerne un blocco
 immagini nelle card della home page quella centrale piu piccola delle altre
 
 la sella da corsa ha un compenetrazione visibile
+
+racing bike modello e tutto storto
+
+ruota bmx sotituita con quella della montain compenetra leggermente spostarla un po
