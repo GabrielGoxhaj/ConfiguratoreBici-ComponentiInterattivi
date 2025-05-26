@@ -395,9 +395,9 @@ const createScene = async () => {
     manubrio = bikeResult.meshes.filter(mesh => mesh.name.toLowerCase().includes("manubrio"));
 
     // Imposta automaticamente onload gli elementi per la bici da mountain bike
-    await changeWheels("mountainBike/mountainBikeRuota.glb");
-    await changeSaddle("mountainBike/sellaMountain.glb");
-    await ChangeManubrio("mountainBike/mountainManubrio.glb", {
+    await changeWheels("bmx/bmxRuota.glb");
+    await changeSaddle("bmx/sellabmx.glb");
+    await ChangeManubrio("bmx/bmxManubrio.glb", {
         position: new BABYLON.Vector3(0, 3.8, -3.13),
         rotation: new BABYLON.Vector3(0, 0, 0),
         scaling: new BABYLON.Vector3(1, 1, 1)

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bicycle Configurator - Mountain Bike</title>
+    <title>Bicycle Configurator - Racing Bike</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
@@ -66,7 +66,7 @@
                             <p><b>Ruote Continental Cross King X King - 26"</b></p>
                             <p>Prezzo: 149.99€</p>
                             <div>
-                                <input type="radio" name="ruote" id="mountainRuote" value="mountainRuote" checked>
+                                <input type="radio" name="ruote" id="mountainRuote" value="mountainRuote">
                             </div>
                         </div>
                     </button>
@@ -76,7 +76,7 @@
                             <p><b>Ruote Da Corsa FIR - 24"</b></p>
                             <p>Prezzo: 249.99€</p>
                             <div>
-                                <input type="radio" name="ruote" id="racingRuote" value="racingRuote">
+                                <input type="radio" name="ruote" id="racingRuote" value="racingRuote" checked>
                             </div>
                         </div>
                     </button>
@@ -100,8 +100,7 @@
                         <p><b>Manubrio FatBar Lite Carbon Renthal Mountain Bike</b></p>
                         <p>Prezzo: 129.99€</p>
                         <div>
-                            <input type="radio" name="manubrio" id="mountainBikeManubrio" value="mountainBikeManubrio"
-                                checked>
+                            <input type="radio" name="manubrio" id="mountainBikeManubrio" value="mountainBikeManubrio">
                         </div>
                     </div>
                 </button>
@@ -121,7 +120,7 @@
                         <p><b>Manubrio da Corsa PRO Carbon Compact-2</b></p>
                         <p>Prezzo: 79.99€</p>
                         <div>
-                            <input type="radio" name="manubrio" id="corsaManubrio" value="corsaManubrio">
+                            <input type="radio" name="manubrio" id="corsaManubrio" value="corsaManubrio" checked>
                         </div>
                     </div>
                 </button>
@@ -144,7 +143,7 @@
                         <p><b>Sella da Corsa</b></p>
                         <p>Prezzo: 29.99€</p>
                         <div>
-                            <input type="radio" name="sella" id="corsaSella" value="corsaSella">
+                            <input type="radio" name="sella" id="corsaSella" value="corsaSella" checked>
                         </div>
                     </div>
                 </button>
@@ -154,12 +153,12 @@
                         <p><b>Sella da Mountain Bike</b></p>
                         <p>Prezzo: 9.99€</p>
                         <div>
-                            <input type="radio" name="sella" id="mountainSella" value="mountainSella" checked>
+                            <input type="radio" name="sella" id="mountainSella" value="mountainSella">
                         </div>
                     </div>
                 </button>
                 <button id="sellaBMX" onclick="changeSaddle('bmx/sellaBmx.glb', this)">
-                    <img class="images" src="./img/sella-BMX.png" alt="sellaBMX">
+                    <img class="images" src="./img/sella-BMX.png" alt="sellaBMX" >
                     <div class="button-container">
                         <p><b>Sella da BMX</b></p>
                         <p>Prezzo: 19.99€</p>
@@ -215,7 +214,7 @@
 
     <script src="https://cdn.babylonjs.com/babylon.js"> </script>
     <script src="https://cdn.babylonjs.com/loaders/babylon.glTF2FileLoader.js"> </script>
-    <script src="mountainBikeScript.js"></script>
+    <script src="racingBikeScript.js"></script>
 </body>
 
 </html>

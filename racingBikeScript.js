@@ -307,8 +307,8 @@ const createScene = async () => {
     light.intensity = 1;
     const bikeResult = await BABYLON.SceneLoader.ImportMeshAsync(
         "", // all meshes
-        "models/mountainBike/",
-        "mountainBike.glb",
+        "models/corsa/",
+        "biciCorsaTest.glb",
         scene
     );
 
@@ -395,12 +395,12 @@ const createScene = async () => {
     manubrio = bikeResult.meshes.filter(mesh => mesh.name.toLowerCase().includes("manubrio"));
 
     // Imposta automaticamente onload gli elementi per la bici da mountain bike
-    await changeWheels("mountainBike/mountainBikeRuota.glb");
-    await changeSaddle("mountainBike/sellaMountain.glb");
-    await ChangeManubrio("mountainBike/mountainManubrio.glb", {
-        position: new BABYLON.Vector3(0, 3.8, -3.13),
+    await changeWheels("corsa/ruoteCorsa.glb");
+    await changeSaddle("corsa/sellaCorsa.glb");
+    await ChangeManubrio("corsa/corsaManubrioTest.glb", {
+        position: new BABYLON.Vector3(0, 3.8, -3.65),
         rotation: new BABYLON.Vector3(0, 0, 0),
-        scaling: new BABYLON.Vector3(1, 1, 1)
+        scaling: new BABYLON.Vector3(0.07, 0.07, 0.07)
     });
 
     return scene;

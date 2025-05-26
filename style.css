@@ -5,25 +5,27 @@
 }
 
 body {
-    overflow: hidden;
-    margin-top: 50px;
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(238, 239, 242);
+    margin: 0px;
+}
+
+.main-wrapper {
+    height: 80vh;
 }
 
 #renderCanvas {
-    width: 50%;
-    height: 50%;
+    width: 110vh;
+    height: 60vh;
     border: 1px solid black;
     touch-action: none;
 }
 
-.card-wheels {
-    width: 100px;
-    height: 100px;
-}
-
-.card-telaio {
-    width: 100px;
-    height: 100px;
+.card-telaio, .card-wheels {
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 8px;
 }
 
 .card-wheels > img {
@@ -48,11 +50,13 @@ body {
 
 .mountainBike-wrapper {
     max-width: 100%;
+    height: 85vh;
     display: flex;
     flex-direction: row;
+    margin-bottom: 6vh;
 }
 
-.tireColorSelector-wrapper, .telaioColorSelector-wrapper{
+.tireColorSelector-wrapper, .telaioColorSelector-wrapper, .changeSella-wrapper{
     display: flex;
     flex-direction: row;
 }
@@ -71,6 +75,23 @@ body {
     border-right: 2px solid black;
 }
 
+.changeWheels-wrapper > button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 400px;
+    background-color: #fafafa;
+    padding: 8px;
+    gap: 8px;
+}
+.changeSella-wrapper > button {
+
+    align-items: center;
+    width: 180px;
+    background-color: #fafafa;
+    padding: 8px;
+    gap: 8px;
+}
 .tireColorSelector-wrapper > button.selected, .telaioColorSelector-wrapper > button.selected {
     border: 2px solid black;
 }
@@ -93,22 +114,32 @@ body {
     display: flex;
     flex-direction: row;
 }
-
+.changeManubrio-wrapper > button {
+    align-items: center;
+    width: 180px;
+    background-color: #fafafa;
+    padding: 8px;
+    gap: 8px;
+}
 .images {
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 160px;
+    max-height: 160px;
+    border-radius: 8px;
+    object-fit: contain;
 }
 
-button {
+button:not(.cart-button):not(.menu-principale-button) {
     border-radius: 2px;
     padding: 0px;
     margin: 2px;
 }
 
-button:not(.cart-button):hover {
-    border: 2px solid rgb(0, 0, 0);
-    border-radius: 2px;
+button:not(.cart-button):hover, button:not(.menu-principale-button):hover {
+    transform: scale(1.03);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: all 0.2s ease-in-out;
     cursor: pointer;
+    border-radius: 2px;
 }
 
 .wheels-customization-wrapper {
@@ -139,27 +170,19 @@ input[type="radio"] {
 }
 
 .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #000000;
+    background-color: #202020;
     color: white;
-    text-align: center;
-    padding: 5px;
+    padding: 35px;
+    padding-top: 10px;
 }
 
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: #747474b0;
-    color: white;
-    padding: 5px;
+    color: black;
+    padding: 2px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1vh;
 }
 
 .cart-wrapper {
@@ -171,18 +194,118 @@ input[type="radio"] {
 .cart-svg {
     width: 30px;
     height: 30px;
-    color: white;
+    color: black;
 }
 
 .cart-button {
     background-color: transparent;
     border: none;
-    color: white;
+    color: black;
     display: flex;
     align-items: center;
     cursor: pointer;
 }
 
+.cart-button > svg {
+    margin-left: 1vh;
+    width: 30px;
+    height: 30px;
+}
+
 .menu-principale-button {
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: none;
+    background-color: none;
+}
+
+.menu-principale-button > svg {
+    width: 30px;
+    height: 30px;
+    color: black;
+    margin-right: 1vh;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    margin: 0 auto;
+}
+
+.mountain-img, .bmx-img, .racing-img {
+    max-width: 50vh;
+    object-fit: contain;
+    margin-bottom: 50px;
+}
+
+.bicycle-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.button-bicycle {
+    background-color: #fafafa;
+    width: 32%;
+    text-decoration: none;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-bicycle:hover {
+    transform: scale(1.03);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: all 0.2s ease-in-out;
+}
+
+.title-website {
+    color: black;
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.language-icon {
+    max-width: 3vh;
+    max-height: 3vh;
+}
+
+.flex-centered-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.a-footer a {
+    background-color: transparent;
+    align-items: center;
+    color: white;
+    width: 120px;
+    height: 30px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.a-footer a:hover {
+    transform: scale(1.01);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    background-color: #464646;
+    transition: all 0.2s ease-in-out;
+    border-radius: 2px;
+    color: white;
 }
