@@ -1,7 +1,6 @@
 Lavoro di gruppo per il corso di Componenti Interattivi
 Andrea Turchet, Klevis Hasa, Cristiano Brisco, Gabriel Goxhaj
 
-- mesh da realizzare: gomme, telaio, sella, manubrio (formato .glTF) -> Blender
-- esportare mesh singole se vogliono essere intercambiabili
-- oggettistica e accessori si possono trovare modelli online (es: portasborraccia, ecc)
-- sito (successivamente)
+- Mesh da realizzare: BodyCentrale per BMX da fare, BodyCentrale per Bici da Corsa da rifare (il mio fa cagare)
+- Funzionalità: Aggiungere il carrello e renderlo funzionale
+- Testare un po' la personalizzazione delle bici
