@@ -63,7 +63,7 @@ document.getElementById("classicManubrio").addEventListener("click", function ()
     if (input) input.checked = true;
 });
 document.getElementById("mountainBikeManubrio").addEventListener("click", function () {
-    currentManubrioType = "mountainBike";
+    currentManubrioType = "mountain";
     ChangeManubrio("mountainBike/mountainManubrio.glb",
         {
             position: new BABYLON.Vector3(0, 3.8, -3.13),
@@ -164,7 +164,7 @@ window.aggiungiPortaTelefono = async function () {
 
     const mesh = result.meshes[0]; // la porta telefono
     window.portaTelefonoMesh = mesh; // salva il riferimento globale
-    if (currentManubrioType === "mountain" || currentManubrioType === null) {
+    if (currentManubrioType === "mountain") {
         mesh.position = new BABYLON.Vector3(-0.8, 4.1, -3.15);
     } else if (currentManubrioType === "bmx") {
         mesh.position = new BABYLON.Vector3(-0.5, 5.1, -3);
@@ -413,6 +413,7 @@ const createScene = async () => {
             "models/",
             pathNuovaSaddle,
             scene
+
         );
 
         matSaddle = new BABYLON.StandardMaterial("matSaddle", scene);
@@ -438,19 +439,22 @@ const createScene = async () => {
                 mesh.position = new BABYLON.Vector3(0, 3.4, 0.2);
                 mesh.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
                 mesh.rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
+                currentSellaType = "bmx";
+
             } else if (mesh.name.toLowerCase().includes("classic")) {
                 mesh.position = new BABYLON.Vector3(0, 3.5, 0.3);
                 mesh.scaling = new BABYLON.Vector3(0.03, 0.03, 0.03);
                 mesh.rotation = new BABYLON.Vector3(1.7, 3.2, 0); // 180° asse X
+                currentSellaType = "classic";
+
             } else if (mesh.name.toLowerCase().includes("corsa")) {
                 mesh.position = new BABYLON.Vector3(0, 3.6, 0.3);
                 mesh.scaling = new BABYLON.Vector3(0.3, 0.2, 0.2);
+                currentSellaType = "corsa";
             } else if (mesh.name.toLowerCase().includes("mountain")) {
                 mesh.position = new BABYLON.Vector3(0, 3.3, 0.3);
                 mesh.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
-            } else {
-                mesh.position = new BABYLON.Vector3(0, 3.4, 0.2);
-                mesh.scaling = new BABYLON.Vector3(1.2, 1.2, 1.2);
+                currentSellaType = "mountain";
             }
         });
     }
@@ -483,19 +487,79 @@ const createScene = async () => {
 
 createScene().then(scene => {
     engine.runRenderLoop(() => scene.render());
+
+    // --- RIPRISTINO CONFIGURAZIONE SALVATA DOPO CHE LA SCENA È PRONTA ---
+    const configSalvata = localStorage.getItem('configurazioneBici');
+    if (configSalvata) {
+        const config = JSON.parse(configSalvata);
+        // Aggiorna variabili globali
+        currentManubrioType = config.manubrio;
+        currentWheelsType = config.ruote;
+        currentSellaType = config.sella;
+        console.log("Configurazione caricata:", config);
+
+        // Manubrio
+        if (currentManubrioType === 'bmx') {
+            document.getElementById('bmxManubrio').click();
+        } else if (currentManubrioType === 'classic') {
+            document.getElementById('classicManubrio').click();
+        } else if (currentManubrioType === 'mountain') {
+            document.getElementById('mountainBikeManubrio').click();
+        } else if (currentManubrioType === 'corsa') {
+            document.getElementById('corsaManubrio').click();
+        }
+        // Ruote
+        if (currentWheelsType === 'bmx') {
+            changeWheels('bmx/bmxRuota2.glb');
+        } else if (currentWheelsType === 'mountain' || currentWheelsType === 'mountainBike') {
+            changeWheels('mountainBike/mountainBikeRuota.glb');
+        } else if (currentWheelsType === 'corsa') {
+            changeWheels('corsa/ruoteCorsa.glb');
+        }
+        // Sella
+        if (currentSellaType === 'bmx') {
+            document.getElementById('sellaBMX').click();
+        } else if (currentSellaType === 'classic') {
+            document.getElementById('classicSella').click();
+        } else if (currentSellaType === 'mountain') {
+            document.getElementById('mountainSella').click();
+        } else if (currentSellaType === 'corsa') {
+            document.getElementById('corsaSella').click();
+
+        }
+        // Accessori
+        if (config.accessori && config.accessori.portaTelefono) {
+            aggiungiPortaTelefono();
+        }
+        if (config.accessori && config.accessori.portaborraccia) {
+            aggiungiBorraccia();
+        }
+    }
+    // --- FINE RIPRISTINO CONFIGURAZIONE ---
 });
+
 
 // Resize handling
 window.addEventListener("resize", () => engine.resize());
 
+
 salvaPrezzoTotale = () => {
     aggiornaTotale();
-    // Salva il prezzo totale nel localStorage per usarlo in cart.html
+    // Aggiorna la configurazione prima di salvare
+    let configurazione = {
+        manubrio: currentManubrioType,
+        ruote: currentWheelsType,
+        sella: currentSellaType,
+        accessori: {
+            portaTelefono: !!window.portaTelefonoMesh,
+            portaborraccia: !!window.borracciaMesh
+        },
+        prezzoTotale: prezzoTotale
+    };
+    console.log("Configurazione da salvare:", configurazione.manubrio);
+    // Salva la configurazione e il prezzo totale nel localStorage
+    localStorage.setItem('configurazioneBici', JSON.stringify(configurazione));
     localStorage.setItem('prezzoTotale', prezzoTotale);
-    // se si vuole aggiornare dinamicamente il prezzo totale in pagina non so quanto fattibile e rompi coglioni possa essere 
-    // const prezzoTotale = document.getElementById('prezzoTotale');
-    // if (prezzoTotale) {
-    //     prezzoTotale.textContent = `Prezzo totale: ${prezzoTotale} €`;
-    // }
+
 };
 console.log("prezzo tot", prezzoTotale);
