@@ -9,8 +9,34 @@ let matbody = [];
 let body = [];
 let sella = [];
 let matRuota;
-let currentWheelsPath = null;
-let currentManubrioType = null; // Tiene traccia del tipo di manubrio scelto
+let currentWheelsPath = 'null';
+
+let prezzoTotale = 459; // Tiene traccia del prezzo totale della configurazione
+let currentWheelsType = 'mountain'; // Tiene traccia del tipo di ruota scelto
+let currentManubrioType = 'mountain'; // Tiene traccia del tipo di manubrio scelto
+let currentSellaType = 'mountain'; // Tiene traccia del tipo di sella scelta
+
+const prezziComponenti = {
+    manubrio: {
+        bmx: 69.99,
+        classic: 9.99,
+        mountain: 129.99,
+        corsa: 79.99
+    }, ruote: {
+        mountain: 149.99,
+        bmx: 199.99,
+        corsa: 249.99
+    }, sella: {
+        mountain: 9.99,
+        bmx: 19.99,
+        classic: 9.99,
+        corsa: 29.99
+    }, accessori: {
+        portaTelefono: 19.99,
+        portaborraccia: 14.99
+    }
+};
+
 
 document.getElementById("bmxManubrio").addEventListener("click", function () {
     currentManubrioType = "bmx";
@@ -135,9 +161,10 @@ window.aggiungiPortaTelefono = async function () {
         scene
     );
 
-    const mesh = result.meshes[0]; // la borraccia
+
+    const mesh = result.meshes[0]; // la porta telefono
     window.portaTelefonoMesh = mesh; // salva il riferimento globale
-    if (currentManubrioType === "mountainBike" || currentManubrioType === null) {
+    if (currentManubrioType === "mountain" || currentManubrioType === null) {
         mesh.position = new BABYLON.Vector3(-0.8, 4.1, -3.15);
     } else if (currentManubrioType === "bmx") {
         mesh.position = new BABYLON.Vector3(-0.5, 5.1, -3);
@@ -168,6 +195,9 @@ window.aggiungiBorraccia = async function () {
 
     const mesh = result.meshes[0]; // la borraccia
     window.borracciaMesh = mesh; // salva il riferimento globale
+
+
+    console.log("madonna impestata");
 
     mesh.position = new BABYLON.Vector3(0, 2, -1.6);
 
@@ -294,6 +324,37 @@ async function ChangeManubrio(nuovomanubrio, options = {}) {
             mesh.scaling = options.scaling.clone();
         }
     });
+}
+
+
+// Funzione per aggiornare il totale dei costi
+function aggiornaTotale() {
+    prezzoTotale = 459;
+    let totale = 0;
+    // Manubrio
+    if (prezziComponenti.manubrio[currentManubrioType]) {
+        totale += prezziComponenti.manubrio[currentManubrioType];
+    }
+    // Ruote
+    if (prezziComponenti.ruote[currentWheelsType]) {
+        totale += prezziComponenti.ruote[currentWheelsType];
+    }
+    // Sella
+    if (prezziComponenti.sella[currentSellaType]) {
+        totale += prezziComponenti.sella[currentSellaType];
+    }
+
+    if (window.portaTelefonoMesh) {
+        totale += prezziComponenti.accessori.portaTelefono;
+    }
+    if (window.borracciaMesh) {
+        totale += prezziComponenti.accessori.portaborraccia;
+    }
+
+    prezzoTotale += totale;
+    // Aggiorna il carrello in pagina se vuoi
+    const el = document.getElementById('prezzoTotale');
+    if (el) el.textContent = totale + ' €';
 }
 
 
@@ -426,3 +487,15 @@ createScene().then(scene => {
 
 // Resize handling
 window.addEventListener("resize", () => engine.resize());
+
+salvaPrezzoTotale = () => {
+    aggiornaTotale();
+    // Salva il prezzo totale nel localStorage per usarlo in cart.html
+    localStorage.setItem('prezzoTotale', prezzoTotale);
+    // se si vuole aggiornare dinamicamente il prezzo totale in pagina non so quanto fattibile e rompi coglioni possa essere 
+    // const prezzoTotale = document.getElementById('prezzoTotale');
+    // if (prezzoTotale) {
+    //     prezzoTotale.textContent = `Prezzo totale: ${prezzoTotale} €`;
+    // }
+};
+console.log("prezzo tot", prezzoTotale);

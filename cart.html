@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Carrello</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .cart-container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .edit-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #0078d7;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .edit-btn:hover {
+            background: #005fa3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cart-container">
+        <button onclick="window.location.href='mountainBike.html'"   class="edit-btn">Modifica</button>
+        <div id="cart-prezzo-totale"></div>
+    </div>
+    <script>
+        // Recupera il prezzo totale dal localStorage e lo mostra
+        const prezzoTotale = localStorage.getItem('prezzoTotale');
+        document.getElementById('cart-prezzo-totale').textContent = prezzoTotale ? `Prezzo totale: ${prezzoTotale} €` : 'Nessun articolo nel carrello.';
+    </script>
+</body>
+
+</html>
