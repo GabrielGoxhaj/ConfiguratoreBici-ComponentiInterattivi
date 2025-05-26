@@ -27,7 +27,7 @@ document.getElementById("classicManubrio").addEventListener("click", function ()
         {
             position: new BABYLON.Vector3(0, 3.8, -3.1),
             rotation: new BABYLON.Vector3(0, 0, 0),
-            scaling: new BABYLON.Vector3(1,1,1)
+            scaling: new BABYLON.Vector3(1, 1, 1)
         }
     );
     const input = this.querySelector('input[type="radio"]'); // Seleziona l'input radio associato
@@ -35,7 +35,7 @@ document.getElementById("classicManubrio").addEventListener("click", function ()
 });
 document.getElementById("mountainBikeManubrio").addEventListener("click", function () {
     ChangeManubrio("mountainBike/mountainManubrio.glb",
-         {
+        {
             position: new BABYLON.Vector3(0, 3.8, -3.13),
             rotation: new BABYLON.Vector3(0, 0, 0),
             scaling: new BABYLON.Vector3(1, 1, 1)
@@ -67,9 +67,9 @@ async function changeWheels(pathNuovaRuota, btn) {
     if (!scene) return;
 
     // Only reload if the path is different
-   /*  if (currentWheelsPath === pathNuovaRuota) {
-        return; // Already loaded, do nothing
-    } */
+    /*  if (currentWheelsPath === pathNuovaRuota) {
+         return; // Already loaded, do nothing
+     } */
 
     if (btn) {
         const input = btn.querySelector('input[type="radio"]');
@@ -92,8 +92,8 @@ async function changeWheels(pathNuovaRuota, btn) {
         pathNuovaRuota,
         scene
     );
-    nuovaRuotaR.meshes.forEach( mesh => {
-        mesh.setAbsolutePosition(new BABYLON.Vector3(0 ,-0.1, -2));
+    nuovaRuotaR.meshes.forEach(mesh => {
+        mesh.setAbsolutePosition(new BABYLON.Vector3(0, -0.1, -2));
     });
     nuovaRuotaF.meshes.forEach(mesh => {
         mesh.setAbsolutePosition(new BABYLON.Vector3(0, 0, 1.5));
@@ -260,7 +260,7 @@ async function ChangeManubrio(nuovomanubrio, options = {}) {
     );
 
     manubrio = result.meshes;
-    
+
     Array.from(manubrio).filter(m => {
         return m.id.toLowerCase().indexOf('manubrio') >= 0
     }).forEach(mesh => {
@@ -301,7 +301,9 @@ const createScene = async () => {
         scene
     );
     camera.attachControl(canvas, true);
-    camera.attachControl(canvas, true);
+
+    camera.lowerRadiusLimit = 5;   // distanza minima (non si avvicina più di 5)
+    camera.upperRadiusLimit = 40;  // distanza massima (non si allontana più di 50)
 
     const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
     light.intensity = 1;
@@ -362,7 +364,7 @@ const createScene = async () => {
             if (mesh.name.toLowerCase().includes("bmx")) {
                 mesh.position = new BABYLON.Vector3(0, 3.4, 0.2);
                 mesh.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
-                mesh.rotation = new BABYLON.Vector3(0, Math.PI/2, 0);
+                mesh.rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
             } else if (mesh.name.toLowerCase().includes("classic")) {
                 mesh.position = new BABYLON.Vector3(0, 3.5, 0.3);
                 mesh.scaling = new BABYLON.Vector3(0.03, 0.03, 0.03);
