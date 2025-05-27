@@ -249,6 +249,16 @@ function selectTelaioButton(colorClass) {
     });
 }
 
+function selectSaddleButton(colorClass) {
+    document.querySelectorAll('.saddleColorSelector-wrapper button').forEach(btn => {
+        if (btn.classList.contains(colorClass)) {
+            btn.classList.add('selected');
+        } else {
+            btn.classList.remove('selected');
+        }
+    });
+}
+
 function changeWheelsColor(colorWheelsName) {
     let colorWheels;
     if (colorWheelsName === 'red') {
@@ -308,6 +318,34 @@ function changeTelaioColor(colorTelaioName) {
     manubrio.forEach(mesh => {
         mesh.material = matTelaio;
     });
+}
+
+function changeSaddleColor(colorSaddleName) {
+    let colorSaddle;
+    if (colorSaddleName === 'red') {
+        console.log('red saddle');
+        colorSaddle = new BABYLON.Color3(1, 0, 0);
+        selectSaddleButton('red-saddle');
+    } else if (colorSaddleName === 'green') {
+        console.log('green Saddle');
+        colorSaddle = new BABYLON.Color3(0, 1, 0);
+        selectSaddleButton('green-saddle');
+    } else if (colorSaddleName === 'white') {
+        console.log('white saddle');
+        colorSaddle = new BABYLON.Color3(1, 1, 1);
+        selectSaddleButton('white-saddle');
+    } else if (colorSaddleName === 'black') {
+        console.log('black saddle');
+        colorSaddle = new BABYLON.Color3(0, 0, 0);
+        selectSaddleButton('black-saddle');
+    } else {
+        colorSaddle = new BABYLON.Color3(1, 1, 1); // default white
+    }
+    const matSaddle = new BABYLON.StandardMaterial("matSaddle", scene);
+    matSaddle.diffuseColor = colorSaddle;
+    if (window.matSaddle) {
+        window.matSaddle.diffuseColor = colorSaddle;
+    }
 }
 
 async function ChangeManubrio(nuovomanubrio, options = {}) {
@@ -477,7 +515,8 @@ const createScene = async () => {
                 mesh.position = new BABYLON.Vector3(0, 3.3, 0.3);
                 mesh.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
                 currentSellaType = "mountain";
-            }
+            };
+            mesh.material = matSaddle;
         });
     }
 
