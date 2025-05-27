@@ -345,8 +345,8 @@ const createScene = async () => {
     light.intensity = 1;
     const bikeResult = await BABYLON.SceneLoader.ImportMeshAsync(
         "", // all meshes
-        "models/mountainBike/",
-        "mountainBike.glb",
+        "models/bmx/",
+        "bmxBody.glb",
         scene
     );
 
