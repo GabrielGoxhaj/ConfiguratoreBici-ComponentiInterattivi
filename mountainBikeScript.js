@@ -116,6 +116,7 @@ async function changeWheels(pathNuovaRuota, btn) {
         pathNuovaRuota,
         scene
     );
+
     console.log("ruota:", nuovaRuotaR);
     const nuovaRuotaF = await BABYLON.SceneLoader.ImportMeshAsync(
         "",
@@ -138,6 +139,23 @@ async function changeWheels(pathNuovaRuota, btn) {
     nuovaRuotaF.meshes.forEach(mesh => {
         mesh.material = matRuota;
     });
+
+    //assegno alla variabile globale il tipo di ruota corrente
+    if (pathNuovaRuota.toLowerCase().includes('mountain')) {
+        currentWheelsType = 'mountain';
+    } else if (pathNuovaRuota.toLowerCase().includes('bmx')) {
+        currentWheelsType = 'bmx';
+
+    }
+    else if (pathNuovaRuota.toLowerCase().includes('corsa')) {
+        currentWheelsType = 'corsa';
+    }
+
+    console.log("Nuova ruota caricata:", pathNuovaRuota);
+
+
+    console.log("Tipo di ruota corrente:", currentWheelsType);
+
 
     /* if (matRuota) {
         ruote.forEach(mesh => {
@@ -490,8 +508,8 @@ function impostaConfigurazioneDefaultMountain() {
     currentWheelsType = 'mountain';
     currentSellaType = 'mountain';
     document.getElementById('mountainBikeManubrio').click();
-    changeWheels('mountainBike/mountainBikeRuota.glb');
-    document.getElementById('mountainSella').click();
+    document.getElementById('ruotaMountain').click();
+
     if (window.portaTelefonoMesh && window.portaTelefonoMesh.dispose) {
         window.portaTelefonoMesh.dispose();
         window.portaTelefonoMesh = null;
@@ -533,11 +551,11 @@ createScene().then(scene => {
         }
         // Ruote
         if (currentWheelsType === 'bmx') {
-            changeWheels('bmx/bmxRuota2.glb');
-        } else if (currentWheelsType === 'mountain' || currentWheelsType === 'mountainBike') {
-            changeWheels('mountainBike/mountainBikeRuota.glb');
+            document.getElementById('ruotaBmx').click();
+        } else if (currentWheelsType === 'mountain') {
+            document.getElementById('ruotaMountain').click();
         } else if (currentWheelsType === 'corsa') {
-            changeWheels('corsa/ruoteCorsa.glb');
+            document.getElementById('ruotaCorsa').click();
         }
         // Sella
         if (currentSellaType === 'bmx') {
