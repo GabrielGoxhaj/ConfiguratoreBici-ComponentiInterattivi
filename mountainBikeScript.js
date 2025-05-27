@@ -485,28 +485,29 @@ const createScene = async () => {
     return scene;
 };
 
+function impostaConfigurazioneDefaultMountain() {
+    currentManubrioType = 'mountain';
+    currentWheelsType = 'mountain';
+    currentSellaType = 'mountain';
+    document.getElementById('mountainBikeManubrio').click();
+    changeWheels('mountainBike/mountainBikeRuota.glb');
+    document.getElementById('mountainSella').click();
+    if (window.portaTelefonoMesh && window.portaTelefonoMesh.dispose) {
+        window.portaTelefonoMesh.dispose();
+        window.portaTelefonoMesh = null;
+    }
+    if (window.borracciaMesh && window.borracciaMesh.dispose) {
+        window.borracciaMesh.dispose();
+        window.borracciaMesh = null;
+    }
+}
+
 createScene().then(scene => {
     engine.runRenderLoop(() => scene.render());
 
     // --- IMPOSTA CONFIGURAZIONE DI DEFAULT (MOUNTAIN) AL PRIMO ACCESSO ---
     if (!localStorage.getItem('configurazioneBici')) {
-        currentManubrioType = 'mountain';
-        currentWheelsType = 'mountain';
-        currentSellaType = 'mountain';
-        // Seleziona i bottoni e aggiorna la scena
-        document.getElementById('mountainBikeManubrio').click();
-        changeWheels('mountainBike/mountainBikeRuota.glb');
-        document.getElementById('mountainSella').click();
-        // Rimuovi eventuali accessori residui
-        if (window.portaTelefonoMesh && window.portaTelefonoMesh.dispose) {
-            window.portaTelefonoMesh.dispose();
-            window.portaTelefonoMesh = null;
-        }
-        if (window.borracciaMesh && window.borracciaMesh.dispose) {
-            window.borracciaMesh.dispose();
-            window.borracciaMesh = null;
-        }
-        salvaPrezzoTotale();
+        impostaConfigurazioneDefaultMountain();
     }
     // --- FINE DEFAULT ---
 
