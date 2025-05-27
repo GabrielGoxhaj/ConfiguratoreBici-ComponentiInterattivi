@@ -16,7 +16,7 @@ body {
 
 #renderCanvas {
     width: 110vh;
-    height: 60vh;
+    height: 100%;
     border: 1px solid black;
     touch-action: none;
 }
@@ -97,6 +97,7 @@ body {
 }
 
 .personalization-wrapper {
+    height: 100%;
     margin-left: 3%;
     display: flex;
     flex-direction: column;
@@ -106,7 +107,7 @@ body {
     padding-top: 0;
     align-items: center;
     overflow-y: scroll;
-    max-height: 600px;
+    max-height: 82%;
     overflow-x: hidden;
 }
 

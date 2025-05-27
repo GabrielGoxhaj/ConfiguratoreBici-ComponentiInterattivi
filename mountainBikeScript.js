@@ -1,4 +1,8 @@
 const canvas = document.getElementById("renderCanvas");
+//blooca lo scroll della pagina quando si usa la rotellina del mouse
+canvas.addEventListener('wheel', function(e) {
+    e.preventDefault();
+}, { passive: false });
 const engine = new BABYLON.Engine(canvas, true);
 
 let scene;
