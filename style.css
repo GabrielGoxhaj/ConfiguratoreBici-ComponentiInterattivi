@@ -21,15 +21,11 @@ body {
     touch-action: none;
 }
 
-.card-telaio, .card-wheels {
+.card-telaio, .card-wheels, .card-saddle {
     width: 60px;
     height: 60px;
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid transparent;
     border-radius: 8px;
-}
-
-.card-wheels > img {
-    max-height: 100px;
 }
 
 .red {
@@ -56,7 +52,7 @@ body {
     margin-bottom: 6vh;
 }
 
-.tireColorSelector-wrapper, .telaioColorSelector-wrapper, .changeSella-wrapper{
+.tireColorSelector-wrapper, .telaioColorSelector-wrapper, .changeSella-wrapper, .saddleColorSelector-wrapper {
     display: flex;
     flex-direction: row;
 }
@@ -85,15 +81,15 @@ body {
     gap: 8px;
 }
 .changeSella-wrapper > button {
-
     align-items: center;
     width: 180px;
     background-color: #fafafa;
     padding: 8px;
     gap: 8px;
 }
-.tireColorSelector-wrapper > button.selected, .telaioColorSelector-wrapper > button.selected {
-    border: 2px solid black;
+
+.tireColorSelector-wrapper > button.selected, .telaioColorSelector-wrapper > button.selected, .saddleColorSelector-wrapper > button.selected {
+    border: 4px solid black;
 }
 
 .personalization-wrapper {
@@ -309,4 +305,9 @@ input[type="radio"] {
     transition: all 0.2s ease-in-out;
     border-radius: 2px;
     color: white;
+}
+
+.logo-img {
+    max-width: 150px;
+    max-height: 150px;
 }
