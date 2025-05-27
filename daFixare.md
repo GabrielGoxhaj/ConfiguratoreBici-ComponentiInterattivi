@@ -2,8 +2,6 @@
 
 fixare i vari modelli delle nuove bici
 
-manubrio da corsa non cambia colore (scelta voluta?)
-
 un aggiunta colore (se si vuole per boraccia e porta telefono)
 
 bisogna fixare telecamera
