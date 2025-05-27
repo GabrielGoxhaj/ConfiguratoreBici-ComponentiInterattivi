@@ -19,3 +19,5 @@ la sella da corsa ha un compenetrazione visibile
 racing bike modello e tutto storto
 
 ruota bmx sotituita con quella della montain compenetra leggermente spostarla un po
+
+un po di pulizia nel js una volta finita la mountain alcune cose si ripetono più volte altre non vengono utilizzate 

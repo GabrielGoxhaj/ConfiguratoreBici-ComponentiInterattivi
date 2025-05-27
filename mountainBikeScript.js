@@ -362,10 +362,10 @@ function aggiornaTotale() {
         totale += prezziComponenti.sella[currentSellaType];
     }
 
-    if (window.portaTelefonoMesh) {
+    if (window.portaTelefonoMesh && !window.portaTelefonoMesh.isDisposed()) {
         totale += prezziComponenti.accessori.portaTelefono;
     }
-    if (window.borracciaMesh) {
+    if (window.borracciaMesh && !window.borracciaMesh.isDisposed()) {
         totale += prezziComponenti.accessori.portaborraccia;
     }
 
@@ -509,7 +509,7 @@ function impostaConfigurazioneDefaultMountain() {
     currentSellaType = 'mountain';
     document.getElementById('mountainBikeManubrio').click();
     document.getElementById('ruotaMountain').click();
-
+    document.getElementById('mountainSella').click();
     if (window.portaTelefonoMesh && window.portaTelefonoMesh.dispose) {
         window.portaTelefonoMesh.dispose();
         window.portaTelefonoMesh = null;
@@ -591,8 +591,8 @@ salvaPrezzoTotale = () => {
         ruote: currentWheelsType,
         sella: currentSellaType,
         accessori: {
-            portaTelefono: !!window.portaTelefonoMesh,
-            portaborraccia: !!window.borracciaMesh
+            portaTelefono: !!window.portaTelefonoMesh && !window.portaTelefonoMesh.isDisposed(),
+            portaborraccia: !!window.borracciaMesh && !window.borracciaMesh.isDisposed()
         },
         prezzoTotale: prezzoTotale
     };
