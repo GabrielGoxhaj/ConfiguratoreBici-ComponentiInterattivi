@@ -6,9 +6,7 @@ un aggiunta colore (se si vuole per boraccia e porta telefono)
 
 bisogna fixare telecamera
 
-immagine nelle card della home page quella centrale piu piccola delle altre
-
-la sella da corsa ha un compenetrazione visibile
+la sella da corsa ha un compenetrazione visibile -> da sistemare il materiale/riflesso luce
 
 racing bike modello e tutto storto
 
