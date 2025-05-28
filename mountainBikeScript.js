@@ -101,12 +101,6 @@ function checkRadioSaddle(btn) {
 
 async function changeWheels(pathNuovaRuota, btn) {
     if (!scene) return;
-
-    // Only reload if the path is different
-    /*  if (currentWheelsPath === pathNuovaRuota) {
-         return; // Already loaded, do nothing
-     } */
-
     if (btn) {
         const input = btn.querySelector('input[type="radio"]');
         if (input) input.checked = true;
@@ -438,9 +432,6 @@ function aggiornaTotale() {
 const createScene = async () => {
     scene = new BABYLON.Scene(engine);
 
-    const sphere = BABYLON.MeshBuilder.CreateSphere("mysphere", { diameter: 1 }, scene);
-    sphere.position = new BABYLON.Vector3(0, 0, 0);
-
     scene.clearColor = new BABYLON.Color4(1, 1, 1, 1);
     const camera = new BABYLON.ArcRotateCamera(
         "Camera",
@@ -451,9 +442,8 @@ const createScene = async () => {
         scene
     );
     camera.attachControl(canvas, true);
-
-    camera.lowerRadiusLimit = 5;   // distanza minima (non si avvicina più di 5)
-    camera.upperRadiusLimit = 40;  // distanza massima (non si allontana più di 50)
+    camera.lowerRadiusLimit = 10;
+    camera.upperRadiusLimit = 40;
 
     const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
     light.intensity = 1;
@@ -652,6 +642,7 @@ salvaPrezzoTotale = () => {
     aggiornaTotale();
     // Aggiorna la configurazione prima di salvare
     let configurazione = {
+        modello: "mountainBike",
         manubrio: currentManubrioType,
         ruote: currentWheelsType,
         sella: currentSellaType,
