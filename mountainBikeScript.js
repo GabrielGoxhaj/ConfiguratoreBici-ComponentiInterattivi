@@ -100,12 +100,6 @@ function checkRadioSaddle(btn) {
 
 async function changeWheels(pathNuovaRuota, btn) {
     if (!scene) return;
-
-    // Only reload if the path is different
-    /*  if (currentWheelsPath === pathNuovaRuota) {
-         return; // Already loaded, do nothing
-     } */
-
     if (btn) {
         const input = btn.querySelector('input[type="radio"]');
         if (input) input.checked = true;
@@ -159,14 +153,7 @@ async function changeWheels(pathNuovaRuota, btn) {
 
 
     console.log("Tipo di ruota corrente:", currentWheelsType);
-
-
-    /* if (matRuota) {
-        ruote.forEach(mesh => {
-            mesh.material = matRuota;
-        });
-    } */
-
+    
         aggiornaTotale(); // Aggiorna il totale dei costi dopo il cambio delle ruote
 }
 
@@ -432,9 +419,6 @@ function aggiornaTotale() {
 const createScene = async () => {
     scene = new BABYLON.Scene(engine);
 
-    const sphere = BABYLON.MeshBuilder.CreateSphere("mysphere", { diameter: 1 }, scene);
-    sphere.position = new BABYLON.Vector3(0, 0, 0);
-
     scene.clearColor = new BABYLON.Color4(1, 1, 1, 1);
     const camera = new BABYLON.ArcRotateCamera(
         "Camera",
@@ -646,6 +630,7 @@ salvaPrezzoTotale = () => {
     aggiornaTotale();
     // Aggiorna la configurazione prima di salvare
     let configurazione = {
+        modello: "mountainBike",
         manubrio: currentManubrioType,
         ruote: currentWheelsType,
         sella: currentSellaType,
