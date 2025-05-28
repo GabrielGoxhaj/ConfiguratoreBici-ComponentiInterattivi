@@ -57,7 +57,7 @@ body {
     flex-direction: row;
 }
 
-.tireColorSelector-wrapper > button, .telaioColorSelector-wrapper > button{
+.tireColorSelector-wrapper > button, .telaioColorSelector-wrapper > button, .saddleColorSelector-wrapper > button {
     border: 2px solid transparent;
 }
 
