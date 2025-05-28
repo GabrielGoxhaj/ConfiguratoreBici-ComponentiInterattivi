@@ -166,6 +166,8 @@ async function changeWheels(pathNuovaRuota, btn) {
             mesh.material = matRuota;
         });
     } */
+
+        aggiornaTotale(); // Aggiorna il totale dei costi dopo il cambio delle ruote
 }
 
 
@@ -173,6 +175,7 @@ async function changeWheels(pathNuovaRuota, btn) {
 window.aggiungiPortaTelefono = async function () {
     if (window.portaTelefonoMesh && window.portaTelefonoMesh.isDisposed() === false) {
         portaTelefonoMesh.dispose()
+        aggiornaTotale(); // Aggiorna il totale dei costi dopo la rimozione del porta telefono
         return;
     }
 
@@ -200,11 +203,14 @@ window.aggiungiPortaTelefono = async function () {
     const dragBehavior = new BABYLON.PointerDragBehavior();
     dragBehavior.useObjectOrientationForDragging = false;
     mesh.addBehavior(dragBehavior);
+
+    aggiornaTotale(); // Aggiorna il totale dei costi dopo l'aggiunta del porta telefono
 }
 
 window.aggiungiBorraccia = async function () {
     if (window.borracciaMesh && window.borracciaMesh.isDisposed() === false) {
-        borracciaMesh.dispose()
+        borracciaMesh.dispose();
+        aggiornaTotale(); // Aggiorna il totale dei costi dopo la rimozione della borraccia
         return;
     }
 
@@ -227,6 +233,8 @@ window.aggiungiBorraccia = async function () {
     const dragBehavior = new BABYLON.PointerDragBehavior();
     dragBehavior.useObjectOrientationForDragging = false;
     mesh.addBehavior(dragBehavior);
+
+    aggiornaTotale(); // Aggiorna il totale dei costi dopo l'aggiunta della borraccia
 }
 
 function selectWheelButton(colorClass) {
@@ -384,6 +392,8 @@ async function ChangeManubrio(nuovomanubrio, options = {}) {
             mesh.scaling = options.scaling.clone();
         }
     });
+
+    aggiornaTotale(); // Aggiorna il totale dei costi dopo il cambio del manubrio
 }
 
 
@@ -414,7 +424,7 @@ function aggiornaTotale() {
     prezzoTotale += totale;
     // Aggiorna il carrello in pagina se vuoi
     const el = document.getElementById('prezzoTotale');
-    if (el) el.textContent = totale + ' €';
+    if (el) el.textContent = prezzoTotale + ' €';
 }
 
 
@@ -518,6 +528,8 @@ const createScene = async () => {
             };
             mesh.material = matSaddle;
         });
+
+        aggiornaTotale(); // Aggiorna il totale dei costi dopo il cambio della sella
     }
 
     window.changeSaddle = changeSaddle;
@@ -561,6 +573,8 @@ function impostaConfigurazioneDefaultMountain() {
         window.borracciaMesh.dispose();
         window.borracciaMesh = null;
     }
+
+    prezzoTotale = 459; // Reset del prezzo totale
 }
 
 createScene().then(scene => {
