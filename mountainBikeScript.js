@@ -370,6 +370,7 @@ async function ChangeManubrio(nuovomanubrio, options = {}) {
     );
 
     manubrio = result.meshes;
+    
 
     Array.from(manubrio).filter(m => {
         return m.id.toLowerCase().indexOf('manubrio') >= 0
@@ -575,6 +576,7 @@ function impostaConfigurazioneDefaultMountain() {
     }
 
     prezzoTotale = 459; // Reset del prezzo totale
+    localStorage.clear()
 }
 
 createScene().then(scene => {
