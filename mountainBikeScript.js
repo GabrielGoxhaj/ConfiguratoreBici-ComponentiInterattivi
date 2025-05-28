@@ -1,6 +1,6 @@
 const canvas = document.getElementById("renderCanvas");
 //blooca lo scroll della pagina quando si usa la rotellina del mouse
-canvas.addEventListener('wheel', function(e) {
+canvas.addEventListener('wheel', function (e) {
     e.preventDefault();
 }, { passive: false });
 const engine = new BABYLON.Engine(canvas, true);
@@ -14,6 +14,7 @@ let body = [];
 let sella = [];
 let matRuota;
 let currentWheelsPath = 'null';
+let currentPortaTelefonoPath = 'null';
 
 let prezzoTotale = 459; // Tiene traccia del prezzo totale della configurazione
 let currentWheelsType = 'mountain'; // Tiene traccia del tipo di ruota scelto
@@ -167,10 +168,20 @@ async function changeWheels(pathNuovaRuota, btn) {
         });
     } */
 
-        aggiornaTotale(); // Aggiorna il totale dei costi dopo il cambio delle ruote
+    aggiornaTotale(); // Aggiorna il totale dei costi dopo il cambio delle ruote
 }
 
-
+async function modificaPosizioneTelefono() {
+    if (currentManubrioType === "mountain") {
+        currentPortaTelefonoPath.position = new BABYLON.Vector3(-0.8, 4.1, -3.15);
+    } else if (currentManubrioType === "bmx") {
+        currentPortaTelefonoPath.position = new BABYLON.Vector3(-0.5, 5.1, -3);
+    } else if (currentManubrioType === "corsa") {
+        currentPortaTelefonoPath.position = new BABYLON.Vector3(-0.7, 4, -3.1);
+    } else if (currentManubrioType === "classic") {
+        currentPortaTelefonoPath.position = new BABYLON.Vector3(-0.4, 4.0, -3.05);
+    }
+}
 
 window.aggiungiPortaTelefono = async function () {
     if (window.portaTelefonoMesh && window.portaTelefonoMesh.isDisposed() === false) {
@@ -188,16 +199,10 @@ window.aggiungiPortaTelefono = async function () {
 
 
     const mesh = result.meshes[0]; // la porta telefono
+    currentPortaTelefonoPath = mesh
+
     window.portaTelefonoMesh = mesh; // salva il riferimento globale
-    if (currentManubrioType === "mountain") {
-        mesh.position = new BABYLON.Vector3(-0.8, 4.1, -3.15);
-    } else if (currentManubrioType === "bmx") {
-        mesh.position = new BABYLON.Vector3(-0.5, 5.1, -3);
-    } else if (currentManubrioType === "corsa") {
-        mesh.position = new BABYLON.Vector3(-0.7, 4, -3.1);
-    } else if (currentManubrioType === "classic") {
-        mesh.position = new BABYLON.Vector3(-0.4, 4.0, -3.05);
-    }
+    modificaPosizioneTelefono()
 
     // Rendi la borraccia draggabile
     const dragBehavior = new BABYLON.PointerDragBehavior();
@@ -370,7 +375,7 @@ async function ChangeManubrio(nuovomanubrio, options = {}) {
     );
 
     manubrio = result.meshes;
-    
+
 
     Array.from(manubrio).filter(m => {
         return m.id.toLowerCase().indexOf('manubrio') >= 0
@@ -394,6 +399,7 @@ async function ChangeManubrio(nuovomanubrio, options = {}) {
         }
     });
 
+    modificaPosizioneTelefono()
     aggiornaTotale(); // Aggiorna il totale dei costi dopo il cambio del manubrio
 }
 
