@@ -445,9 +445,7 @@ const createScene = async () => {
         scene
     );
     camera.attachControl(canvas, true);
-
-    camera.lowerRadiusLimit = 5;   // distanza minima (non si avvicina più di 5)
-    camera.upperRadiusLimit = 40;  // distanza massima (non si allontana più di 50)
+    camera.attachControl(canvas, true);
 
     const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
     light.intensity = 1;
