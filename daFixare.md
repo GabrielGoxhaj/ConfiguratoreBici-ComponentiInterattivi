@@ -11,3 +11,5 @@ un po di pulizia nel js una volta finita la mountain alcune funzioni/variabili s
 accessori bici graficamente mancano i prezzi
 
 reset non resetta colore
+
+bmx sella non esce comme selected
