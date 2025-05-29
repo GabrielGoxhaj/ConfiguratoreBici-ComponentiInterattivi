@@ -167,13 +167,13 @@ async function changeWheels(pathNuovaRuota, btn) {
 
 async function modificaPosizioneTelefono() {
     if (currentManubrioType === "mountain") {
-        currentPortaTelefonoPath.position = new BABYLON.Vector3(-0.8, 4.1, -3.15);
+        currentPortaTelefonoPath.position = new BABYLON.Vector3(-0.8, 4.3, -3.15);
     } else if (currentManubrioType === "bmx") {
-        currentPortaTelefonoPath.position = new BABYLON.Vector3(-0.5, 5.1, -3);
+        currentPortaTelefonoPath.position = new BABYLON.Vector3(-0.5, 5.35, -3);
     } else if (currentManubrioType === "corsa") {
-        currentPortaTelefonoPath.position = new BABYLON.Vector3(-0.7, 4, -3.1);
+        currentPortaTelefonoPath.position = new BABYLON.Vector3(-0.7, 4.2, -3);
     } else if (currentManubrioType === "classic") {
-        currentPortaTelefonoPath.position = new BABYLON.Vector3(-0.4, 4.0, -3.05);
+        currentPortaTelefonoPath.position = new BABYLON.Vector3(-0.4, 3.95, -3.05);
     }
 }
 
@@ -226,7 +226,7 @@ window.aggiungiBorraccia = async function () {
 
     console.log("madonna impestata");
 
-    mesh.position = new BABYLON.Vector3(0, 2, -1.6);
+    mesh.position = new BABYLON.Vector3(0, 1.9, -1.6);
 
     // Rendi la borraccia draggabile
     const dragBehavior = new BABYLON.PointerDragBehavior();
