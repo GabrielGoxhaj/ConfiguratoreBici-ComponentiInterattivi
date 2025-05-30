@@ -24,7 +24,8 @@ body {
 
 .card-telaio,
 .card-wheels,
-.card-saddle {
+.card-saddle,
+.card-acc {
     width: 60px;
     height: 60px;
     border: 2px solid transparent;
@@ -62,7 +63,8 @@ body {
 
 .tireColorSelector-wrapper>button,
 .telaioColorSelector-wrapper>button,
-.saddleColorSelector-wrapper>button {
+.saddleColorSelector-wrapper>button,
+.AccessoriColorSelector-wrapper>button {
     border: 2px solid transparent;
 }
 
