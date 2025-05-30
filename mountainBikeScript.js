@@ -266,7 +266,15 @@ function selectSaddleButton(colorClass) {
         }
     });
 }
-
+function selectButtonAccessori(colorClass) {
+    document.querySelectorAll('.AccessoriColorSelector-wrapper button').forEach(btn => {
+        if (btn.classList.contains(colorClass)) {
+            btn.classList.add('selected');
+        } else {
+            btn.classList.remove('selected');
+        }
+    });
+}
 function changeWheelsColor(colorWheelsName) {
     let colorWheels;
     if (colorWheelsName === 'red') {
@@ -356,6 +364,48 @@ function changeSaddleColor(colorSaddleName) {
     }
 }
 
+function changeColorAccessori(colorName) {
+    let color;
+    if (colorName === 'red') {
+        console.log('red accessori');
+        color = new BABYLON.Color3(1, 0, 0);
+        selectButtonAccessori('red-accessori');
+    } else if (colorName === 'green') {
+        console.log('green accessori');
+        color = new BABYLON.Color3(0, 1, 0);
+        selectButtonAccessori('green-accessori');
+    } else if (colorName === 'white') {
+        console.log('white accessori');
+        color = new BABYLON.Color3(1, 1, 1);
+        selectButtonAccessori('white-accessori');
+    } else if (colorName === 'black') {
+        console.log('black accessori');
+        color = new BABYLON.Color3(0, 0, 0);
+        selectButtonAccessori('black-accessori');
+    } else {
+        color = new BABYLON.Color3(1, 1, 1); // default white
+    }
+
+    // Cambia colore alla borraccia 
+    if (window.borracciaMesh && window.borracciaMesh.getChildMeshes) {
+        const matBorraccia = new BABYLON.StandardMaterial("matBorraccia", scene);
+        matBorraccia.diffuseColor = color;
+        window.borracciaMesh.getChildMeshes().forEach((child) => {
+            child.material = matBorraccia;
+        });
+    }
+
+    // Cambia colore al porta telefono 
+    if (window.portaTelefonoMesh && window.portaTelefonoMesh.getChildMeshes) {
+        const matPortaTelefono = new BABYLON.StandardMaterial("matPortaTelefono", scene);
+        console.log("porta telefono mesh", window.portaTelefonoMesh);
+        matPortaTelefono.diffuseColor = color;
+        window.portaTelefonoMesh.getChildMeshes().forEach((child) => {
+            child.material = matPortaTelefono;
+        });
+    }
+}
+
 async function ChangeManubrio(nuovomanubrio, options = {}) {
     console.log(options);
     await manubrio.forEach(mesh => {
@@ -432,8 +482,6 @@ function aggiornaTotale() {
 const createScene = async () => {
     scene = new BABYLON.Scene(engine);
 
-    const sphere = BABYLON.MeshBuilder.CreateSphere("mysphere", { diameter: 1 }, scene);
-    sphere.position = new BABYLON.Vector3(0, 0, 0);
 
     scene.clearColor = new BABYLON.Color4(1, 1, 1, 1);
     const camera = new BABYLON.ArcRotateCamera(

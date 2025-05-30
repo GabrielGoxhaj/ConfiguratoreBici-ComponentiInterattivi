@@ -21,7 +21,7 @@ body {
     touch-action: none;
 }
 
-.card-telaio, .card-wheels, .card-saddle {
+.card-telaio, .card-wheels, .card-saddle ,.card-acc{
     width: 60px;
     height: 60px;
     border: 2px solid transparent;
@@ -52,7 +52,7 @@ body {
     margin-bottom: 6vh;
 }
 
-.tireColorSelector-wrapper, .telaioColorSelector-wrapper, .changeSella-wrapper, .saddleColorSelector-wrapper {
+.tireColorSelector-wrapper, .telaioColorSelector-wrapper, .changeSella-wrapper, .saddleColorSelector-wrapper, .AccessoriColorSelector-wrapper{
     display: flex;
     flex-direction: row;
 }
@@ -100,7 +100,7 @@ body {
     gap: 8px;
 }
 
-.tireColorSelector-wrapper > button.selected, .telaioColorSelector-wrapper > button.selected, .saddleColorSelector-wrapper > button.selected {
+.tireColorSelector-wrapper > button.selected, .telaioColorSelector-wrapper > button.selected, .saddleColorSelector-wrapper > button.selected , .AccessoriColorSelector-wrapper > button.selected {
     border: 4px solid black;
 }
 
