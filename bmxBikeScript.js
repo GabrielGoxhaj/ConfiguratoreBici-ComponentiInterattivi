@@ -586,7 +586,7 @@ const createScene = async () => {
                 currentSellaType = "classic";
 
             } else if (mesh.name.toLowerCase().includes("corsa")) {
-                mesh.position = new BABYLON.Vector3(0, 3.5, 1.4);
+                mesh.position = new BABYLON.Vector3(0, 3.5, 2);
                 mesh.scaling = new BABYLON.Vector3(0.3, 0.2, 0.2);
                 currentSellaType = "corsa";
             } else if (mesh.name.toLowerCase().includes("mountain")) {
