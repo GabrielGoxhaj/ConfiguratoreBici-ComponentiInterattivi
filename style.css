@@ -365,7 +365,7 @@ body {
     align-items: center;
 }
 
-.cart-container > div > img {
+.cart-container > div > img, #porta-telefono > img, #portaborraccia > img {
     max-width: 250px !important;
     display: flex;
     justify-content: end !important;
@@ -373,7 +373,7 @@ body {
     object-fit: contain;
 }
 
-#modello, #telaio, #ruote, #sella, #manubrio {
+#modello, #telaio, #ruote, #sella, #manubrio, #porta-telefono, #portaborraccia{
     display: flex;
     min-width: 500px;
     align-items: center;
