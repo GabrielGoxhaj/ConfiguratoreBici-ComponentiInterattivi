@@ -20,7 +20,7 @@ let prezzoTotale = 259; // Tiene traccia del prezzo totale della configurazione
 let currentWheelsType = 'bmx'; // Tiene traccia del tipo di ruota scelto
 let currentManubrioType = 'bmx'; // Tiene traccia del tipo di manubrio scelto
 let currentSellaType = 'bmx'; // Tiene traccia del tipo di sella scelta
-
+let color = null;
 const prezziComponenti = {
     manubrio: {
         bmx: 69.99,
@@ -223,10 +223,15 @@ window.aggiungiBorraccia = async function () {
     const mesh = result.meshes[0]; // la borraccia
     window.borracciaMesh = mesh; // salva il riferimento globale
 
-
     console.log("madonna impestata");
 
     mesh.position = new BABYLON.Vector3(0, 1.9, -1.6);
+
+    mesh.material = color;
+
+    console.log("Borraccia aggiunta alla scena:", color);
+
+
 
     // Rendi la borraccia draggabile
     const dragBehavior = new BABYLON.PointerDragBehavior();
@@ -321,6 +326,8 @@ function changeTelaioColor(colorTelaioName) {
     if (matbody) {
         matbody.diffuseColor = colorTelaio;
     }
+
+    color = colorTelaio; // Salva il colore corrente
     // Change color of manubrio
     manubrio.forEach(mesh => {
         mesh.material = matTelaio;
@@ -555,13 +562,13 @@ const createScene = async () => {
     return scene;
 };
 
-function impostaConfigurazioneDefaultMountain() {
+function impostaConfigurazioneDefaultBMX() {
     currentManubrioType = 'bmx';
     currentWheelsType = 'bmx';
     currentSellaType = 'bmx';
     document.getElementById('bmxManubrio').click();
-    document.getElementById('bmxRuota').click();
-    document.getElementById('sellaBmx').click();
+    document.getElementById('ruotaBmx').click();
+    document.getElementById('sellaBMX').click();
     if (window.portaTelefonoMesh && window.portaTelefonoMesh.dispose) {
         window.portaTelefonoMesh.dispose();
         window.portaTelefonoMesh = null;
@@ -572,15 +579,13 @@ function impostaConfigurazioneDefaultMountain() {
     }
 
     prezzoTotale = 259; // Reset del prezzo totale
-    localStorage.clear()
+    localStorage.clear();
 }
 
 createScene().then(scene => {
     engine.runRenderLoop(() => scene.render());
-
-    // --- IMPOSTA CONFIGURAZIONE DI DEFAULT (MOUNTAIN) AL PRIMO ACCESSO ---
     if (!localStorage.getItem('configurazioneBici')) {
-        impostaConfigurazioneDefaultMountain();
+        impostaConfigurazioneDefaultBMX();
     }
     // --- FINE DEFAULT ---
 
