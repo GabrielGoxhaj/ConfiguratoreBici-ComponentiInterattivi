@@ -19,9 +19,12 @@ body {
     height: 100%;
     border: 1px solid black;
     touch-action: none;
+    margin-bottom: 5px;
 }
 
-.card-telaio, .card-wheels, .card-saddle {
+.card-telaio,
+.card-wheels,
+.card-saddle {
     width: 60px;
     height: 60px;
     border: 2px solid transparent;
@@ -52,26 +55,31 @@ body {
     margin-bottom: 6vh;
 }
 
-.tireColorSelector-wrapper, .telaioColorSelector-wrapper, .changeSella-wrapper, .saddleColorSelector-wrapper {
+.tireColorSelector-wrapper,
+.telaioColorSelector-wrapper,
+.changeSella-wrapper,
+.saddleColorSelector-wrapper {
     display: flex;
     flex-direction: row;
 }
 
-.tireColorSelector-wrapper > button, .telaioColorSelector-wrapper > button, .saddleColorSelector-wrapper > button {
+.tireColorSelector-wrapper>button,
+.telaioColorSelector-wrapper>button,
+.saddleColorSelector-wrapper>button {
     border: 2px solid transparent;
 }
 
-.changeWheels-wrapper > button {
+.changeWheels-wrapper>button {
     width: 450px;
     display: flex;
 }
 
-.changeWheels-wrapper > button > img {
+.changeWheels-wrapper>button>img {
     margin-left: 0px;
     border-right: 2px solid black;
 }
 
-.changeWheels-wrapper > button {
+.changeWheels-wrapper>button {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -80,6 +88,7 @@ body {
     padding: 8px;
     gap: 8px;
 }
+
 .changeSella-wrapper {
     display: flex;
     flex-direction: row;
@@ -91,7 +100,8 @@ body {
     box-sizing: border-box;
     min-height: 400px;
 }
-.changeSella-wrapper > button {
+
+.changeSella-wrapper>button {
     flex: 0 0 auto;
     align-items: center;
     width: 180px;
@@ -100,7 +110,9 @@ body {
     gap: 8px;
 }
 
-.tireColorSelector-wrapper > button.selected, .telaioColorSelector-wrapper > button.selected, .saddleColorSelector-wrapper > button.selected {
+.tireColorSelector-wrapper>button.selected,
+.telaioColorSelector-wrapper>button.selected,
+.saddleColorSelector-wrapper>button.selected {
     border: 4px solid black;
 }
 
@@ -131,7 +143,7 @@ body {
     min-height: 400px;
 }
 
-.changeManubrio-wrapper > button {
+.changeManubrio-wrapper>button {
     flex: 0 0 auto;
     width: 180px;
     background-color: #fafafa;
@@ -152,9 +164,10 @@ button:not(.cart-button):not(.menu-principale-button) {
     margin: 2px;
 }
 
-button:not(.cart-button):hover, button:not(.menu-principale-button):hover {
+button:not(.cart-button):hover,
+button:not(.menu-principale-button):hover {
     transform: scale(1.03);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     border-radius: 2px;
@@ -166,7 +179,7 @@ button:not(.cart-button):hover, button:not(.menu-principale-button):hover {
     align-items: center;
 }
 
-.wheels-customization-wrapper > div {
+.wheels-customization-wrapper>div {
     padding: 2px;
 }
 
@@ -207,6 +220,7 @@ input[type="radio"] {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .cart-svg {
@@ -224,7 +238,7 @@ input[type="radio"] {
     cursor: pointer;
 }
 
-.cart-button > svg {
+.cart-button>svg {
     margin-left: 1vh;
     width: 30px;
     height: 30px;
@@ -236,10 +250,10 @@ input[type="radio"] {
     flex-direction: row;
     align-items: center;
     border: none;
-    background-color: none;
+    background-color: transparent;
 }
 
-.menu-principale-button > svg {
+.menu-principale-button>svg {
     width: 30px;
     height: 30px;
     color: black;
@@ -254,7 +268,9 @@ input[type="radio"] {
     margin: 0 auto;
 }
 
-.mountain-img, .bmx-img, .racing-img {
+.mountain-img,
+.bmx-img,
+.racing-img {
     max-width: 50vh;
     object-fit: contain;
     margin-bottom: 50px;
@@ -280,13 +296,13 @@ input[type="radio"] {
 
 .button-bicycle:hover {
     transform: scale(1.03);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     transition: all 0.2s ease-in-out;
 }
 
 .title-website {
     color: black;
-    display: flex; 
+    display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: 2px;
@@ -321,7 +337,7 @@ input[type="radio"] {
 
 .a-footer a:hover {
     transform: scale(1.01);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     background-color: #464646;
     transition: all 0.2s ease-in-out;
     border-radius: 2px;
@@ -334,33 +350,63 @@ input[type="radio"] {
 }
 
 body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
 
-        .cart-container {
-            max-width: 700px;
-            margin: 40px auto;
-            background: #fff;
-            padding: 24px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
+.cart-container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
 
-        .edit-btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background: #0078d7;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+.edit-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #0078d7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
 
-        .edit-btn:hover {
-            background: #005fa3;
-        }
+.edit-btn:hover {
+    background: #005fa3;
+}
+
+.add-to-cart-btn {
+    border: 1px solid #000000;
+    border-radius: 2px;
+    background: green;
+    color: white;
+    min-width: 150px;
+    align-items: center;
+    gap: 8px;
+    display: flex;
+    justify-content: center;
+    min-height: 20%;
+}
+
+.reset-config-btn {
+    border: 1px solid #000000;
+    border-radius: 2px;
+    background: red;
+    color: white;
+    min-width: 150px;
+    align-items: center;
+    gap: 8px;
+    display: flex;
+    justify-content: center;
+    min-height: 20%;
+}
+
+#prezzoTotale {
+    min-height: 22px;
+}

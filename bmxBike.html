@@ -27,12 +27,22 @@
                     Carrello
                     <img class="cart-svg" src="./img/cart.svg" alt="carrello">
                 </button>
+                <div id="prezzoTotale"></div>
             </div>
         </div>
     </header>
     <main>
         <div class="mountainBike-wrapper">
-            <canvas id="renderCanvas"></canvas>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <canvas id="renderCanvas"></canvas>
+                <div style="display: flex; justify-content: space-between;">
+                    <button class="reset-config-btn" onclick="impostaConfigurazioneDefaultMountain();">Resetta</button>
+                    <button class="add-to-cart-btn" onclick="salvaPrezzoTotale(); window.location.href='cart.html';">
+                        <img class="cart-svg" style="filter: invert(100%);" src="./img/cart.svg" alt="carrello">
+                        Aggiungi al carrello
+                    </button>
+                </div>
+            </div>
             <div class="personalization-wrapper">
                 <h2>Colore telaio</h2>
                 <div class="telaio-wrapper">
