@@ -188,10 +188,22 @@ break;
 // Accessori
 if (config.accessori) {
         if (config.accessori.portaTelefono) {
-                document.getElementById('accessori').appendChild(immagini.portatelefono);
+                const divPortaTelefono = document.createElement('div');
+                divPortaTelefono.id = 'porta-telefono';
+                document.getElementById('accessori').appendChild(divPortaTelefono);
+                divPortaTelefono.appendChild(immagini.portatelefono);
+                const accessoriTextPortaTelefono = document.createElement('p');
+                accessoriTextPortaTelefono.textContent = `Porta Telefono - Prezzo: ${prezziComponenti.accessori.portaTelefono} €`;
+                divPortaTelefono.appendChild(accessoriTextPortaTelefono);
         }
         if (config.accessori.portaborraccia) {
-                document.getElementById('accessori').appendChild(immagini.borraccia);
+                const divPortaborraccia = document.createElement('div');
+                divPortaborraccia.id = 'portaborraccia';
+                document.getElementById('accessori').appendChild(divPortaborraccia);
+                divPortaborraccia.appendChild(immagini.borraccia);
+                const accessoriTextPortaborraccia = document.createElement('p');
+                accessoriTextPortaborraccia.textContent = `Portaborraccia - Prezzo: ${prezziComponenti.accessori.portaborraccia} €`;
+                divPortaborraccia.appendChild(accessoriTextPortaborraccia);
         }
 }
 
