@@ -446,7 +446,22 @@ function aggiornaTotale() {
 const createScene = async () => {
     scene = new BABYLON.Scene(engine);
 
-    scene.clearColor = new BABYLON.Color4(1, 1, 1, 1);
+    // scene.clearColor = new BABYLON.Color4(1, 1, 1, 1);
+    // // --- AGGIUNTA GROUND SIMILE AD UNA STRADA (PBR) ---
+    // const ground = BABYLON.MeshBuilder.CreateGround("ground", { width: 20, height: 100 }, scene);
+    // const roadMaterial = new BABYLON.PBRMaterial("roadMat", scene);
+    // roadMaterial.albedoTexture = new BABYLON.Texture("texture/street.png", scene);
+    // roadMaterial.metallic = 0.0;
+    // roadMaterial.roughness = 0.5;
+    // roadMaterial.environmentIntensity = 1.0;
+    // ground.material = roadMaterial;
+    // ground.position.y = -1.72;
+    // // --- FINE GROUND ---
+
+    scene.environmentTexture = new BABYLON.HDRCubeTexture('texture/skate.hdr', scene, 300);
+    scene.createDefaultSkybox(scene.environmentTexture, true);
+
+
     const camera = new BABYLON.ArcRotateCamera(
         "Camera",
         0,     // α: lato destro

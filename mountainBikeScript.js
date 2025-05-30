@@ -452,6 +452,9 @@ const createScene = async () => {
     camera.lowerRadiusLimit = 10;
     camera.upperRadiusLimit = 40;
 
+    scene.environmentTexture = new BABYLON.HDRCubeTexture('texture/dirt.hdr', scene, 300);
+    scene.createDefaultSkybox(scene.environmentTexture, true);
+
     const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
     light.intensity = 1;
     const bikeResult = await BABYLON.SceneLoader.ImportMeshAsync(
@@ -586,6 +589,9 @@ function impostaConfigurazioneDefaultMountain() {
 
 createScene().then(scene => {
     engine.runRenderLoop(() => scene.render());
+
+
+
 
     // --- IMPOSTA CONFIGURAZIONE DI DEFAULT (MOUNTAIN) AL PRIMO ACCESSO ---
     if (!localStorage.getItem('configurazioneBici')) {
