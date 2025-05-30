@@ -545,7 +545,7 @@ const createScene = async () => {
         // Use the globally saved color, or default
         let saddleColor = window.saddleColor || new BABYLON.Color3(1, 1, 3);
         matSaddle = new BABYLON.StandardMaterial("matSaddle", scene);
-        matSaddle.diffuseColor = saddleColor;
+        matSaddle.diffuseColor = new BABYLON.Color3(1, 1, 1); // Colore di default bianco
 
         // Trova la mesh della sella tra quelle importate
         let selleImportate = nuovaSaddle.meshes.filter(mesh => mesh.name.toLowerCase().includes("sella"));
@@ -631,7 +631,10 @@ function impostaConfigurazioneDefaultMountain() {
         window.borracciaMesh.dispose();
         window.borracciaMesh = null;
     }
-
+    changeWheelsColor('white');
+    changeTelaioColor('white');
+    changeSaddleColor('white');
+    changeColorAccessori('white');
     prezzoTotale = 459; // Reset del prezzo totale
     localStorage.clear()
 }
