@@ -21,9 +21,9 @@ let currentWheelsPath = "null";
 let currentPortaTelefonoPath = "null";
 
 let prezzoTotale = 259; // Tiene traccia del prezzo totale della configurazione
-let currentWheelsType = "bmx"; // Tiene traccia del tipo di ruota scelto
-let currentManubrioType = "bmx"; // Tiene traccia del tipo di manubrio scelto
-let currentSellaType = "bmx"; // Tiene traccia del tipo di sella scelta
+let currentWheelsType = 'bmx'; // Tiene traccia del tipo di ruota scelto
+let currentManubrioType = 'bmx'; // Tiene traccia del tipo di manubrio scelto
+let currentSellaType = 'bmx'; // Tiene traccia del tipo di sella scelta
 
 const prezziComponenti = {
   manubrio: {
@@ -220,12 +220,13 @@ window.aggiungiBorraccia = async function () {
     scene
   );
 
-  const mesh = result.meshes[0]; // la borraccia
-  window.borracciaMesh = mesh; // salva il riferimento globale
+    const mesh = result.meshes[0]; // la borraccia
+    window.borracciaMesh = mesh; // salva il riferimento globale
+
 
   console.log("madonna impestata");
 
-  mesh.position = new BABYLON.Vector3(0, 1.9, -1.6);
+    mesh.position = new BABYLON.Vector3(0, 1.9, -1.6);
 
   // Rendi la borraccia draggabile
   const dragBehavior = new BABYLON.PointerDragBehavior();
@@ -335,41 +336,42 @@ function changeTelaioColor(colorTelaioName) {
   const matTelaio = new BABYLON.StandardMaterial("matTelaio", scene);
   matTelaio.diffuseColor = colorTelaio;
 
-  if (matbody) {
-    matbody.diffuseColor = colorTelaio;
-  }
-  // Change color of manubrio
-  manubrio.forEach((mesh) => {
-    mesh.material = matTelaio;
-  });
+    if (matbody) {
+        matbody.diffuseColor = colorTelaio;
+    }
+    // Change color of manubrio
+    manubrio.forEach(mesh => {
+        mesh.material = matTelaio;
+    });
 }
 
+// Modifica changeSaddleColor per salvare il colore scelto
 function changeSaddleColor(colorSaddleName) {
-  let colorSaddle;
-  if (colorSaddleName === "red") {
-    console.log("red saddle");
-    colorSaddle = new BABYLON.Color3(1, 0, 0);
-    selectSaddleButton("red-saddle");
-  } else if (colorSaddleName === "green") {
-    console.log("green Saddle");
-    colorSaddle = new BABYLON.Color3(0, 1, 0);
-    selectSaddleButton("green-saddle");
-  } else if (colorSaddleName === "white") {
-    console.log("white saddle");
-    colorSaddle = new BABYLON.Color3(1, 1, 1);
-    selectSaddleButton("white-saddle");
-  } else if (colorSaddleName === "black") {
-    console.log("black saddle");
-    colorSaddle = new BABYLON.Color3(0, 0, 0);
-    selectSaddleButton("black-saddle");
-  } else {
-    colorSaddle = new BABYLON.Color3(1, 1, 1); // default white
-  }
-  const matSaddle = new BABYLON.StandardMaterial("matSaddle", scene);
-  matSaddle.diffuseColor = colorSaddle;
-  if (window.matSaddle) {
-    window.matSaddle.diffuseColor = colorSaddle;
-  }
+    let colorSaddle;
+    if (colorSaddleName === 'red') {
+        console.log('red saddle');
+        colorSaddle = new BABYLON.Color3(1, 0, 0);
+        selectSaddleButton('red-saddle');
+    } else if (colorSaddleName === 'green') {
+        console.log('green Saddle');
+        colorSaddle = new BABYLON.Color3(0, 1, 0);
+        selectSaddleButton('green-saddle');
+    } else if (colorSaddleName === 'white') {
+        console.log('white saddle');
+        colorSaddle = new BABYLON.Color3(1, 1, 1);
+        selectSaddleButton('white-saddle');
+    } else if (colorSaddleName === 'black') {
+        console.log('black saddle');
+        colorSaddle = new BABYLON.Color3(0, 0, 0);
+        selectSaddleButton('black-saddle');
+    } else {
+        colorSaddle = new BABYLON.Color3(1, 1, 1); // default white
+    }
+    const matSaddle = new BABYLON.StandardMaterial("matSaddle", scene);
+    matSaddle.diffuseColor = colorSaddle;
+    if (window.matSaddle) {
+        window.matSaddle.diffuseColor = colorSaddle;
+    }
 }
 
 function changeColorAccessori(colorName) {
@@ -495,18 +497,18 @@ function aggiornaTotale() {
 const createScene = async () => {
   scene = new BABYLON.Scene(engine);
 
-  scene.clearColor = new BABYLON.Color4(1, 1, 1, 1);
-  const camera = new BABYLON.ArcRotateCamera(
-    "Camera",
-    0, // α: lato destro
-    Math.PI / 2.2, // β: leggera vista dall’alto
-    25, // distanza dalla bici
-    BABYLON.Vector3.Zero(),
-    scene
-  );
-  camera.attachControl(canvas, true);
-  camera.lowerRadiusLimit = 10;
-  camera.upperRadiusLimit = 40;
+    scene.clearColor = new BABYLON.Color4(1, 1, 1, 1);
+    const camera = new BABYLON.ArcRotateCamera(
+        "Camera",
+        0,     // α: lato destro
+        Math.PI / 2.2,   // β: leggera vista dall’alto
+        25,               // distanza dalla bici
+        BABYLON.Vector3.Zero(),
+        scene
+    );
+    camera.attachControl(canvas, true);
+    camera.lowerRadiusLimit = 10;
+    camera.upperRadiusLimit = 40;
 
   const light = new BABYLON.HemisphericLight(
     "light",
@@ -542,15 +544,16 @@ const createScene = async () => {
 
     checkRadioSaddle(btn);
 
-    const nuovaSaddle = await BABYLON.SceneLoader.ImportMeshAsync(
-      "",
-      "models/",
-      pathNuovaSaddle,
-      scene
-    );
+        const nuovaSaddle = await BABYLON.SceneLoader.ImportMeshAsync(
+            "",
+            "models/",
+            pathNuovaSaddle,
+            scene
 
-    matSaddle = new BABYLON.StandardMaterial("matSaddle", scene);
-    matSaddle.diffuseColor = new BABYLON.Color3(1, 1, 3);
+        );
+
+        matSaddle = new BABYLON.StandardMaterial("matSaddle", scene);
+        matSaddle.diffuseColor = new BABYLON.Color3(1, 1, 3);
 
     // Trova la mesh della sella tra quelle importate
     let selleImportate = nuovaSaddle.meshes.filter((mesh) =>
@@ -567,30 +570,32 @@ const createScene = async () => {
     }
     window.sellePresenti = selleImportate;
 
-    // Applica posizione e materiale a ciascuna sella importata
-    selleImportate.forEach((mesh) => {
-      // Gestione manuale per ogni modello di sella
-      if (mesh.name.toLowerCase().includes("bmx")) {
-        mesh.position = new BABYLON.Vector3(0, 3.4, 1);
-        mesh.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
-        mesh.rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
-        currentSellaType = "bmx";
-      } else if (mesh.name.toLowerCase().includes("classic")) {
-        mesh.position = new BABYLON.Vector3(0, 3, 1.1);
-        mesh.scaling = new BABYLON.Vector3(0.03, 0.03, 0.03);
-        mesh.rotation = new BABYLON.Vector3(1.7, 3.2, 0); // 180° asse X
-        currentSellaType = "classic";
-      } else if (mesh.name.toLowerCase().includes("corsa")) {
-        mesh.position = new BABYLON.Vector3(0, 3.5, 2);
-        mesh.scaling = new BABYLON.Vector3(0.3, 0.2, 0.2);
-        currentSellaType = "corsa";
-      } else if (mesh.name.toLowerCase().includes("mountain")) {
-        mesh.position = new BABYLON.Vector3(0, 3.3, 1.3);
-        mesh.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
-        currentSellaType = "mountain";
-      }
-      mesh.material = matSaddle;
-    });
+        // Applica posizione e materiale a ciascuna sella importata
+        selleImportate.forEach(mesh => {
+            // Gestione manuale per ogni modello di sella
+            if (mesh.name.toLowerCase().includes("bmx")) {
+                mesh.position = new BABYLON.Vector3(0, 3.4, 1);
+                mesh.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
+                mesh.rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
+                currentSellaType = "bmx";
+
+            } else if (mesh.name.toLowerCase().includes("classic")) {
+                mesh.position = new BABYLON.Vector3(0, 3, 1.1);
+                mesh.scaling = new BABYLON.Vector3(0.03, 0.03, 0.03);
+                mesh.rotation = new BABYLON.Vector3(1.7, 3.2, 0); // 180° asse X
+                currentSellaType = "classic";
+
+            } else if (mesh.name.toLowerCase().includes("corsa")) {
+                mesh.position = new BABYLON.Vector3(0, 3.5, 1.4);
+                mesh.scaling = new BABYLON.Vector3(0.3, 0.2, 0.2);
+                currentSellaType = "corsa";
+            } else if (mesh.name.toLowerCase().includes("mountain")) {
+                mesh.position = new BABYLON.Vector3(0, 3.3, 1.3);
+                mesh.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
+                currentSellaType = "mountain";
+            };
+            mesh.material = matSaddle;
+        });
 
     aggiornaTotale(); // Aggiorna il totale dei costi dopo il cambio della sella
   }
@@ -628,33 +633,33 @@ const createScene = async () => {
 };
 
 function impostaConfigurazioneDefaultMountain() {
-  currentManubrioType = "bmx";
-  currentWheelsType = "bmx";
-  currentSellaType = "bmx";
-  document.getElementById("bmxManubrio").click();
-  document.getElementById("bmxRuota").click();
-  document.getElementById("sellaBmx").click();
-  if (window.portaTelefonoMesh && window.portaTelefonoMesh.dispose) {
-    window.portaTelefonoMesh.dispose();
-    window.portaTelefonoMesh = null;
-  }
-  if (window.borracciaMesh && window.borracciaMesh.dispose) {
-    window.borracciaMesh.dispose();
-    window.borracciaMesh = null;
-  }
+    currentManubrioType = 'bmx';
+    currentWheelsType = 'bmx';
+    currentSellaType = 'bmx';
+    document.getElementById('bmxManubrio').click();
+    document.getElementById('bmxRuota').click();
+    document.getElementById('sellaBmx').click();
+    if (window.portaTelefonoMesh && window.portaTelefonoMesh.dispose) {
+        window.portaTelefonoMesh.dispose();
+        window.portaTelefonoMesh = null;
+    }
+    if (window.borracciaMesh && window.borracciaMesh.dispose) {
+        window.borracciaMesh.dispose();
+        window.borracciaMesh = null;
+    }
 
-  prezzoTotale = 259; // Reset del prezzo totale
-  localStorage.clear();
+    prezzoTotale = 259; // Reset del prezzo totale
+    localStorage.clear()
 }
 
-createScene().then((scene) => {
-  engine.runRenderLoop(() => scene.render());
+createScene().then(scene => {
+    engine.runRenderLoop(() => scene.render());
 
-  // --- IMPOSTA CONFIGURAZIONE DI DEFAULT (MOUNTAIN) AL PRIMO ACCESSO ---
-  if (!localStorage.getItem("configurazioneBici")) {
-    impostaConfigurazioneDefaultMountain();
-  }
-  // --- FINE DEFAULT ---
+    // --- IMPOSTA CONFIGURAZIONE DI DEFAULT (MOUNTAIN) AL PRIMO ACCESSO ---
+    if (!localStorage.getItem('configurazioneBici')) {
+        impostaConfigurazioneDefaultMountain();
+    }
+    // --- FINE DEFAULT ---
 
   // --- RIPRISTINO CONFIGURAZIONE SALVATA DOPO CHE LA SCENA È PRONTA ---
   const configSalvata = localStorage.getItem("configurazioneBici");

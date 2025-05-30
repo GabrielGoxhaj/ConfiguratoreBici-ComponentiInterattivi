@@ -356,10 +356,17 @@ function changeSaddleColor(colorSaddleName) {
     } else {
         colorSaddle = new BABYLON.Color3(1, 1, 1); // default white
     }
+    window.saddleColor = colorSaddle; // Save globally
     const matSaddle = new BABYLON.StandardMaterial("matSaddle", scene);
     matSaddle.diffuseColor = colorSaddle;
     if (window.matSaddle) {
         window.matSaddle.diffuseColor = colorSaddle;
+    }
+    // Apply color to all current saddles
+    if (window.sellePresenti && Array.isArray(window.sellePresenti)) {
+        window.sellePresenti.forEach(mesh => {
+            mesh.material = matSaddle;
+        });
     }
 }
 
@@ -494,6 +501,9 @@ const createScene = async () => {
     camera.lowerRadiusLimit = 10;
     camera.upperRadiusLimit = 40;
 
+    scene.environmentTexture = new BABYLON.HDRCubeTexture('texture/dirt.hdr', scene, 300);
+    scene.createDefaultSkybox(scene.environmentTexture, true);
+
     const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
     light.intensity = 1;
     const bikeResult = await BABYLON.SceneLoader.ImportMeshAsync(
@@ -532,8 +542,10 @@ const createScene = async () => {
 
         );
 
+        // Use the globally saved color, or default
+        let saddleColor = window.saddleColor || new BABYLON.Color3(1, 1, 3);
         matSaddle = new BABYLON.StandardMaterial("matSaddle", scene);
-        matSaddle.diffuseColor = new BABYLON.Color3(1, 1, 3);
+        matSaddle.diffuseColor = saddleColor;
 
         // Trova la mesh della sella tra quelle importate
         let selleImportate = nuovaSaddle.meshes.filter(mesh => mesh.name.toLowerCase().includes("sella"));
@@ -626,6 +638,9 @@ function impostaConfigurazioneDefaultMountain() {
 
 createScene().then(scene => {
     engine.runRenderLoop(() => scene.render());
+
+
+
 
     // --- IMPOSTA CONFIGURAZIONE DI DEFAULT (MOUNTAIN) AL PRIMO ACCESSO ---
     if (!localStorage.getItem('configurazioneBici')) {
