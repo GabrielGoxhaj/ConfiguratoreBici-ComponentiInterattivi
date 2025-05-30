@@ -197,14 +197,14 @@ if (config.accessori) {
 
 console.log("Configurazione caricata:", config);
 
-function openActiveConfigurator() {
-        if (config.modello === 'mountainBike') {
-                window.location.href = 'mountainBike.html';
-        }
-        else if (config.modello === 'bmx') {
-                window.location.href = 'bmxBike.html';
-        }
-        else if (config.modello === 'corsa') {
-                window.location.href = 'racingBike.html';
-        } // corsa è da ricontrollare quando la fn viene applicata correttamente
-}
+// function openActiveConfigurator() {
+//         if (config.modello === 'mountainBike') {
+//                 window.location.href = 'mountainBike.html';
+//         }
+//         else if (config.modello === 'bmx') {
+//                 window.location.href = 'bmxBike.html';
+//         }
+//         else if (config.modello === 'corsa') {
+//                 window.location.href = 'racingBike.html';
+//         } // corsa è da ricontrollare quando la fn viene applicata correttamente
+// }
