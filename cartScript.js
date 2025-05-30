@@ -10,6 +10,31 @@ function creaImmagine(src) {
   return img;
 }
 
+const prezziComponenti = {
+    manubrio: {
+        bmx: 69.99,
+        classic: 9.99,
+        mountain: 129.99,
+        corsa: 79.99
+    }, ruote: {
+        mountain: 149.99,
+        bmx: 199.99,
+        corsa: 249.99
+    }, sella: {
+        mountain: 9.99,
+        bmx: 19.99,
+        classic: 9.99,
+        corsa: 29.99
+    }, accessori: {
+        portaTelefono: 19.99,
+        portaborraccia: 14.99
+    }, modello: {
+        mountainBike: 459.99,
+        bmx: 259.99,
+        corsa: 899.99
+    }
+};
+
 const immagini = {
   manubriobmx: creaImmagine('img/manubrio-bmx.png'),
   manubrioclassico: creaImmagine('img/manubrio-classico.png'),
@@ -32,7 +57,7 @@ const immagini = {
 
 
 const configSalvata = localStorage.getItem('configurazioneBici');
-
+console.log("Configurazione salvata:", configSalvata);
 const config = JSON.parse(configSalvata);
 
  if (configSalvata) {
@@ -54,12 +79,23 @@ document.getElementById('accessori').innerHTML = '';
 switch (config.modello) {
 case 'mountainBike':
 document.getElementById('modello').appendChild(immagini.mountainbike);
+const modelloTextMountain = document.createElement('p');
+modelloTextMountain.textContent = `Mountain Bike - Prezzo: ${prezziComponenti.modello.mountainBike} €`;
+document.getElementById('modello').appendChild(modelloTextMountain);
 break;
+
 case 'bmx':
 document.getElementById('modello').appendChild(immagini.bmxbike);
+const modelloTextBMX = document.createElement('p');
+modelloTextBMX.textContent = `BMX - Prezzo: ${prezziComponenti.modello.bmx} €`;
+document.getElementById('modello').appendChild(modelloTextBMX);
 break;
+
 case 'corsa':
 document.getElementById('modello').appendChild(immagini.corsabike);
+const modelloTextCorsa = document.createElement('p');
+modelloTextCorsa.textContent = `Bicicletta da Corsa - Prezzo: ${prezziComponenti.modello.corsa} €`;
+document.getElementById('modello').appendChild(modelloTextCorsa);
 break;
 }
 
@@ -67,15 +103,30 @@ break;
 switch (config.manubrio) {
 case 'bmx':
 document.getElementById('manubrio').appendChild(immagini.manubriobmx);
+const manubrioTextBMX = document.createElement('p');
+manubrioTextBMX.textContent = `Manubrio BMX - Prezzo: ${prezziComponenti.manubrio.bmx} €`;
+document.getElementById('manubrio').appendChild(manubrioTextBMX);
 break;
+
 case 'classic':
 document.getElementById('manubrio').appendChild(immagini.manubrioclassico);
+const manubrioTextClassic = document.createElement('p');
+manubrioTextClassic.textContent = `Manubrio Classico - Prezzo: ${prezziComponenti.manubrio.classic} €`;
+document.getElementById('manubrio').appendChild(manubrioTextClassic);
 break;
+
 case 'mountain':
 document.getElementById('manubrio').appendChild(immagini.manubriomountain);
+const manubrioTextMountain = document.createElement('p');
+manubrioTextMountain.textContent = `Manubrio Mountain Bike - Prezzo: ${prezziComponenti.manubrio.mountain} €`;
+document.getElementById('manubrio').appendChild(manubrioTextMountain);
 break;
+
 case 'corsa':
 document.getElementById('manubrio').appendChild(immagini.manubriocorsa);
+const manubrioTextCorsa = document.createElement('p');
+manubrioTextCorsa.textContent = `Manubrio Bicicletta da Corsa - Prezzo: ${prezziComponenti.manubrio.corsa} €`;
+document.getElementById('manubrio').appendChild(manubrioTextCorsa);
 break;
 }
 
@@ -83,12 +134,23 @@ break;
 switch (config.ruote) {
 case 'mountain':
 document.getElementById('ruote').appendChild(immagini.ruotamountain);
+const ruoteTextMountain = document.createElement('p');
+ruoteTextMountain.textContent = `Ruota Mountain Bike - Prezzo: ${prezziComponenti.ruote.mountain} €`;
+document.getElementById('ruote').appendChild(ruoteTextMountain);
 break;
+
 case 'bmx':
 document.getElementById('ruote').appendChild(immagini.ruotabmx);
+const ruoteTextBMX = document.createElement('p');
+ruoteTextBMX.textContent = `Ruota BMX - Prezzo: ${prezziComponenti.ruote.bmx} €`;
+document.getElementById('ruote').appendChild(ruoteTextBMX);
 break;
+
 case 'corsa':
 document.getElementById('ruote').appendChild(immagini.ruotacorsa);
+const ruoteTextCorsa = document.createElement('p');
+ruoteTextCorsa.textContent = `Ruota Bicicletta da Corsa - Prezzo: ${prezziComponenti.ruote.corsa} €`;
+document.getElementById('ruote').appendChild(ruoteTextCorsa);
 break;
 }
 
@@ -96,15 +158,30 @@ break;
 switch (config.sella) {
 case 'mountain':
 document.getElementById('sella').appendChild(immagini.sellamountain);
+const modelloTextSellaMountain = document.createElement('p');
+modelloTextSellaMountain.textContent = `Sella Mountain Bike - Prezzo: ${prezziComponenti.sella.mountain} €`;
+document.getElementById('sella').appendChild(modelloTextSellaMountain);
 break;
+
 case 'bmx':
 document.getElementById('sella').appendChild(immagini.sellabmx);
+const modelloTextSellaBMX = document.createElement('p');
+modelloTextSellaBMX.textContent = `Sella BMX - Prezzo: ${prezziComponenti.sella.bmx} €`;
+document.getElementById('sella').appendChild(modelloTextSellaBMX);
 break;
+
 case 'corsa':
 document.getElementById('sella').appendChild(immagini.sellacorsa);
+const modelloTextSellaCorsa = document.createElement('p');
+modelloTextSellaCorsa.textContent = `Sella Bicicletta da Corsa - Prezzo: ${prezziComponenti.sella.corsa} €`;
+document.getElementById('sella').appendChild(modelloTextSellaCorsa);
 break;
+
 case 'classic':
 document.getElementById('sella').appendChild(immagini.sellaclassica);
+const modelloTextSellaClassic = document.createElement('p');
+modelloTextSellaClassic.textContent = `Sella Classica - Prezzo: ${prezziComponenti.sella.classic} €`;
+document.getElementById('sella').appendChild(modelloTextSellaClassic);
 break;
 }
 
@@ -119,3 +196,15 @@ if (config.accessori) {
 }
 
 console.log("Configurazione caricata:", config);
+
+function openActiveConfigurator() {
+        if (config.modello === 'mountainBike') {
+                window.location.href = 'mountainBike.html';
+        }
+        else if (config.modello === 'bmx') {
+                window.location.href = 'bmxBike.html';
+        }
+        else if (config.modello === 'corsa') {
+                window.location.href = 'racingBike.html';
+        } // corsa è da ricontrollare quando la fn viene applicata correttamente
+}
