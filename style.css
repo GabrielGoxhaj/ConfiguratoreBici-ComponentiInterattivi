@@ -55,10 +55,7 @@ body {
     margin-bottom: 6vh;
 }
 
-.tireColorSelector-wrapper,
-.telaioColorSelector-wrapper,
-.changeSella-wrapper,
-.saddleColorSelector-wrapper {
+.tireColorSelector-wrapper, .telaioColorSelector-wrapper, .changeSella-wrapper, .saddleColorSelector-wrapper, .AccessoriColorSelector-wrapper{
     display: flex;
     flex-direction: row;
 }
@@ -110,9 +107,7 @@ body {
     gap: 8px;
 }
 
-.tireColorSelector-wrapper>button.selected,
-.telaioColorSelector-wrapper>button.selected,
-.saddleColorSelector-wrapper>button.selected {
+.tireColorSelector-wrapper > button.selected, .telaioColorSelector-wrapper > button.selected, .saddleColorSelector-wrapper > button.selected , .AccessoriColorSelector-wrapper > button.selected {
     border: 4px solid black;
 }
 
