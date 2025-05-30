@@ -35,6 +35,15 @@ const configSalvata = localStorage.getItem('configurazioneBici');
 
 const config = JSON.parse(configSalvata);
 
+ if (configSalvata) {
+        const config = JSON.parse(configSalvata);
+        let pagina = "mountainBike.html";
+        if (config.modello === "bmx") pagina = "bmxBike.html";
+        else if (config.modello === "corsa") pagina = "RacingBike.html";
+        // Aggiungi altri modelli se necessario
+        document.getElementById("edit-btn").onclick = () => window.location.href = pagina;
+        }
+
 // Pulisci i div
 document.getElementById('modello').innerHTML = '';
 document.getElementById('manubrio').innerHTML = '';
