@@ -348,10 +348,17 @@ function changeSaddleColor(colorSaddleName) {
     } else {
         colorSaddle = new BABYLON.Color3(1, 1, 1); // default white
     }
+    window.saddleColor = colorSaddle; // Save globally
     const matSaddle = new BABYLON.StandardMaterial("matSaddle", scene);
     matSaddle.diffuseColor = colorSaddle;
     if (window.matSaddle) {
         window.matSaddle.diffuseColor = colorSaddle;
+    }
+    // Apply color to all current saddles
+    if (window.sellePresenti && Array.isArray(window.sellePresenti)) {
+        window.sellePresenti.forEach(mesh => {
+            mesh.material = matSaddle;
+        });
     }
 }
 
@@ -483,8 +490,10 @@ const createScene = async () => {
 
         );
 
+        // Use the globally saved color, or default
+        let saddleColor = window.saddleColor || new BABYLON.Color3(1, 1, 3);
         matSaddle = new BABYLON.StandardMaterial("matSaddle", scene);
-        matSaddle.diffuseColor = new BABYLON.Color3(1, 1, 3);
+        matSaddle.diffuseColor = saddleColor;
 
         // Trova la mesh della sella tra quelle importate
         let selleImportate = nuovaSaddle.meshes.filter(mesh => mesh.name.toLowerCase().includes("sella"));

@@ -227,7 +227,6 @@ window.aggiungiBorraccia = async function () {
 
     mesh.position = new BABYLON.Vector3(0, 1.9, -1.6);
 
-    mesh.material = color;
 
     console.log("Borraccia aggiunta alla scena:", color);
 
@@ -334,6 +333,7 @@ function changeTelaioColor(colorTelaioName) {
     });
 }
 
+// Modifica changeSaddleColor per salvare il colore scelto
 function changeSaddleColor(colorSaddleName) {
     let colorSaddle;
     if (colorSaddleName === 'red') {
@@ -355,10 +355,17 @@ function changeSaddleColor(colorSaddleName) {
     } else {
         colorSaddle = new BABYLON.Color3(1, 1, 1); // default white
     }
+    window.saddleColor = colorSaddle; // Salva il colore scelto globalmente
     const matSaddle = new BABYLON.StandardMaterial("matSaddle", scene);
     matSaddle.diffuseColor = colorSaddle;
     if (window.matSaddle) {
         window.matSaddle.diffuseColor = colorSaddle;
+    }
+    // Applica subito il colore anche alle selle presenti
+    if (window.sellePresenti && Array.isArray(window.sellePresenti)) {
+        window.sellePresenti.forEach(mesh => {
+            mesh.material = matSaddle;
+        });
     }
 }
 
@@ -487,11 +494,12 @@ const createScene = async () => {
             "models/",
             pathNuovaSaddle,
             scene
-
         );
 
+        // Usa il colore selezionato precedentemente, se esiste, altrimenti default
+        let saddleColor = window.saddleColor || new BABYLON.Color3(1, 1, 3);
         matSaddle = new BABYLON.StandardMaterial("matSaddle", scene);
-        matSaddle.diffuseColor = new BABYLON.Color3(1, 1, 3);
+        matSaddle.diffuseColor = saddleColor;
 
         // Trova la mesh della sella tra quelle importate
         let selleImportate = nuovaSaddle.meshes.filter(mesh => mesh.name.toLowerCase().includes("sella"));
@@ -514,13 +522,11 @@ const createScene = async () => {
                 mesh.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
                 mesh.rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
                 currentSellaType = "bmx";
-
             } else if (mesh.name.toLowerCase().includes("classic")) {
                 mesh.position = new BABYLON.Vector3(0, 3, 1.1);
                 mesh.scaling = new BABYLON.Vector3(0.03, 0.03, 0.03);
                 mesh.rotation = new BABYLON.Vector3(1.7, 3.2, 0); // 180° asse X
                 currentSellaType = "classic";
-
             } else if (mesh.name.toLowerCase().includes("corsa")) {
                 mesh.position = new BABYLON.Vector3(0, 3.5, 1.4);
                 mesh.scaling = new BABYLON.Vector3(0.3, 0.2, 0.2);
@@ -529,7 +535,7 @@ const createScene = async () => {
                 mesh.position = new BABYLON.Vector3(0, 3.3, 1.3);
                 mesh.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
                 currentSellaType = "mountain";
-            };
+            }
             mesh.material = matSaddle;
         });
 
